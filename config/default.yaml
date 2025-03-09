@@ -1,0 +1,89 @@
+# Default configuration for AI-Orchestration-Platform
+
+# Server configuration
+server:
+  host: 0.0.0.0
+  port: 8000
+  debug: true
+  cors:
+    enabled: true
+    origins:
+      - http://localhost:3000
+      - http://localhost:8080
+
+# Database configuration
+database:
+  type: postgres
+  host: database
+  port: 5432
+  username: aiplatform
+  password: aiplatform
+  database: aiplatform
+  pool:
+    min: 2
+    max: 10
+
+# Redis configuration
+redis:
+  host: redis
+  port: 6379
+  db: 0
+
+# Logging configuration
+logging:
+  level: debug
+  format: json
+  output:
+    console: true
+    file: true
+  file:
+    path: logs/app.log
+    max_size: 10m
+    max_files: 5
+
+# AI Orchestrator integration
+ai_orchestrator:
+  enabled: true
+  endpoint: http://ai-orchestrator:8080/api
+  api_key: ${AI_ORCHESTRATOR_API_KEY}
+  timeout: 30s
+  retry:
+    max_attempts: 3
+    initial_delay: 1s
+    max_delay: 5s
+
+# Fast Agent integration
+fast_agent:
+  enabled: true
+  endpoint: http://fast-agent:9000/api
+  api_key: ${FAST_AGENT_API_KEY}
+  timeout: 30s
+  models:
+    - name: gpt-4
+      provider: openai
+      priority: 1
+    - name: claude-3
+      provider: anthropic
+      priority: 2
+    - name: llama-3
+      provider: local
+      priority: 3
+
+# Security settings
+security:
+  jwt:
+    secret: ${JWT_SECRET}
+    expiration: 24h
+  rate_limiting:
+    enabled: true
+    requests_per_minute: 60
+  encryption:
+    enabled: true
+    algorithm: AES-256-GCM
+
+# Feature flags
+features:
+  advanced_routing: true
+  performance_monitoring: true
+  auto_scaling: false
+  multi_tenancy: false

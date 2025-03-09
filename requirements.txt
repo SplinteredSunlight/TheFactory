@@ -1,0 +1,48 @@
+# Core dependencies
+fastapi>=0.95.0
+uvicorn>=0.21.1
+pydantic>=2.0.0
+python-dotenv>=1.0.0
+pyyaml>=6.0
+requests>=2.28.2
+aiohttp>=3.8.4
+
+# Database
+sqlalchemy>=2.0.0
+alembic>=1.10.2
+psycopg2-binary>=2.9.5
+redis>=4.5.4
+
+# Authentication and security
+python-jose>=3.3.0
+passlib>=1.7.4
+bcrypt>=4.0.1
+python-multipart>=0.0.6
+
+# Testing
+pytest>=7.3.1
+pytest-asyncio>=0.21.0
+httpx>=0.24.0
+pytest-cov>=4.1.0
+
+# Monitoring and logging
+prometheus-client>=0.16.0
+structlog>=23.1.0
+
+# AI and ML
+numpy>=1.24.2
+pandas>=2.0.0
+scikit-learn>=1.2.2
+transformers>=4.28.1
+
+# Integration with AI-Orchestrator
+# ai-orchestrator-client>=1.0.0  # This would be the actual client library
+
+# Integration with Fast-Agent
+# fast-agent-client>=1.0.0  # This would be the actual client library
+
+# Development tools
+black>=23.3.0
+isort>=5.12.0
+flake8>=6.0.0
+mypy>=1.2.0

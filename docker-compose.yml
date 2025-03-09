@@ -1,0 +1,76 @@
+version: '3.8'
+
+services:
+  # Core orchestration service
+  orchestrator:
+    build:
+      context: ./src/orchestrator
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./src/orchestrator:/app
+      - ./config:/app/config
+    environment:
+      - NODE_ENV=development
+      - LOG_LEVEL=debug
+    depends_on:
+      - redis
+      - database
+
+  # Agent management service
+  agent-manager:
+    build:
+      context: ./src/agent-manager
+      dockerfile: Dockerfile
+    ports:
+      - "8001:8001"
+    volumes:
+      - ./src/agent-manager:/app
+      - ./config:/app/config
+    environment:
+      - PYTHON_ENV=development
+      - LOG_LEVEL=debug
+    depends_on:
+      - redis
+      - database
+
+  # Frontend application
+  frontend:
+    build:
+      context: ./src/frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./src/frontend:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - orchestrator
+      - agent-manager
+
+  # Redis for caching and message queue
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+
+  # Database for persistent storage
+  database:
+    image: postgres:13-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=aiplatform
+      - POSTGRES_PASSWORD=aiplatform
+      - POSTGRES_DB=aiplatform
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+volumes:
+  redis-data:
+  db-data:
