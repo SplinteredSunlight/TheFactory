@@ -1,0 +1,8 @@
+#!/bin/bash
+# Simple wrapper script to run the Task Assistant with auto-start enabled
+
+# Get the directory where this script is located
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Run the Task Assistant with auto-start enabled
+"$SCRIPT_DIR/run-task-assistant.sh" --auto-start "$@"

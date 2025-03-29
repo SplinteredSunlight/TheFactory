@@ -1,0 +1,171 @@
+{
+  "projects": [
+    {
+      "id": "project-1",
+      "name": "Project Alpha",
+      "description": "A sample project for testing migration",
+      "created_at": "2025-01-15T10:00:00Z",
+      "updated_at": "2025-03-20T14:30:00Z",
+      "metadata": {
+        "priority": "high",
+        "category": "development"
+      }
+    },
+    {
+      "id": "project-2",
+      "name": "Project Beta",
+      "description": "Another sample project for testing migration",
+      "created_at": "2025-02-10T09:15:00Z",
+      "updated_at": "2025-03-18T11:45:00Z",
+      "metadata": {
+        "priority": "medium",
+        "category": "research"
+      }
+    }
+  ],
+  "phases": [
+    {
+      "id": "phase-1",
+      "project_id": "project-1",
+      "name": "Planning",
+      "description": "Planning phase for Project Alpha",
+      "order": 1,
+      "created_at": "2025-01-15T10:30:00Z",
+      "updated_at": "2025-01-15T10:30:00Z"
+    },
+    {
+      "id": "phase-2",
+      "project_id": "project-1",
+      "name": "Implementation",
+      "description": "Implementation phase for Project Alpha",
+      "order": 2,
+      "created_at": "2025-01-15T10:35:00Z",
+      "updated_at": "2025-01-15T10:35:00Z"
+    },
+    {
+      "id": "phase-3",
+      "project_id": "project-1",
+      "name": "Testing",
+      "description": "Testing phase for Project Alpha",
+      "order": 3,
+      "created_at": "2025-01-15T10:40:00Z",
+      "updated_at": "2025-01-15T10:40:00Z"
+    },
+    {
+      "id": "phase-4",
+      "project_id": "project-2",
+      "name": "Research",
+      "description": "Research phase for Project Beta",
+      "order": 1,
+      "created_at": "2025-02-10T09:30:00Z",
+      "updated_at": "2025-02-10T09:30:00Z"
+    },
+    {
+      "id": "phase-5",
+      "project_id": "project-2",
+      "name": "Analysis",
+      "description": "Analysis phase for Project Beta",
+      "order": 2,
+      "created_at": "2025-02-10T09:35:00Z",
+      "updated_at": "2025-02-10T09:35:00Z"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "task-1",
+      "project_id": "project-1",
+      "phase_id": "phase-1",
+      "name": "Define requirements",
+      "description": "Define the requirements for Project Alpha",
+      "status": "completed",
+      "priority": "high",
+      "progress": 100.0,
+      "created_at": "2025-01-16T09:00:00Z",
+      "updated_at": "2025-01-20T15:30:00Z",
+      "metadata": {
+        "assignee": "John Doe",
+        "estimated_hours": 8
+      }
+    },
+    {
+      "id": "task-2",
+      "project_id": "project-1",
+      "phase_id": "phase-1",
+      "name": "Create project plan",
+      "description": "Create a detailed project plan for Project Alpha",
+      "status": "completed",
+      "priority": "high",
+      "progress": 100.0,
+      "created_at": "2025-01-17T10:15:00Z",
+      "updated_at": "2025-01-22T14:45:00Z",
+      "metadata": {
+        "assignee": "Jane Smith",
+        "estimated_hours": 16
+      }
+    },
+    {
+      "id": "task-3",
+      "project_id": "project-1",
+      "phase_id": "phase-2",
+      "name": "Implement feature A",
+      "description": "Implement feature A for Project Alpha",
+      "status": "in_progress",
+      "priority": "medium",
+      "progress": 75.0,
+      "created_at": "2025-01-25T11:30:00Z",
+      "updated_at": "2025-03-15T16:20:00Z",
+      "metadata": {
+        "assignee": "Bob Johnson",
+        "estimated_hours": 24
+      }
+    },
+    {
+      "id": "task-4",
+      "project_id": "project-1",
+      "phase_id": "phase-2",
+      "name": "Implement feature B",
+      "description": "Implement feature B for Project Alpha",
+      "status": "planned",
+      "priority": "medium",
+      "progress": 0.0,
+      "created_at": "2025-01-25T11:45:00Z",
+      "updated_at": "2025-01-25T11:45:00Z",
+      "metadata": {
+        "assignee": "Alice Brown",
+        "estimated_hours": 20
+      }
+    },
+    {
+      "id": "task-5",
+      "project_id": "project-2",
+      "phase_id": "phase-4",
+      "name": "Literature review",
+      "description": "Conduct a literature review for Project Beta",
+      "status": "completed",
+      "priority": "high",
+      "progress": 100.0,
+      "created_at": "2025-02-12T10:00:00Z",
+      "updated_at": "2025-02-20T17:30:00Z",
+      "metadata": {
+        "assignee": "Emily Davis",
+        "estimated_hours": 40
+      }
+    },
+    {
+      "id": "task-6",
+      "project_id": "project-2",
+      "phase_id": "phase-5",
+      "name": "Data analysis",
+      "description": "Analyze data for Project Beta",
+      "status": "in_progress",
+      "priority": "high",
+      "progress": 50.0,
+      "created_at": "2025-02-25T09:30:00Z",
+      "updated_at": "2025-03-18T11:45:00Z",
+      "metadata": {
+        "assignee": "Michael Wilson",
+        "estimated_hours": 32
+      }
+    }
+  ]
+}

@@ -1,0 +1,1169 @@
+{
+  "version": 2,
+  "last_updated": "2025-03-24T15:57:05.647193",
+  "file_hashes": {
+    "docs/project-plan.md": "9a97dd48b86e2ba4fa249c2be6b88daa",
+    "docs/task-tracking.json": "038bb1d6d92f9a8ee0af2a2a4fbe89a5",
+    "docs/architecture.md": "e4275d5e3e354705f80559019ac99e67"
+  },
+  "project_structure": {
+    "ai_orchestration_platform.egg-info": {
+      "_files": 4
+    },
+    "tasks": {
+      "completed": {
+        "_files": 10
+      },
+      "_files": 2
+    },
+    "_files": 8,
+    "config": {
+      "_files": 4
+    },
+    "deploy": {
+      "_files": 6
+    },
+    "mock_modules": {
+      "dagger": {
+        "_files": 1,
+        "__pycache__": {
+          "_files": 1
+        }
+      },
+      "mcp": {
+        "_files": 2,
+        "server": {
+          "_files": 2,
+          "__pycache__": {
+            "_files": 2
+          }
+        },
+        "__pycache__": {
+          "_files": 2
+        }
+      },
+      "mcp_agent": {
+        "app": {
+          "_files": 1,
+          "__pycache__": {
+            "_files": 1
+          }
+        },
+        "_files": 1,
+        "__pycache__": {
+          "_files": 1
+        }
+      },
+      "pydagger": {
+        "_files": 1,
+        "__pycache__": {
+          "_files": 1
+        }
+      },
+      "src": {
+        "task_manager": {
+          "_files": 3,
+          "__pycache__": {
+            "_files": 3
+          },
+          "mcp_servers": {
+            "_files": 3,
+            "__pycache__": {
+              "_files": 3
+            }
+          }
+        },
+        "_files": 1,
+        "agent_manager": {
+          "_files": 4,
+          "__pycache__": {
+            "_files": 4
+          }
+        },
+        "__pycache__": {
+          "_files": 1
+        },
+        "orchestrator": {
+          "_files": 2,
+          "__pycache__": {
+            "_files": 2
+          }
+        }
+      }
+    },
+    "node_modules": {
+      "destroy": {
+        "_files": 4
+      },
+      "toidentifier": {
+        "_files": 5
+      },
+      "content-type": {
+        "_files": 5
+      },
+      "es-errors": {
+        "_files": 19,
+        "test": {
+          "_files": 1
+        },
+        ".github": {
+          "_files": 1
+        }
+      },
+      "ms": {
+        "_files": 4
+      },
+      "content-disposition": {
+        "_files": 5
+      },
+      "math-intrinsics": {
+        "_files": 29,
+        "test": {
+          "_files": 1
+        },
+        "constants": {
+          "_files": 6
+        },
+        ".github": {
+          "_files": 1
+        }
+      },
+      "methods": {
+        "_files": 5
+      },
+      "proxy-addr": {
+        "_files": 5
+      },
+      "depd": {
+        "_files": 5,
+        "lib": {
+          "browser": {
+            "_files": 1
+          }
+        }
+      },
+      "range-parser": {
+        "_files": 5
+      },
+      "side-channel-list": {
+        "_files": 8,
+        "test": {
+          "_files": 1
+        },
+        ".github": {
+          "_files": 1
+        }
+      },
+      "bytes": {
+        "_files": 5
+      },
+      "call-bind-apply-helpers": {
+        "_files": 17,
+        "test": {
+          "_files": 1
+        },
+        ".github": {
+          "_files": 1
+        }
+      },
+      "express": {
+        "_files": 5,
+        "lib": {
+          "middleware": {
+            "_files": 2
+          },
+          "_files": 6,
+          "router": {
+            "_files": 3
+          }
+        }
+      },
+      "encodeurl": {
+        "_files": 4
+      },
+      "merge-descriptors": {
+        "_files": 5
+      },
+      "array-flatten": {
+        "_files": 4
+      },
+      "safe-buffer": {
+        "_files": 5
+      },
+      "function-bind": {
+        "_files": 6,
+        "test": {
+          "_files": 1
+        },
+        ".github": {
+          "_files": 2
+        }
+      },
+      "ee-first": {
+        "_files": 4
+      },
+      "inherits": {
+        "_files": 5
+      },
+      "iconv-lite": {
+        "encodings": {
+          "_files": 9,
+          "tables": {
+            "_files": 8
+          }
+        },
+        "_files": 4,
+        "lib": {
+          "_files": 5
+        }
+      },
+      "es-define-property": {
+        "_files": 7,
+        "test": {
+          "_files": 1
+        },
+        ".github": {
+          "_files": 1
+        }
+      },
+      "fresh": {
+        "_files": 5
+      },
+      "get-intrinsic": {
+        "_files": 5,
+        "test": {
+          "_files": 1
+        },
+        ".github": {
+          "_files": 1
+        }
+      },
+      "qs": {
+        "_files": 4,
+        "test": {
+          "_files": 4
+        },
+        "dist": {
+          "_files": 1
+        },
+        ".github": {
+          "_files": 1
+        },
+        "lib": {
+          "_files": 5
+        }
+      },
+      "call-bound": {
+        "_files": 7,
+        "test": {
+          "_files": 1
+        },
+        ".github": {
+          "_files": 1
+        }
+      },
+      "dunder-proto": {
+        "_files": 9,
+        "test": {
+          "_files": 3
+        },
+        ".github": {
+          "_files": 1
+        }
+      },
+      "path-to-regexp": {
+        "_files": 4
+      },
+      "hasown": {
+        "_files": 7,
+        ".github": {
+          "_files": 1
+        }
+      },
+      "safer-buffer": {
+        "_files": 7
+      },
+      "side-channel-weakmap": {
+        "_files": 7,
+        "test": {
+          "_files": 1
+        },
+        ".github": {
+          "_files": 1
+        }
+      },
+      "mime-types": {
+        "_files": 5
+      },
+      "type-is": {
+        "_files": 5
+      },
+      "vary": {
+        "_files": 5
+      },
+      "unpipe": {
+        "_files": 5
+      },
+      "has-symbols": {
+        "_files": 9,
+        "test": {
+          "shams": {
+            "_files": 2
+          },
+          "_files": 2
+        },
+        ".github": {
+          "_files": 1
+        }
+      },
+      "raw-body": {
+        "_files": 7
+      },
+      "http-errors": {
+        "_files": 5
+      },
+      "accepts": {
+        "_files": 5
+      },
+      "cookie-signature": {
+        "_files": 4
+      },
+      "forwarded": {
+        "_files": 5
+      },
+      "negotiator": {
+        "_files": 5,
+        "lib": {
+          "_files": 4
+        }
+      },
+      "body-parser": {
+        "_files": 6,
+        "lib": {
+          "types": {
+            "_files": 4
+          },
+          "_files": 1
+        }
+      },
+      "utils-merge": {
+        "_files": 4
+      },
+      "side-channel": {
+        "_files": 7,
+        "test": {
+          "_files": 1
+        },
+        ".github": {
+          "_files": 1
+        }
+      },
+      "cors": {
+        "_files": 5,
+        "lib": {
+          "_files": 1
+        }
+      },
+      "serve-static": {
+        "_files": 5
+      },
+      "object-assign": {
+        "_files": 4
+      },
+      "get-proto": {
+        "_files": 11,
+        "test": {
+          "_files": 1
+        },
+        ".github": {
+          "_files": 1
+        }
+      },
+      "mime": {
+        "_files": 7,
+        "src": {
+          "_files": 2
+        }
+      },
+      "ipaddr.js": {
+        "_files": 4,
+        "lib": {
+          "_files": 2
+        }
+      },
+      "cookie": {
+        "_files": 5
+      },
+      "gopd": {
+        "_files": 9,
+        "test": {
+          "_files": 1
+        },
+        ".github": {
+          "_files": 1
+        }
+      },
+      "escape-html": {
+        "_files": 4
+      },
+      "statuses": {
+        "_files": 6
+      },
+      "parseurl": {
+        "_files": 5
+      },
+      "etag": {
+        "_files": 5
+      },
+      "send": {
+        "_files": 6,
+        "node_modules": {
+          "ms": {
+            "_files": 4
+          },
+          "encodeurl": {
+            "_files": 5
+          }
+        }
+      },
+      "finalhandler": {
+        "_files": 6
+      },
+      "side-channel-map": {
+        "_files": 7,
+        "test": {
+          "_files": 1
+        },
+        ".github": {
+          "_files": 1
+        }
+      },
+      "object-inspect": {
+        "_files": 8,
+        "test": {
+          "_files": 18,
+          "browser": {
+            "_files": 1
+          }
+        },
+        "example": {
+          "_files": 4
+        },
+        ".github": {
+          "_files": 1
+        }
+      },
+      "on-finished": {
+        "_files": 5
+      },
+      "debug": {
+        "_files": 8,
+        "src": {
+          "_files": 5
+        }
+      },
+      "media-typer": {
+        "_files": 5
+      },
+      "mime-db": {
+        "_files": 6
+      },
+      "es-object-atoms": {
+        "_files": 13,
+        "test": {
+          "_files": 1
+        },
+        ".github": {
+          "_files": 1
+        }
+      },
+      "setprototypeof": {
+        "_files": 5,
+        "test": {
+          "_files": 1
+        }
+      }
+    },
+    "tests": {
+      "_files": 30,
+      "dagger": {
+        "unit": {
+          "_files": 6,
+          "__pycache__": {
+            "_files": 1
+          }
+        },
+        "integration": {
+          "_files": 5
+        },
+        "error_handling": {
+          "_files": 3
+        }
+      },
+      "__pycache__": {
+        "_files": 10
+      }
+    },
+    "workflows": {
+      "test": {
+        "_files": 3,
+        "scripts": {
+          "analysis": {
+            "_files": 1
+          },
+          "transformation": {
+            "_files": 1
+          },
+          "validation": {
+            "_files": 2
+          }
+        },
+        "data": {
+          "_files": 1
+        }
+      },
+      "_files": 2
+    },
+    "docs": {
+      "images": {
+        "_files": 3
+      },
+      "dagger": {
+        "_files": 17
+      },
+      "system-prompt": {
+        "_files": 4
+      },
+      "_files": 6,
+      "task_manager": {
+        "_files": 1
+      },
+      "planning": {
+        "_files": 6,
+        "task-templates": {
+          "_files": 2
+        }
+      },
+      "wiki": {
+        "journal": {
+          "_files": 2
+        },
+        "adr": {
+          "_files": 2
+        },
+        "_files": 1,
+        "workflows": {
+          "_files": 2
+        },
+        "components": {
+          "_files": 2
+        }
+      },
+      "system": {
+        "integration": {
+          "_files": 3
+        },
+        "components": {
+          "_files": 4
+        },
+        "api": {
+          "_files": 1
+        }
+      },
+      "guides": {
+        "_files": 14
+      },
+      "templates": {
+        "_files": 1
+      },
+      "api-contracts": {
+        "_files": 2
+      }
+    },
+    "examples": {
+      "_files": 1,
+      "dagger": {
+        "_files": 8,
+        "__pycache__": {
+          "_files": 1
+        }
+      }
+    },
+    "scripts": {
+      "_files": 11,
+      "dagger": {
+        "_files": 16
+      },
+      "task_manager": {
+        "_files": 14
+      },
+      "mcp": {
+        "_files": 7
+      },
+      "dashboard": {
+        "_files": 4
+      },
+      "dagger_scraper": {}
+    },
+    "monitoring": {
+      "_files": 2
+    },
+    "project_master_dashboard": {
+      "_files": 9,
+      "css": {
+        "_files": 1
+      },
+      "js": {
+        "_files": 2
+      },
+      "node_modules": {
+        "destroy": {
+          "_files": 4
+        },
+        "toidentifier": {
+          "_files": 5
+        },
+        "content-type": {
+          "_files": 5
+        },
+        "es-errors": {
+          "_files": 19,
+          "test": {
+            "_files": 1
+          },
+          ".github": {
+            "_files": 1
+          }
+        },
+        "ms": {
+          "_files": 4
+        },
+        "content-disposition": {
+          "_files": 5
+        },
+        "math-intrinsics": {
+          "_files": 29,
+          "test": {
+            "_files": 1
+          },
+          "constants": {
+            "_files": 6
+          },
+          ".github": {
+            "_files": 1
+          }
+        },
+        "methods": {
+          "_files": 5
+        },
+        "dotenv": {
+          "_files": 7,
+          "lib": {
+            "_files": 4
+          }
+        },
+        "proxy-addr": {
+          "_files": 5
+        },
+        "depd": {
+          "_files": 5,
+          "lib": {
+            "browser": {
+              "_files": 1
+            }
+          }
+        },
+        "range-parser": {
+          "_files": 5
+        },
+        "side-channel-list": {
+          "_files": 8,
+          "test": {
+            "_files": 1
+          },
+          ".github": {
+            "_files": 1
+          }
+        },
+        "bytes": {
+          "_files": 5
+        },
+        "call-bind-apply-helpers": {
+          "_files": 17,
+          "test": {
+            "_files": 1
+          },
+          ".github": {
+            "_files": 1
+          }
+        },
+        "express": {
+          "_files": 5,
+          "lib": {
+            "middleware": {
+              "_files": 2
+            },
+            "_files": 6,
+            "router": {
+              "_files": 3
+            }
+          }
+        },
+        "encodeurl": {
+          "_files": 4
+        },
+        "merge-descriptors": {
+          "_files": 5
+        },
+        "array-flatten": {
+          "_files": 4
+        },
+        "safe-buffer": {
+          "_files": 5
+        },
+        "function-bind": {
+          "_files": 6,
+          "test": {
+            "_files": 1
+          },
+          ".github": {
+            "_files": 2
+          }
+        },
+        "ee-first": {
+          "_files": 4
+        },
+        "inherits": {
+          "_files": 5
+        },
+        "iconv-lite": {
+          "encodings": {
+            "_files": 9,
+            "tables": {
+              "_files": 8
+            }
+          },
+          "_files": 4,
+          "lib": {
+            "_files": 5
+          }
+        },
+        "es-define-property": {
+          "_files": 7,
+          "test": {
+            "_files": 1
+          },
+          ".github": {
+            "_files": 1
+          }
+        },
+        "fresh": {
+          "_files": 5
+        },
+        "get-intrinsic": {
+          "_files": 5,
+          "test": {
+            "_files": 1
+          },
+          ".github": {
+            "_files": 1
+          }
+        },
+        "qs": {
+          "_files": 4,
+          "test": {
+            "_files": 4
+          },
+          "dist": {
+            "_files": 1
+          },
+          ".github": {
+            "_files": 1
+          },
+          "lib": {
+            "_files": 5
+          }
+        },
+        "call-bound": {
+          "_files": 7,
+          "test": {
+            "_files": 1
+          },
+          ".github": {
+            "_files": 1
+          }
+        },
+        "dunder-proto": {
+          "_files": 9,
+          "test": {
+            "_files": 3
+          },
+          ".github": {
+            "_files": 1
+          }
+        },
+        "path-to-regexp": {
+          "_files": 4
+        },
+        "hasown": {
+          "_files": 7,
+          ".github": {
+            "_files": 1
+          }
+        },
+        "safer-buffer": {
+          "_files": 7
+        },
+        "side-channel-weakmap": {
+          "_files": 7,
+          "test": {
+            "_files": 1
+          },
+          ".github": {
+            "_files": 1
+          }
+        },
+        "mime-types": {
+          "_files": 5
+        },
+        "type-is": {
+          "_files": 5
+        },
+        "vary": {
+          "_files": 5
+        },
+        "unpipe": {
+          "_files": 5
+        },
+        "has-symbols": {
+          "_files": 9,
+          "test": {
+            "shams": {
+              "_files": 2
+            },
+            "_files": 2
+          },
+          ".github": {
+            "_files": 1
+          }
+        },
+        "raw-body": {
+          "_files": 7
+        },
+        "http-errors": {
+          "_files": 5
+        },
+        "accepts": {
+          "_files": 5
+        },
+        "cookie-signature": {
+          "_files": 4
+        },
+        "forwarded": {
+          "_files": 5
+        },
+        "negotiator": {
+          "_files": 5,
+          "lib": {
+            "_files": 4
+          }
+        },
+        "body-parser": {
+          "_files": 6,
+          "lib": {
+            "types": {
+              "_files": 4
+            },
+            "_files": 1
+          }
+        },
+        "utils-merge": {
+          "_files": 4
+        },
+        "side-channel": {
+          "_files": 7,
+          "test": {
+            "_files": 1
+          },
+          ".github": {
+            "_files": 1
+          }
+        },
+        "cors": {
+          "_files": 5,
+          "lib": {
+            "_files": 1
+          }
+        },
+        "serve-static": {
+          "_files": 5
+        },
+        "object-assign": {
+          "_files": 4
+        },
+        "get-proto": {
+          "_files": 11,
+          "test": {
+            "_files": 1
+          },
+          ".github": {
+            "_files": 1
+          }
+        },
+        "mime": {
+          "_files": 7,
+          "src": {
+            "_files": 2
+          }
+        },
+        "ipaddr.js": {
+          "_files": 4,
+          "lib": {
+            "_files": 2
+          }
+        },
+        "cookie": {
+          "_files": 5
+        },
+        "gopd": {
+          "_files": 9,
+          "test": {
+            "_files": 1
+          },
+          ".github": {
+            "_files": 1
+          }
+        },
+        "escape-html": {
+          "_files": 4
+        },
+        "statuses": {
+          "_files": 6
+        },
+        "parseurl": {
+          "_files": 5
+        },
+        "etag": {
+          "_files": 5
+        },
+        "send": {
+          "_files": 6,
+          "node_modules": {
+            "ms": {
+              "_files": 4
+            },
+            "encodeurl": {
+              "_files": 5
+            }
+          }
+        },
+        "finalhandler": {
+          "_files": 6
+        },
+        "side-channel-map": {
+          "_files": 7,
+          "test": {
+            "_files": 1
+          },
+          ".github": {
+            "_files": 1
+          }
+        },
+        "object-inspect": {
+          "_files": 8,
+          "test": {
+            "_files": 18,
+            "browser": {
+              "_files": 1
+            }
+          },
+          "example": {
+            "_files": 4
+          },
+          ".github": {
+            "_files": 1
+          }
+        },
+        "on-finished": {
+          "_files": 5
+        },
+        "debug": {
+          "_files": 8,
+          "src": {
+            "_files": 5
+          }
+        },
+        "media-typer": {
+          "_files": 5
+        },
+        "mime-db": {
+          "_files": 6
+        },
+        "es-object-atoms": {
+          "_files": 13,
+          "test": {
+            "_files": 1
+          },
+          ".github": {
+            "_files": 1
+          }
+        },
+        "setprototypeof": {
+          "_files": 5,
+          "test": {
+            "_files": 1
+          }
+        }
+      },
+      "lib": {},
+      "views": {}
+    },
+    "~": {
+      "bin": {
+        "_files": 2
+      }
+    },
+    "src": {
+      "frontend": {
+        "_files": 3,
+        "public": {
+          "_files": 2
+        },
+        "src": {
+          "_files": 4,
+          "types": {
+            "_files": 1
+          },
+          "utils": {},
+          "components": {
+            "configuration": {
+              "_files": 6,
+              "__tests__": {
+                "_files": 2
+              }
+            },
+            "_files": 3,
+            "progress": {
+              "_files": 1
+            },
+            "dashboard": {
+              "_files": 1
+            }
+          },
+          "hooks": {},
+          "examples": {
+            "_files": 1
+          },
+          "assets": {},
+          "pages": {
+            "_files": 7
+          },
+          "services": {
+            "_files": 2
+          },
+          "store": {
+            "slices": {
+              "_files": 7
+            },
+            "_files": 1
+          }
+        }
+      },
+      "fast_agent_integration": {
+        "_files": 9,
+        "__pycache__": {
+          "_files": 3
+        },
+        "examples": {
+          "_files": 1
+        },
+        "mcp_servers": {
+          "_files": 2
+        }
+      },
+      "task_manager": {
+        "_files": 9,
+        "__pycache__": {
+          "_files": 4
+        },
+        "mcp_servers": {
+          "_files": 12,
+          "__pycache__": {
+            "_files": 5
+          },
+          "templates": {
+            "_files": 1
+          }
+        },
+        "data": {
+          "projects": {
+            "_files": 2
+          }
+        }
+      },
+      "agent_manager": {
+        "_files": 7,
+        "__pycache__": {
+          "_files": 4
+        }
+      },
+      "examples": {
+        "_files": 3
+      },
+      "api": {
+        "_files": 4,
+        "middlewares": {
+          "_files": 1
+        },
+        "__pycache__": {
+          "_files": 2
+        },
+        "routes": {
+          "_files": 6,
+          "__pycache__": {
+            "_files": 5
+          }
+        }
+      },
+      "_files": 1,
+      "monitoring": {
+        "_files": 2
+      },
+      "orchestrator": {
+        "_files": 10,
+        "__pycache__": {
+          "_files": 9
+        }
+      }
+    }
+  },
+  "architecture_summary": "Architecture information not available.",
+  "completed_tasks_summary": [
+    {
+      "phase": "Frontend Integration (Completed)",
+      "task": "Milestone 4.2",
+      "completed_at": "2025-03-24T15:57:05.589358"
+    },
+    {
+      "phase": "Frontend Integration (Completed)",
+      "task": "Milestone 4.1",
+      "completed_at": "2025-03-24T15:34:32.685641"
+    },
+    {
+      "phase": "Agent Integration (Completed)",
+      "task": "Milestone 3.2",
+      "completed_at": "2025-03-24T15:23:06.839218"
+    },
+    {
+      "phase": "Agent Integration (Completed)",
+      "task": "Milestone 3.1",
+      "completed_at": "2025-03-24T14:58:19.004908"
+    },
+    {
+      "phase": "Orchestrator Enhancements (Completed)",
+      "task": "Milestone 2.2",
+      "completed_at": "2025-03-24T12:47:16.437400"
+    }
+  ],
+  "task_references": {}
+}

@@ -1,0 +1,436 @@
+{
+  "id": "project_4f1b1fa5",
+  "name": "AI-Orchestration-Platform",
+  "description": "Integration project between AI-Orchestrator and Fast-Agent frameworks.",
+  "metadata": {
+    "repository": "https://github.com/SplinteredSunlight/AI-Orchestration-Platform"
+  },
+  "created_at": "2025-03-19T14:35:51.001839",
+  "updated_at": "2025-03-19T14:35:51.007434",
+  "phases": {
+    "phase_1": {
+      "id": "phase_1",
+      "name": "Integration Setup",
+      "project_id": "project_4f1b1fa5",
+      "description": "Phase 1 of the project",
+      "order": 1,
+      "metadata": {},
+      "created_at": "2025-03-19T14:35:51.002466",
+      "updated_at": "2025-03-19T14:35:51.004056",
+      "tasks": [
+        "task_0bf49f1b",
+        "task_e7ed9edb",
+        "task_9354646b",
+        "task_36187597",
+        "task_bc2ec6e6"
+      ]
+    },
+    "phase_2": {
+      "id": "phase_2",
+      "name": "Orchestrator Enhancements",
+      "project_id": "project_4f1b1fa5",
+      "description": "Phase 2 of the project",
+      "order": 2,
+      "metadata": {},
+      "created_at": "2025-03-19T14:35:51.002469",
+      "updated_at": "2025-03-19T14:35:51.005024",
+      "tasks": [
+        "task_d9c096c0",
+        "task_caef83f2"
+      ]
+    },
+    "phase_3": {
+      "id": "phase_3",
+      "name": "Agent Integration",
+      "project_id": "project_4f1b1fa5",
+      "description": "Phase 3 of the project",
+      "order": 3,
+      "metadata": {},
+      "created_at": "2025-03-19T14:35:51.002471",
+      "updated_at": "2025-03-19T14:35:51.006175",
+      "tasks": [
+        "task_4cc424ec",
+        "task_f47b9fb7"
+      ]
+    },
+    "phase_4": {
+      "id": "phase_4",
+      "name": "Frontend Integration",
+      "project_id": "project_4f1b1fa5",
+      "description": "Phase 4 of the project",
+      "order": 4,
+      "metadata": {},
+      "created_at": "2025-03-19T14:35:51.002472",
+      "updated_at": "2025-03-19T14:35:51.007434",
+      "tasks": [
+        "task_d49ef2d8",
+        "task_ff13ddd6"
+      ]
+    }
+  },
+  "tasks": {
+    "task_0bf49f1b": {
+      "id": "task_0bf49f1b",
+      "name": "API Contract Definition",
+      "description": "Task from phase Integration Setup",
+      "project_id": "project_4f1b1fa5",
+      "phase_id": "phase_1",
+      "parent_id": null,
+      "status": "completed",
+      "priority": "medium",
+      "progress": 100.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {},
+      "created_at": "2025-03-19T14:35:51.002482",
+      "updated_at": "2025-03-19T14:35:51.002482",
+      "started_at": "2025-03-09T01:16:24.439803",
+      "completed_at": "2025-03-09T01:16:24.439803",
+      "children": [],
+      "status_history": [
+        {
+          "status": "completed",
+          "timestamp": "2025-03-19T14:35:51.002482",
+          "previous_status": null
+        },
+        {
+          "status": "completed",
+          "timestamp": "2025-03-09T01:16:24.439803",
+          "previous_status": "in_progress"
+        }
+      ],
+      "result": null,
+      "error": null
+    },
+    "task_e7ed9edb": {
+      "id": "task_e7ed9edb",
+      "name": "Authentication Mechanism",
+      "description": "Task from phase Integration Setup",
+      "project_id": "project_4f1b1fa5",
+      "phase_id": "phase_1",
+      "parent_id": null,
+      "status": "completed",
+      "priority": "medium",
+      "progress": 100.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {},
+      "created_at": "2025-03-19T14:35:51.002862",
+      "updated_at": "2025-03-19T14:35:51.002862",
+      "started_at": "2025-03-09T01:27:14.657548",
+      "completed_at": "2025-03-09T01:27:14.657548",
+      "children": [],
+      "status_history": [
+        {
+          "status": "completed",
+          "timestamp": "2025-03-19T14:35:51.002862",
+          "previous_status": null
+        },
+        {
+          "status": "completed",
+          "timestamp": "2025-03-09T01:27:14.657548",
+          "previous_status": "in_progress"
+        }
+      ],
+      "result": null,
+      "error": null
+    },
+    "task_9354646b": {
+      "id": "task_9354646b",
+      "name": "Data Schema Alignment",
+      "description": "Task from phase Integration Setup",
+      "project_id": "project_4f1b1fa5",
+      "phase_id": "phase_1",
+      "parent_id": null,
+      "status": "completed",
+      "priority": "medium",
+      "progress": 100.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {},
+      "created_at": "2025-03-19T14:35:51.003228",
+      "updated_at": "2025-03-19T14:35:51.003228",
+      "started_at": "2025-03-09T01:34:38.490038",
+      "completed_at": "2025-03-09T01:34:38.490038",
+      "children": [],
+      "status_history": [
+        {
+          "status": "completed",
+          "timestamp": "2025-03-19T14:35:51.003228",
+          "previous_status": null
+        },
+        {
+          "status": "completed",
+          "timestamp": "2025-03-09T01:34:38.490038",
+          "previous_status": "in_progress"
+        }
+      ],
+      "result": null,
+      "error": null
+    },
+    "task_36187597": {
+      "id": "task_36187597",
+      "name": "Error Handling Protocol",
+      "description": "Task from phase Integration Setup",
+      "project_id": "project_4f1b1fa5",
+      "phase_id": "phase_1",
+      "parent_id": null,
+      "status": "completed",
+      "priority": "medium",
+      "progress": 100.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {},
+      "created_at": "2025-03-19T14:35:51.003643",
+      "updated_at": "2025-03-19T14:35:51.003643",
+      "started_at": "2025-03-09T01:51:54.702548",
+      "completed_at": "2025-03-09T01:51:54.702548",
+      "children": [],
+      "status_history": [
+        {
+          "status": "completed",
+          "timestamp": "2025-03-19T14:35:51.003643",
+          "previous_status": null
+        },
+        {
+          "status": "completed",
+          "timestamp": "2025-03-09T01:51:54.702548",
+          "previous_status": "in_progress"
+        }
+      ],
+      "result": null,
+      "error": null
+    },
+    "task_bc2ec6e6": {
+      "id": "task_bc2ec6e6",
+      "name": "Integration Testing Framework",
+      "description": "Task from phase Integration Setup",
+      "project_id": "project_4f1b1fa5",
+      "phase_id": "phase_1",
+      "parent_id": null,
+      "status": "completed",
+      "priority": "medium",
+      "progress": 100.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {},
+      "created_at": "2025-03-19T14:35:51.004054",
+      "updated_at": "2025-03-19T14:35:51.004054",
+      "started_at": "2025-03-09T01:57:53.038578",
+      "completed_at": "2025-03-09T01:57:53.038578",
+      "children": [],
+      "status_history": [
+        {
+          "status": "completed",
+          "timestamp": "2025-03-19T14:35:51.004054",
+          "previous_status": null
+        },
+        {
+          "status": "completed",
+          "timestamp": "2025-03-09T01:57:53.038578",
+          "previous_status": "in_progress"
+        }
+      ],
+      "result": null,
+      "error": null
+    },
+    "task_d9c096c0": {
+      "id": "task_d9c096c0",
+      "name": "Agent Communication Module",
+      "description": "Task from phase Orchestrator Enhancements",
+      "project_id": "project_4f1b1fa5",
+      "phase_id": "phase_2",
+      "parent_id": null,
+      "status": "completed",
+      "priority": "medium",
+      "progress": 100.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {},
+      "created_at": "2025-03-19T14:35:51.004468",
+      "updated_at": "2025-03-19T14:35:51.004468",
+      "started_at": "2025-03-09T03:07:39.566277",
+      "completed_at": "2025-03-09T03:07:39.566277",
+      "children": [],
+      "status_history": [
+        {
+          "status": "completed",
+          "timestamp": "2025-03-19T14:35:51.004468",
+          "previous_status": null
+        },
+        {
+          "status": "completed",
+          "timestamp": "2025-03-09T03:07:39.566277",
+          "previous_status": "in_progress"
+        }
+      ],
+      "result": null,
+      "error": null
+    },
+    "task_caef83f2": {
+      "id": "task_caef83f2",
+      "name": "Task Distribution Logic",
+      "description": "Task from phase Orchestrator Enhancements",
+      "project_id": "project_4f1b1fa5",
+      "phase_id": "phase_2",
+      "parent_id": null,
+      "status": "completed",
+      "priority": "medium",
+      "progress": 100.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {},
+      "created_at": "2025-03-19T14:35:51.005022",
+      "updated_at": "2025-03-19T14:35:51.005022",
+      "started_at": "2025-03-09T03:14:49.123568",
+      "completed_at": "2025-03-09T03:14:49.123568",
+      "children": [],
+      "status_history": [
+        {
+          "status": "completed",
+          "timestamp": "2025-03-19T14:35:51.005022",
+          "previous_status": null
+        },
+        {
+          "status": "completed",
+          "timestamp": "2025-03-09T03:14:49.123568",
+          "previous_status": "in_progress"
+        }
+      ],
+      "result": null,
+      "error": null
+    },
+    "task_4cc424ec": {
+      "id": "task_4cc424ec",
+      "name": "Orchestrator API Client",
+      "description": "Task from phase Agent Integration",
+      "project_id": "project_4f1b1fa5",
+      "phase_id": "phase_3",
+      "parent_id": null,
+      "status": "completed",
+      "priority": "medium",
+      "progress": 100.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {},
+      "created_at": "2025-03-19T14:35:51.005514",
+      "updated_at": "2025-03-19T14:35:51.005514",
+      "started_at": "2025-03-09T13:14:24.309180",
+      "completed_at": "2025-03-09T13:14:24.309180",
+      "children": [],
+      "status_history": [
+        {
+          "status": "completed",
+          "timestamp": "2025-03-19T14:35:51.005514",
+          "previous_status": null
+        },
+        {
+          "status": "completed",
+          "timestamp": "2025-03-09T13:14:24.309180",
+          "previous_status": "in_progress"
+        }
+      ],
+      "result": null,
+      "error": null
+    },
+    "task_f47b9fb7": {
+      "id": "task_f47b9fb7",
+      "name": "Result Reporting System",
+      "description": "Task from phase Agent Integration",
+      "project_id": "project_4f1b1fa5",
+      "phase_id": "phase_3",
+      "parent_id": null,
+      "status": "completed",
+      "priority": "medium",
+      "progress": 100.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {},
+      "created_at": "2025-03-19T14:35:51.006173",
+      "updated_at": "2025-03-19T14:35:51.006173",
+      "started_at": "2025-03-09T13:25:36.760302",
+      "completed_at": "2025-03-09T13:25:36.760302",
+      "children": [],
+      "status_history": [
+        {
+          "status": "completed",
+          "timestamp": "2025-03-19T14:35:51.006173",
+          "previous_status": null
+        },
+        {
+          "status": "completed",
+          "timestamp": "2025-03-09T13:25:36.760302",
+          "previous_status": "in_progress"
+        }
+      ],
+      "result": null,
+      "error": null
+    },
+    "task_d49ef2d8": {
+      "id": "task_d49ef2d8",
+      "name": "Unified Dashboard",
+      "description": "Task from phase Frontend Integration",
+      "project_id": "project_4f1b1fa5",
+      "phase_id": "phase_4",
+      "parent_id": null,
+      "status": "completed",
+      "priority": "medium",
+      "progress": 100.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {},
+      "created_at": "2025-03-19T14:35:51.006792",
+      "updated_at": "2025-03-19T14:35:51.006792",
+      "started_at": "2025-03-09T13:37:30.577834",
+      "completed_at": "2025-03-09T13:37:30.577834",
+      "children": [],
+      "status_history": [
+        {
+          "status": "completed",
+          "timestamp": "2025-03-19T14:35:51.006792",
+          "previous_status": null
+        },
+        {
+          "status": "completed",
+          "timestamp": "2025-03-09T13:37:30.577834",
+          "previous_status": "in_progress"
+        }
+      ],
+      "result": null,
+      "error": null
+    },
+    "task_ff13ddd6": {
+      "id": "task_ff13ddd6",
+      "name": "Cross-System Configuration UI",
+      "description": "Task from phase Frontend Integration",
+      "project_id": "project_4f1b1fa5",
+      "phase_id": "phase_4",
+      "parent_id": null,
+      "status": "completed",
+      "priority": "medium",
+      "progress": 100.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {},
+      "created_at": "2025-03-19T14:35:51.007429",
+      "updated_at": "2025-03-19T14:35:51.007429",
+      "started_at": "2025-03-10T18:05:00",
+      "completed_at": "2025-03-10T18:05:00",
+      "children": [],
+      "status_history": [
+        {
+          "status": "completed",
+          "timestamp": "2025-03-19T14:35:51.007429",
+          "previous_status": null
+        },
+        {
+          "status": "completed",
+          "timestamp": "2025-03-10T18:05:00.000000",
+          "previous_status": "in_progress"
+        }
+      ],
+      "result": null,
+      "error": null
+    }
+  }
+}

@@ -1,0 +1,1827 @@
+{
+  "projects": [
+    {
+      "id": "project-40a51acd-609a-4064-9fae-9a675b8544e4",
+      "name": "Project Alpha",
+      "description": "A sample project for testing migration",
+      "metadata": {
+        "priority": "high",
+        "category": "development"
+      },
+      "created_at": "2025-03-25T18:07:01.655469",
+      "updated_at": "2025-03-25T18:07:01.655470"
+    },
+    {
+      "id": "project-49b7fe82-8374-4048-8ce9-749631dd681e",
+      "name": "Project Beta",
+      "description": "Another sample project for testing migration",
+      "metadata": {
+        "priority": "medium",
+        "category": "research"
+      },
+      "created_at": "2025-03-25T18:07:01.655545",
+      "updated_at": "2025-03-25T18:07:01.655545"
+    },
+    {
+      "id": "project-5d760b2d-05ba-497c-bd0a-7df14424b9b4",
+      "name": "Project Alpha",
+      "description": "A sample project for testing migration",
+      "metadata": {
+        "priority": "high",
+        "category": "development"
+      },
+      "created_at": "2025-03-25T18:07:50.690115",
+      "updated_at": "2025-03-25T18:07:50.690115"
+    },
+    {
+      "id": "project-ae5d47dd-4ee6-41ad-b6ce-803c28d0f113",
+      "name": "Project Beta",
+      "description": "Another sample project for testing migration",
+      "metadata": {
+        "priority": "medium",
+        "category": "research"
+      },
+      "created_at": "2025-03-25T18:07:50.690143",
+      "updated_at": "2025-03-25T18:07:50.690144"
+    },
+    {
+      "id": "project-8cf406b2-323d-403d-80e0-28522a32411f",
+      "name": "Project Alpha",
+      "description": "A sample project for testing migration",
+      "metadata": {
+        "priority": "high",
+        "category": "development"
+      },
+      "created_at": "2025-03-25T19:07:24.942786",
+      "updated_at": "2025-03-25T19:07:24.942786"
+    },
+    {
+      "id": "project-e154b096-31ac-4f74-bf90-c4a0988a7d1b",
+      "name": "Project Beta",
+      "description": "Another sample project for testing migration",
+      "metadata": {
+        "priority": "medium",
+        "category": "research"
+      },
+      "created_at": "2025-03-25T19:07:24.942817",
+      "updated_at": "2025-03-25T19:07:24.942817"
+    },
+    {
+      "id": "project-147ea451-d2c1-4bf2-a72f-e1efc677a13b",
+      "name": "Project Alpha",
+      "description": "A sample project for testing migration",
+      "metadata": {
+        "priority": "high",
+        "category": "development"
+      },
+      "created_at": "2025-03-25T19:08:17.512806",
+      "updated_at": "2025-03-25T19:08:17.512807"
+    },
+    {
+      "id": "project-1e29d4de-22ea-48d3-a8e9-79b9f166fbe2",
+      "name": "Project Beta",
+      "description": "Another sample project for testing migration",
+      "metadata": {
+        "priority": "medium",
+        "category": "research"
+      },
+      "created_at": "2025-03-25T19:08:17.512842",
+      "updated_at": "2025-03-25T19:08:17.512843"
+    },
+    {
+      "id": "project-db5f52bb-266b-4952-b12f-44976106f262",
+      "name": "Project Alpha",
+      "description": "A sample project for testing migration",
+      "metadata": {
+        "priority": "high",
+        "category": "development"
+      },
+      "created_at": "2025-03-25T19:09:01.535378",
+      "updated_at": "2025-03-25T19:09:01.535379"
+    },
+    {
+      "id": "project-77ce1e57-dc58-4830-8e10-f2da4534a3ea",
+      "name": "Project Beta",
+      "description": "Another sample project for testing migration",
+      "metadata": {
+        "priority": "medium",
+        "category": "research"
+      },
+      "created_at": "2025-03-25T19:09:01.535410",
+      "updated_at": "2025-03-25T19:09:01.535410"
+    },
+    {
+      "id": "project-309d4f26-8498-47db-82e4-f2cb0e8044fc",
+      "name": "Project Alpha",
+      "description": "A sample project for testing migration",
+      "metadata": {
+        "priority": "high",
+        "category": "development"
+      },
+      "created_at": "2025-03-25T19:09:42.026007",
+      "updated_at": "2025-03-25T19:09:42.026008"
+    },
+    {
+      "id": "project-e76cccf8-ded6-4902-bf97-0179cae0e27a",
+      "name": "Project Beta",
+      "description": "Another sample project for testing migration",
+      "metadata": {
+        "priority": "medium",
+        "category": "research"
+      },
+      "created_at": "2025-03-25T19:09:42.026038",
+      "updated_at": "2025-03-25T19:09:42.026038"
+    },
+    {
+      "id": "project-4cbf0807-b2d4-4563-9425-f456b3d6dd0e",
+      "name": "AI Orchestration Platform Enhancement",
+      "description": "Project to enhance the AI Orchestration Platform with improved organization, dashboard, testing, and documentation",
+      "metadata": {
+        "priority": "high",
+        "category": "enhancement",
+        "start_date": "2025-03-25T19:22:44.512994",
+        "estimated_completion": "2025-05-25T19:22:44.513000"
+      },
+      "created_at": "2025-03-25T19:22:44.513014",
+      "updated_at": "2025-03-25T19:22:44.513014"
+    }
+  ],
+  "phases": [
+    {
+      "id": "phase-3bd96d94-c735-491d-9a44-f71047c27676",
+      "project_id": "project-40a51acd-609a-4064-9fae-9a675b8544e4",
+      "name": "Planning",
+      "description": "Planning phase for Project Alpha",
+      "order": 1,
+      "created_at": "2025-03-25T18:07:01.655620",
+      "updated_at": "2025-03-25T18:07:01.655620"
+    },
+    {
+      "id": "phase-c5d7fd3b-4bcb-4d13-a5e9-415ce8019e49",
+      "project_id": "project-40a51acd-609a-4064-9fae-9a675b8544e4",
+      "name": "Implementation",
+      "description": "Implementation phase for Project Alpha",
+      "order": 2,
+      "created_at": "2025-03-25T18:07:01.655649",
+      "updated_at": "2025-03-25T18:07:01.655649"
+    },
+    {
+      "id": "phase-df511c9c-f4d5-4d64-8646-590d56b8e9e6",
+      "project_id": "project-40a51acd-609a-4064-9fae-9a675b8544e4",
+      "name": "Testing",
+      "description": "Testing phase for Project Alpha",
+      "order": 3,
+      "created_at": "2025-03-25T18:07:01.655676",
+      "updated_at": "2025-03-25T18:07:01.655676"
+    },
+    {
+      "id": "phase-a47cade4-dfd6-4dc1-9ba6-b555a91d25dd",
+      "project_id": "project-49b7fe82-8374-4048-8ce9-749631dd681e",
+      "name": "Research",
+      "description": "Research phase for Project Beta",
+      "order": 1,
+      "created_at": "2025-03-25T18:07:01.655702",
+      "updated_at": "2025-03-25T18:07:01.655703"
+    },
+    {
+      "id": "phase-b118b105-9538-4ebb-a69e-ff5ea6b054e4",
+      "project_id": "project-49b7fe82-8374-4048-8ce9-749631dd681e",
+      "name": "Analysis",
+      "description": "Analysis phase for Project Beta",
+      "order": 2,
+      "created_at": "2025-03-25T18:07:01.655726",
+      "updated_at": "2025-03-25T18:07:01.655726"
+    },
+    {
+      "id": "phase-f9aed29c-ac6a-4d3c-b2d3-39e223e11b9d",
+      "project_id": "project-5d760b2d-05ba-497c-bd0a-7df14424b9b4",
+      "name": "Planning",
+      "description": "Planning phase for Project Alpha",
+      "order": 1,
+      "created_at": "2025-03-25T18:07:50.690181",
+      "updated_at": "2025-03-25T18:07:50.690181"
+    },
+    {
+      "id": "phase-30a6a510-b0f7-4298-8c90-a46e5ce8349d",
+      "project_id": "project-5d760b2d-05ba-497c-bd0a-7df14424b9b4",
+      "name": "Implementation",
+      "description": "Implementation phase for Project Alpha",
+      "order": 2,
+      "created_at": "2025-03-25T18:07:50.690208",
+      "updated_at": "2025-03-25T18:07:50.690208"
+    },
+    {
+      "id": "phase-c0c82bc1-c931-49ea-b9d0-eca0673dc6f3",
+      "project_id": "project-5d760b2d-05ba-497c-bd0a-7df14424b9b4",
+      "name": "Testing",
+      "description": "Testing phase for Project Alpha",
+      "order": 3,
+      "created_at": "2025-03-25T18:07:50.690232",
+      "updated_at": "2025-03-25T18:07:50.690232"
+    },
+    {
+      "id": "phase-73be40f5-0d7d-4c26-86af-a81fd04935f7",
+      "project_id": "project-ae5d47dd-4ee6-41ad-b6ce-803c28d0f113",
+      "name": "Research",
+      "description": "Research phase for Project Beta",
+      "order": 1,
+      "created_at": "2025-03-25T18:07:50.690255",
+      "updated_at": "2025-03-25T18:07:50.690256"
+    },
+    {
+      "id": "phase-14616cff-74c3-4c16-b374-61f957548fd5",
+      "project_id": "project-ae5d47dd-4ee6-41ad-b6ce-803c28d0f113",
+      "name": "Analysis",
+      "description": "Analysis phase for Project Beta",
+      "order": 2,
+      "created_at": "2025-03-25T18:07:50.690278",
+      "updated_at": "2025-03-25T18:07:50.690278"
+    },
+    {
+      "id": "phase-0d1f81d3-41b3-4156-805a-6dcfdd828415",
+      "project_id": "project-8cf406b2-323d-403d-80e0-28522a32411f",
+      "name": "Planning",
+      "description": "Planning phase for Project Alpha",
+      "order": 1,
+      "created_at": "2025-03-25T19:07:24.942864",
+      "updated_at": "2025-03-25T19:07:24.942865"
+    },
+    {
+      "id": "phase-f3338a7a-3977-4779-910c-38bf475804d9",
+      "project_id": "project-8cf406b2-323d-403d-80e0-28522a32411f",
+      "name": "Implementation",
+      "description": "Implementation phase for Project Alpha",
+      "order": 2,
+      "created_at": "2025-03-25T19:07:24.942890",
+      "updated_at": "2025-03-25T19:07:24.942891"
+    },
+    {
+      "id": "phase-417ad626-ec28-41e9-8dbc-94168a86968c",
+      "project_id": "project-8cf406b2-323d-403d-80e0-28522a32411f",
+      "name": "Testing",
+      "description": "Testing phase for Project Alpha",
+      "order": 3,
+      "created_at": "2025-03-25T19:07:24.942915",
+      "updated_at": "2025-03-25T19:07:24.942916"
+    },
+    {
+      "id": "phase-99f8433c-c9a5-40b4-b8c9-aab9f3273771",
+      "project_id": "project-e154b096-31ac-4f74-bf90-c4a0988a7d1b",
+      "name": "Research",
+      "description": "Research phase for Project Beta",
+      "order": 1,
+      "created_at": "2025-03-25T19:07:24.942940",
+      "updated_at": "2025-03-25T19:07:24.942940"
+    },
+    {
+      "id": "phase-56227dd3-f0ac-4266-9c85-e059654a1f32",
+      "project_id": "project-e154b096-31ac-4f74-bf90-c4a0988a7d1b",
+      "name": "Analysis",
+      "description": "Analysis phase for Project Beta",
+      "order": 2,
+      "created_at": "2025-03-25T19:07:24.942962",
+      "updated_at": "2025-03-25T19:07:24.942963"
+    },
+    {
+      "id": "phase-398d3bb9-3700-4d38-81b4-375fa3991f67",
+      "project_id": "project-147ea451-d2c1-4bf2-a72f-e1efc677a13b",
+      "name": "Planning",
+      "description": "Planning phase for Project Alpha",
+      "order": 1,
+      "created_at": "2025-03-25T19:08:17.512882",
+      "updated_at": "2025-03-25T19:08:17.512883"
+    },
+    {
+      "id": "phase-3cedc2ff-c615-4abe-b313-f1936e0ea905",
+      "project_id": "project-147ea451-d2c1-4bf2-a72f-e1efc677a13b",
+      "name": "Implementation",
+      "description": "Implementation phase for Project Alpha",
+      "order": 2,
+      "created_at": "2025-03-25T19:08:17.512909",
+      "updated_at": "2025-03-25T19:08:17.512909"
+    },
+    {
+      "id": "phase-48d04b4b-da07-47a7-8261-2e99732a70ce",
+      "project_id": "project-147ea451-d2c1-4bf2-a72f-e1efc677a13b",
+      "name": "Testing",
+      "description": "Testing phase for Project Alpha",
+      "order": 3,
+      "created_at": "2025-03-25T19:08:17.512935",
+      "updated_at": "2025-03-25T19:08:17.512935"
+    },
+    {
+      "id": "phase-043e8387-86ee-4fac-8937-f43a4483ee90",
+      "project_id": "project-1e29d4de-22ea-48d3-a8e9-79b9f166fbe2",
+      "name": "Research",
+      "description": "Research phase for Project Beta",
+      "order": 1,
+      "created_at": "2025-03-25T19:08:17.512959",
+      "updated_at": "2025-03-25T19:08:17.512960"
+    },
+    {
+      "id": "phase-6f6432a7-9263-46e5-abdc-4892b1509355",
+      "project_id": "project-1e29d4de-22ea-48d3-a8e9-79b9f166fbe2",
+      "name": "Analysis",
+      "description": "Analysis phase for Project Beta",
+      "order": 2,
+      "created_at": "2025-03-25T19:08:17.512983",
+      "updated_at": "2025-03-25T19:08:17.512983"
+    },
+    {
+      "id": "phase-6bede96d-2521-4d8d-a2f0-08de84dfa804",
+      "project_id": "project-db5f52bb-266b-4952-b12f-44976106f262",
+      "name": "Planning",
+      "description": "Planning phase for Project Alpha",
+      "order": 1,
+      "created_at": "2025-03-25T19:09:01.535451",
+      "updated_at": "2025-03-25T19:09:01.535451"
+    },
+    {
+      "id": "phase-f4f61df2-be78-4973-9bd9-acab95a031ed",
+      "project_id": "project-db5f52bb-266b-4952-b12f-44976106f262",
+      "name": "Implementation",
+      "description": "Implementation phase for Project Alpha",
+      "order": 2,
+      "created_at": "2025-03-25T19:09:01.535485",
+      "updated_at": "2025-03-25T19:09:01.535485"
+    },
+    {
+      "id": "phase-ead0b575-e974-4267-84c5-a336f88309c2",
+      "project_id": "project-db5f52bb-266b-4952-b12f-44976106f262",
+      "name": "Testing",
+      "description": "Testing phase for Project Alpha",
+      "order": 3,
+      "created_at": "2025-03-25T19:09:01.535511",
+      "updated_at": "2025-03-25T19:09:01.535512"
+    },
+    {
+      "id": "phase-1a2e9898-e3df-4c7e-9ef7-c63358735ab4",
+      "project_id": "project-77ce1e57-dc58-4830-8e10-f2da4534a3ea",
+      "name": "Research",
+      "description": "Research phase for Project Beta",
+      "order": 1,
+      "created_at": "2025-03-25T19:09:01.535535",
+      "updated_at": "2025-03-25T19:09:01.535536"
+    },
+    {
+      "id": "phase-15f2ab94-23f0-4d83-b46a-afee2f307782",
+      "project_id": "project-77ce1e57-dc58-4830-8e10-f2da4534a3ea",
+      "name": "Analysis",
+      "description": "Analysis phase for Project Beta",
+      "order": 2,
+      "created_at": "2025-03-25T19:09:01.535559",
+      "updated_at": "2025-03-25T19:09:01.535560"
+    },
+    {
+      "id": "phase-306589cb-6d87-489f-ab44-f2e602826b0e",
+      "project_id": "project-309d4f26-8498-47db-82e4-f2cb0e8044fc",
+      "name": "Planning",
+      "description": "Planning phase for Project Alpha",
+      "order": 1,
+      "created_at": "2025-03-25T19:09:42.026078",
+      "updated_at": "2025-03-25T19:09:42.026078"
+    },
+    {
+      "id": "phase-43c0e348-a669-4d41-ad09-281cb599f644",
+      "project_id": "project-309d4f26-8498-47db-82e4-f2cb0e8044fc",
+      "name": "Implementation",
+      "description": "Implementation phase for Project Alpha",
+      "order": 2,
+      "created_at": "2025-03-25T19:09:42.026105",
+      "updated_at": "2025-03-25T19:09:42.026106"
+    },
+    {
+      "id": "phase-311a4ad7-77d7-4f5d-af0e-f13ba52edc5f",
+      "project_id": "project-309d4f26-8498-47db-82e4-f2cb0e8044fc",
+      "name": "Testing",
+      "description": "Testing phase for Project Alpha",
+      "order": 3,
+      "created_at": "2025-03-25T19:09:42.026130",
+      "updated_at": "2025-03-25T19:09:42.026131"
+    },
+    {
+      "id": "phase-e74b779e-a788-43f8-99d4-d5019bcdc096",
+      "project_id": "project-e76cccf8-ded6-4902-bf97-0179cae0e27a",
+      "name": "Research",
+      "description": "Research phase for Project Beta",
+      "order": 1,
+      "created_at": "2025-03-25T19:09:42.026155",
+      "updated_at": "2025-03-25T19:09:42.026155"
+    },
+    {
+      "id": "phase-f6ca8cda-eb40-40f3-ae56-40c32d96c8c6",
+      "project_id": "project-e76cccf8-ded6-4902-bf97-0179cae0e27a",
+      "name": "Analysis",
+      "description": "Analysis phase for Project Beta",
+      "order": 2,
+      "created_at": "2025-03-25T19:09:42.026183",
+      "updated_at": "2025-03-25T19:09:42.026184"
+    },
+    {
+      "id": "phase-78b0d4b6-fb5d-414a-9f19-c6d6d1dacfd0",
+      "project_id": "project-4cbf0807-b2d4-4563-9425-f456b3d6dd0e",
+      "name": "Cleanup and Organization",
+      "description": "Focus on removing legacy components and organizing the codebase",
+      "order": 1,
+      "created_at": "2025-03-25T19:22:44.513020",
+      "updated_at": "2025-03-25T19:22:44.513020"
+    },
+    {
+      "id": "phase-6d49ee16-d0c6-48c5-a4a3-7ba69459765d",
+      "project_id": "project-4cbf0807-b2d4-4563-9425-f456b3d6dd0e",
+      "name": "Core Improvements",
+      "description": "Focus on enhancing the Dagger integration and workflow templates",
+      "order": 2,
+      "created_at": "2025-03-25T19:22:44.513024",
+      "updated_at": "2025-03-25T19:22:44.513024"
+    },
+    {
+      "id": "phase-71fb793c-7b74-437f-ad52-29c166245bfa",
+      "project_id": "project-4cbf0807-b2d4-4563-9425-f456b3d6dd0e",
+      "name": "Testing Implementation",
+      "description": "Focus on comprehensive testing across all components",
+      "order": 3,
+      "created_at": "2025-03-25T19:22:44.513026",
+      "updated_at": "2025-03-25T19:22:44.513027"
+    },
+    {
+      "id": "phase-9e9e168a-bf64-46fa-98bf-cc364340d92d",
+      "project_id": "project-4cbf0807-b2d4-4563-9425-f456b3d6dd0e",
+      "name": "Dashboard Development",
+      "description": "Focus on implementing the monitoring dashboard",
+      "order": 4,
+      "created_at": "2025-03-25T19:22:44.513029",
+      "updated_at": "2025-03-25T19:22:44.513029"
+    },
+    {
+      "id": "phase-1d1aedb1-5cd7-4e28-a860-657b903c010b",
+      "project_id": "project-4cbf0807-b2d4-4563-9425-f456b3d6dd0e",
+      "name": "Documentation",
+      "description": "Focus on creating comprehensive documentation",
+      "order": 5,
+      "created_at": "2025-03-25T19:22:44.513031",
+      "updated_at": "2025-03-25T19:22:44.513032"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "task-a4a8f681-c9d0-4731-92f7-bd7c1d2e4dee",
+      "project_id": "project-40a51acd-609a-4064-9fae-9a675b8544e4",
+      "name": "Define requirements",
+      "description": "Define the requirements for Project Alpha",
+      "status": "completed",
+      "phase_id": "phase-3bd96d94-c735-491d-9a44-f71047c27676",
+      "parent_id": null,
+      "priority": "high",
+      "progress": 100.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "assignee": "John Doe",
+        "estimated_hours": 8
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T18:07:01.655765",
+      "updated_at": "2025-03-25T18:07:01.655766"
+    },
+    {
+      "id": "task-6b47c28d-9870-4f77-bfd6-fd5431ef7f32",
+      "project_id": "project-40a51acd-609a-4064-9fae-9a675b8544e4",
+      "name": "Create project plan",
+      "description": "Create a detailed project plan for Project Alpha",
+      "status": "completed",
+      "phase_id": "phase-3bd96d94-c735-491d-9a44-f71047c27676",
+      "parent_id": null,
+      "priority": "high",
+      "progress": 100.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "assignee": "Jane Smith",
+        "estimated_hours": 16
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T18:07:01.655794",
+      "updated_at": "2025-03-25T18:07:01.655795"
+    },
+    {
+      "id": "task-576067dc-6a0f-4e9a-9fe8-0e51dc955b96",
+      "project_id": "project-40a51acd-609a-4064-9fae-9a675b8544e4",
+      "name": "Implement feature A",
+      "description": "Implement feature A for Project Alpha",
+      "status": "in_progress",
+      "phase_id": "phase-c5d7fd3b-4bcb-4d13-a5e9-415ce8019e49",
+      "parent_id": null,
+      "priority": "medium",
+      "progress": 75.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "assignee": "Bob Johnson",
+        "estimated_hours": 24
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T18:07:01.655819",
+      "updated_at": "2025-03-25T18:07:01.655820"
+    },
+    {
+      "id": "task-1caad87b-46cd-4777-afb3-339bab827281",
+      "project_id": "project-40a51acd-609a-4064-9fae-9a675b8544e4",
+      "name": "Implement feature B",
+      "description": "Implement feature B for Project Alpha",
+      "status": "planned",
+      "phase_id": "phase-c5d7fd3b-4bcb-4d13-a5e9-415ce8019e49",
+      "parent_id": null,
+      "priority": "medium",
+      "progress": 0.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "assignee": "Alice Brown",
+        "estimated_hours": 20
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T18:07:01.655845",
+      "updated_at": "2025-03-25T18:07:01.655846"
+    },
+    {
+      "id": "task-abc6f90f-efca-4518-aeed-077cce4f7980",
+      "project_id": "project-49b7fe82-8374-4048-8ce9-749631dd681e",
+      "name": "Literature review",
+      "description": "Conduct a literature review for Project Beta",
+      "status": "completed",
+      "phase_id": "phase-a47cade4-dfd6-4dc1-9ba6-b555a91d25dd",
+      "parent_id": null,
+      "priority": "high",
+      "progress": 100.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "assignee": "Emily Davis",
+        "estimated_hours": 40
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T18:07:01.655870",
+      "updated_at": "2025-03-25T18:07:01.655870"
+    },
+    {
+      "id": "task-46c57ed4-4754-493c-961a-5c8392a65c94",
+      "project_id": "project-49b7fe82-8374-4048-8ce9-749631dd681e",
+      "name": "Data analysis",
+      "description": "Analyze data for Project Beta",
+      "status": "in_progress",
+      "phase_id": "phase-b118b105-9538-4ebb-a69e-ff5ea6b054e4",
+      "parent_id": null,
+      "priority": "high",
+      "progress": 50.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "assignee": "Michael Wilson",
+        "estimated_hours": 32
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T18:07:01.655896",
+      "updated_at": "2025-03-25T18:07:01.655897"
+    },
+    {
+      "id": "task-6e1921b1-7d9e-48ce-9be6-64b6b2f1b894",
+      "project_id": "project-5d760b2d-05ba-497c-bd0a-7df14424b9b4",
+      "name": "Define requirements",
+      "description": "Define the requirements for Project Alpha",
+      "status": "completed",
+      "phase_id": "phase-f9aed29c-ac6a-4d3c-b2d3-39e223e11b9d",
+      "parent_id": null,
+      "priority": "high",
+      "progress": 100.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "assignee": "John Doe",
+        "estimated_hours": 8
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T18:07:50.690314",
+      "updated_at": "2025-03-25T18:07:50.690315"
+    },
+    {
+      "id": "task-95bdae57-4618-48db-9b2a-e072973d23d2",
+      "project_id": "project-5d760b2d-05ba-497c-bd0a-7df14424b9b4",
+      "name": "Create project plan",
+      "description": "Create a detailed project plan for Project Alpha",
+      "status": "completed",
+      "phase_id": "phase-f9aed29c-ac6a-4d3c-b2d3-39e223e11b9d",
+      "parent_id": null,
+      "priority": "high",
+      "progress": 100.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "assignee": "Jane Smith",
+        "estimated_hours": 16
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T18:07:50.690341",
+      "updated_at": "2025-03-25T18:07:50.690342"
+    },
+    {
+      "id": "task-9ce03cb1-e3e8-4545-afa3-4453f1baafaf",
+      "project_id": "project-5d760b2d-05ba-497c-bd0a-7df14424b9b4",
+      "name": "Implement feature A",
+      "description": "Implement feature A for Project Alpha",
+      "status": "in_progress",
+      "phase_id": "phase-30a6a510-b0f7-4298-8c90-a46e5ce8349d",
+      "parent_id": null,
+      "priority": "medium",
+      "progress": 75.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "assignee": "Bob Johnson",
+        "estimated_hours": 24
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T18:07:50.690365",
+      "updated_at": "2025-03-25T18:07:50.690366"
+    },
+    {
+      "id": "task-42232e3d-63a0-42a4-b13c-475a15bc65d4",
+      "project_id": "project-5d760b2d-05ba-497c-bd0a-7df14424b9b4",
+      "name": "Implement feature B",
+      "description": "Implement feature B for Project Alpha",
+      "status": "planned",
+      "phase_id": "phase-30a6a510-b0f7-4298-8c90-a46e5ce8349d",
+      "parent_id": null,
+      "priority": "medium",
+      "progress": 0.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "assignee": "Alice Brown",
+        "estimated_hours": 20
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T18:07:50.690391",
+      "updated_at": "2025-03-25T18:07:50.690391"
+    },
+    {
+      "id": "task-03c9094e-d39c-4680-a972-345783f800f2",
+      "project_id": "project-ae5d47dd-4ee6-41ad-b6ce-803c28d0f113",
+      "name": "Literature review",
+      "description": "Conduct a literature review for Project Beta",
+      "status": "completed",
+      "phase_id": "phase-73be40f5-0d7d-4c26-86af-a81fd04935f7",
+      "parent_id": null,
+      "priority": "high",
+      "progress": 100.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "assignee": "Emily Davis",
+        "estimated_hours": 40
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T18:07:50.690416",
+      "updated_at": "2025-03-25T18:07:50.690416"
+    },
+    {
+      "id": "task-66bdcd27-8af6-460d-8039-19fcc1832f05",
+      "project_id": "project-ae5d47dd-4ee6-41ad-b6ce-803c28d0f113",
+      "name": "Data analysis",
+      "description": "Analyze data for Project Beta",
+      "status": "in_progress",
+      "phase_id": "phase-14616cff-74c3-4c16-b374-61f957548fd5",
+      "parent_id": null,
+      "priority": "high",
+      "progress": 50.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "assignee": "Michael Wilson",
+        "estimated_hours": 32
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T18:07:50.690438",
+      "updated_at": "2025-03-25T18:07:50.690439"
+    },
+    {
+      "id": "task-d660883d-61ed-4232-ae4f-e1c4f19638f4",
+      "project_id": "project-8cf406b2-323d-403d-80e0-28522a32411f",
+      "name": "Define requirements",
+      "description": "Define the requirements for Project Alpha",
+      "status": "completed",
+      "phase_id": "phase-0d1f81d3-41b3-4156-805a-6dcfdd828415",
+      "parent_id": null,
+      "priority": "high",
+      "progress": 100.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "assignee": "John Doe",
+        "estimated_hours": 8
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T19:07:24.942999",
+      "updated_at": "2025-03-25T19:07:24.942999"
+    },
+    {
+      "id": "task-16c5a2e9-341d-4744-badf-6a9cc9696792",
+      "project_id": "project-8cf406b2-323d-403d-80e0-28522a32411f",
+      "name": "Create project plan",
+      "description": "Create a detailed project plan for Project Alpha",
+      "status": "completed",
+      "phase_id": "phase-0d1f81d3-41b3-4156-805a-6dcfdd828415",
+      "parent_id": null,
+      "priority": "high",
+      "progress": 100.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "assignee": "Jane Smith",
+        "estimated_hours": 16
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T19:07:24.943026",
+      "updated_at": "2025-03-25T19:07:24.943026"
+    },
+    {
+      "id": "task-b93f8808-db3f-4cbe-a80a-779d69844f52",
+      "project_id": "project-8cf406b2-323d-403d-80e0-28522a32411f",
+      "name": "Implement feature A",
+      "description": "Implement feature A for Project Alpha",
+      "status": "in_progress",
+      "phase_id": "phase-f3338a7a-3977-4779-910c-38bf475804d9",
+      "parent_id": null,
+      "priority": "medium",
+      "progress": 75.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "assignee": "Bob Johnson",
+        "estimated_hours": 24
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T19:07:24.943051",
+      "updated_at": "2025-03-25T19:07:24.943051"
+    },
+    {
+      "id": "task-2c14a809-6f4d-43f3-9682-402a8baeffab",
+      "project_id": "project-8cf406b2-323d-403d-80e0-28522a32411f",
+      "name": "Implement feature B",
+      "description": "Implement feature B for Project Alpha",
+      "status": "planned",
+      "phase_id": "phase-f3338a7a-3977-4779-910c-38bf475804d9",
+      "parent_id": null,
+      "priority": "medium",
+      "progress": 0.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "assignee": "Alice Brown",
+        "estimated_hours": 20
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T19:07:24.943077",
+      "updated_at": "2025-03-25T19:07:24.943077"
+    },
+    {
+      "id": "task-29eaf895-5fb2-4514-91ba-0a38a5f8a4d7",
+      "project_id": "project-e154b096-31ac-4f74-bf90-c4a0988a7d1b",
+      "name": "Literature review",
+      "description": "Conduct a literature review for Project Beta",
+      "status": "completed",
+      "phase_id": "phase-99f8433c-c9a5-40b4-b8c9-aab9f3273771",
+      "parent_id": null,
+      "priority": "high",
+      "progress": 100.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "assignee": "Emily Davis",
+        "estimated_hours": 40
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T19:07:24.943102",
+      "updated_at": "2025-03-25T19:07:24.943102"
+    },
+    {
+      "id": "task-a82d9817-3115-4194-a7f7-f28c3806eb16",
+      "project_id": "project-e154b096-31ac-4f74-bf90-c4a0988a7d1b",
+      "name": "Data analysis",
+      "description": "Analyze data for Project Beta",
+      "status": "in_progress",
+      "phase_id": "phase-56227dd3-f0ac-4266-9c85-e059654a1f32",
+      "parent_id": null,
+      "priority": "high",
+      "progress": 50.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "assignee": "Michael Wilson",
+        "estimated_hours": 32
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T19:07:24.943125",
+      "updated_at": "2025-03-25T19:07:24.943126"
+    },
+    {
+      "id": "task-69ff7f25-8939-404f-aae1-a8f99595158b",
+      "project_id": "project-147ea451-d2c1-4bf2-a72f-e1efc677a13b",
+      "name": "Define requirements",
+      "description": "Define the requirements for Project Alpha",
+      "status": "completed",
+      "phase_id": "phase-398d3bb9-3700-4d38-81b4-375fa3991f67",
+      "parent_id": null,
+      "priority": "high",
+      "progress": 100.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "assignee": "John Doe",
+        "estimated_hours": 8
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T19:08:17.513021",
+      "updated_at": "2025-03-25T19:08:17.513022"
+    },
+    {
+      "id": "task-6714c620-911b-410c-a8b0-01bd0942c5e1",
+      "project_id": "project-147ea451-d2c1-4bf2-a72f-e1efc677a13b",
+      "name": "Create project plan",
+      "description": "Create a detailed project plan for Project Alpha",
+      "status": "completed",
+      "phase_id": "phase-398d3bb9-3700-4d38-81b4-375fa3991f67",
+      "parent_id": null,
+      "priority": "high",
+      "progress": 100.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "assignee": "Jane Smith",
+        "estimated_hours": 16
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T19:08:17.513050",
+      "updated_at": "2025-03-25T19:08:17.513050"
+    },
+    {
+      "id": "task-90255a33-347c-4908-80fb-86c974b82f16",
+      "project_id": "project-147ea451-d2c1-4bf2-a72f-e1efc677a13b",
+      "name": "Implement feature A",
+      "description": "Implement feature A for Project Alpha",
+      "status": "in_progress",
+      "phase_id": "phase-3cedc2ff-c615-4abe-b313-f1936e0ea905",
+      "parent_id": null,
+      "priority": "medium",
+      "progress": 75.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "assignee": "Bob Johnson",
+        "estimated_hours": 24
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T19:08:17.513074",
+      "updated_at": "2025-03-25T19:08:17.513075"
+    },
+    {
+      "id": "task-40bd7017-aebd-44e8-90a0-bd8aff647c4b",
+      "project_id": "project-147ea451-d2c1-4bf2-a72f-e1efc677a13b",
+      "name": "Implement feature B",
+      "description": "Implement feature B for Project Alpha",
+      "status": "planned",
+      "phase_id": "phase-3cedc2ff-c615-4abe-b313-f1936e0ea905",
+      "parent_id": null,
+      "priority": "medium",
+      "progress": 0.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "assignee": "Alice Brown",
+        "estimated_hours": 20
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T19:08:17.513099",
+      "updated_at": "2025-03-25T19:08:17.513100"
+    },
+    {
+      "id": "task-37abca99-b1e7-4465-846f-f3365bb202ee",
+      "project_id": "project-1e29d4de-22ea-48d3-a8e9-79b9f166fbe2",
+      "name": "Literature review",
+      "description": "Conduct a literature review for Project Beta",
+      "status": "completed",
+      "phase_id": "phase-043e8387-86ee-4fac-8937-f43a4483ee90",
+      "parent_id": null,
+      "priority": "high",
+      "progress": 100.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "assignee": "Emily Davis",
+        "estimated_hours": 40
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T19:08:17.513124",
+      "updated_at": "2025-03-25T19:08:17.513124"
+    },
+    {
+      "id": "task-a99d1329-657a-4cb6-a1b0-5b3dfb5905e0",
+      "project_id": "project-1e29d4de-22ea-48d3-a8e9-79b9f166fbe2",
+      "name": "Data analysis",
+      "description": "Analyze data for Project Beta",
+      "status": "in_progress",
+      "phase_id": "phase-6f6432a7-9263-46e5-abdc-4892b1509355",
+      "parent_id": null,
+      "priority": "high",
+      "progress": 50.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "assignee": "Michael Wilson",
+        "estimated_hours": 32
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T19:08:17.513179",
+      "updated_at": "2025-03-25T19:08:17.513179"
+    },
+    {
+      "id": "task-73d00505-f720-4abc-8ed6-41c857ea1116",
+      "project_id": "project-db5f52bb-266b-4952-b12f-44976106f262",
+      "name": "Define requirements",
+      "description": "Define the requirements for Project Alpha",
+      "status": "completed",
+      "phase_id": "phase-6bede96d-2521-4d8d-a2f0-08de84dfa804",
+      "parent_id": null,
+      "priority": "high",
+      "progress": 100.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "assignee": "John Doe",
+        "estimated_hours": 8
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T19:09:01.535597",
+      "updated_at": "2025-03-25T19:09:01.535598"
+    },
+    {
+      "id": "task-79e160d9-4921-4809-856e-d70dd80e152b",
+      "project_id": "project-db5f52bb-266b-4952-b12f-44976106f262",
+      "name": "Create project plan",
+      "description": "Create a detailed project plan for Project Alpha",
+      "status": "completed",
+      "phase_id": "phase-6bede96d-2521-4d8d-a2f0-08de84dfa804",
+      "parent_id": null,
+      "priority": "high",
+      "progress": 100.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "assignee": "Jane Smith",
+        "estimated_hours": 16
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T19:09:01.535624",
+      "updated_at": "2025-03-25T19:09:01.535624"
+    },
+    {
+      "id": "task-2501daa5-e712-4de1-a483-0c7dc900b727",
+      "project_id": "project-db5f52bb-266b-4952-b12f-44976106f262",
+      "name": "Implement feature A",
+      "description": "Implement feature A for Project Alpha",
+      "status": "in_progress",
+      "phase_id": "phase-f4f61df2-be78-4973-9bd9-acab95a031ed",
+      "parent_id": null,
+      "priority": "medium",
+      "progress": 75.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "assignee": "Bob Johnson",
+        "estimated_hours": 24
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T19:09:01.535649",
+      "updated_at": "2025-03-25T19:09:01.535649"
+    },
+    {
+      "id": "task-52e7a428-4389-4800-88fd-c59be7f4a12c",
+      "project_id": "project-db5f52bb-266b-4952-b12f-44976106f262",
+      "name": "Implement feature B",
+      "description": "Implement feature B for Project Alpha",
+      "status": "planned",
+      "phase_id": "phase-f4f61df2-be78-4973-9bd9-acab95a031ed",
+      "parent_id": null,
+      "priority": "medium",
+      "progress": 0.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "assignee": "Alice Brown",
+        "estimated_hours": 20
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T19:09:01.535675",
+      "updated_at": "2025-03-25T19:09:01.535675"
+    },
+    {
+      "id": "task-0eb3ecdb-5b82-41f2-ab40-ce250f796cde",
+      "project_id": "project-77ce1e57-dc58-4830-8e10-f2da4534a3ea",
+      "name": "Literature review",
+      "description": "Conduct a literature review for Project Beta",
+      "status": "completed",
+      "phase_id": "phase-1a2e9898-e3df-4c7e-9ef7-c63358735ab4",
+      "parent_id": null,
+      "priority": "high",
+      "progress": 100.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "assignee": "Emily Davis",
+        "estimated_hours": 40
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T19:09:01.535700",
+      "updated_at": "2025-03-25T19:09:01.535700"
+    },
+    {
+      "id": "task-82c723c9-a80e-41dd-a439-9c95f0946c67",
+      "project_id": "project-77ce1e57-dc58-4830-8e10-f2da4534a3ea",
+      "name": "Data analysis",
+      "description": "Analyze data for Project Beta",
+      "status": "in_progress",
+      "phase_id": "phase-15f2ab94-23f0-4d83-b46a-afee2f307782",
+      "parent_id": null,
+      "priority": "high",
+      "progress": 50.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "assignee": "Michael Wilson",
+        "estimated_hours": 32
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T19:09:01.535725",
+      "updated_at": "2025-03-25T19:09:01.535725"
+    },
+    {
+      "id": "task-898d559e-934c-4486-a19d-b73b557bf132",
+      "project_id": "project-309d4f26-8498-47db-82e4-f2cb0e8044fc",
+      "name": "Define requirements",
+      "description": "Define the requirements for Project Alpha",
+      "status": "completed",
+      "phase_id": "phase-306589cb-6d87-489f-ab44-f2e602826b0e",
+      "parent_id": null,
+      "priority": "high",
+      "progress": 100.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "assignee": "John Doe",
+        "estimated_hours": 8
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T19:09:42.026220",
+      "updated_at": "2025-03-25T19:09:42.026220"
+    },
+    {
+      "id": "task-9121ba5c-3b3e-48c1-9b44-a048ae999bea",
+      "project_id": "project-309d4f26-8498-47db-82e4-f2cb0e8044fc",
+      "name": "Create project plan",
+      "description": "Create a detailed project plan for Project Alpha",
+      "status": "completed",
+      "phase_id": "phase-306589cb-6d87-489f-ab44-f2e602826b0e",
+      "parent_id": null,
+      "priority": "high",
+      "progress": 100.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "assignee": "Jane Smith",
+        "estimated_hours": 16
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T19:09:42.026247",
+      "updated_at": "2025-03-25T19:09:42.026248"
+    },
+    {
+      "id": "task-8a648e3a-b519-403b-acdb-e2fefc0a8542",
+      "project_id": "project-309d4f26-8498-47db-82e4-f2cb0e8044fc",
+      "name": "Implement feature A",
+      "description": "Implement feature A for Project Alpha",
+      "status": "in_progress",
+      "phase_id": "phase-43c0e348-a669-4d41-ad09-281cb599f644",
+      "parent_id": null,
+      "priority": "medium",
+      "progress": 75.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "assignee": "Bob Johnson",
+        "estimated_hours": 24
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T19:09:42.026272",
+      "updated_at": "2025-03-25T19:09:42.026272"
+    },
+    {
+      "id": "task-0e516407-f5ae-4922-9c49-83d9a636f4d5",
+      "project_id": "project-309d4f26-8498-47db-82e4-f2cb0e8044fc",
+      "name": "Implement feature B",
+      "description": "Implement feature B for Project Alpha",
+      "status": "planned",
+      "phase_id": "phase-43c0e348-a669-4d41-ad09-281cb599f644",
+      "parent_id": null,
+      "priority": "medium",
+      "progress": 0.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "assignee": "Alice Brown",
+        "estimated_hours": 20
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T19:09:42.026297",
+      "updated_at": "2025-03-25T19:09:42.026298"
+    },
+    {
+      "id": "task-15fbeaa5-a4d2-45fe-bb17-11e6aae98fe7",
+      "project_id": "project-e76cccf8-ded6-4902-bf97-0179cae0e27a",
+      "name": "Literature review",
+      "description": "Conduct a literature review for Project Beta",
+      "status": "completed",
+      "phase_id": "phase-e74b779e-a788-43f8-99d4-d5019bcdc096",
+      "parent_id": null,
+      "priority": "high",
+      "progress": 100.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "assignee": "Emily Davis",
+        "estimated_hours": 40
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T19:09:42.026322",
+      "updated_at": "2025-03-25T19:09:42.026322"
+    },
+    {
+      "id": "task-51083b73-e106-4120-b052-2e98e41103b7",
+      "project_id": "project-e76cccf8-ded6-4902-bf97-0179cae0e27a",
+      "name": "Data analysis",
+      "description": "Analyze data for Project Beta",
+      "status": "in_progress",
+      "phase_id": "phase-f6ca8cda-eb40-40f3-ae56-40c32d96c8c6",
+      "parent_id": null,
+      "priority": "high",
+      "progress": 50.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "assignee": "Michael Wilson",
+        "estimated_hours": 32
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T19:09:42.026347",
+      "updated_at": "2025-03-25T19:09:42.026348"
+    },
+    {
+      "id": "task-fccbe8ca-5a16-4ebe-bb87-721ff322a711",
+      "project_id": "project-4cbf0807-b2d4-4563-9425-f456b3d6dd0e",
+      "name": "Remove Legacy Migration Files",
+      "description": "Remove migration scripts and legacy data that are no longer needed",
+      "status": "in_progress",
+      "phase_id": "phase-78b0d4b6-fb5d-414a-9f19-c6d6d1dacfd0",
+      "parent_id": null,
+      "priority": "high",
+      "progress": 25.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "estimated_hours": 4,
+        "subtasks": [
+          "Remove data/legacy directory",
+          "Remove migration scripts in scripts/task_manager",
+          "Remove .task-manager directory"
+        ]
+      },
+      "result": {
+        "workflow_id": "workflow-1",
+        "status": "completed",
+        "success": true,
+        "result": {
+          "success": true,
+          "output": "Workflow workflow-1 completed successfully"
+        }
+      },
+      "error": null,
+      "created_at": "2025-03-25T19:22:44.513037",
+      "updated_at": "2025-03-25T19:23:35.637845"
+    },
+    {
+      "id": "task-953f06ee-1a7d-437d-93fc-43e62f65abc2",
+      "project_id": "project-4cbf0807-b2d4-4563-9425-f456b3d6dd0e",
+      "name": "Standardize Directory Structure",
+      "description": "Implement the desired project structure as outlined in claude-prompt.md",
+      "status": "planned",
+      "phase_id": "phase-78b0d4b6-fb5d-414a-9f19-c6d6d1dacfd0",
+      "parent_id": null,
+      "priority": "high",
+      "progress": 0.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "estimated_hours": 8,
+        "subtasks": [
+          "Reorganize source code directories",
+          "Consolidate configuration files",
+          "Standardize documentation structure",
+          "Organize test files"
+        ]
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T19:22:44.513041",
+      "updated_at": "2025-03-25T19:22:44.513041"
+    },
+    {
+      "id": "task-0442a47b-7234-4094-9cc4-94f7a2c8320c",
+      "project_id": "project-4cbf0807-b2d4-4563-9425-f456b3d6dd0e",
+      "name": "Consolidate Similar Functionality",
+      "description": "Identify and consolidate duplicate code and similar functionality",
+      "status": "planned",
+      "phase_id": "phase-78b0d4b6-fb5d-414a-9f19-c6d6d1dacfd0",
+      "parent_id": null,
+      "priority": "medium",
+      "progress": 0.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "estimated_hours": 16,
+        "subtasks": [
+          "Identify duplicate utility functions",
+          "Create common modules for shared functionality",
+          "Refactor code to use common modules",
+          "Update imports and references"
+        ]
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T19:22:44.513046",
+      "updated_at": "2025-03-25T19:22:44.513046"
+    },
+    {
+      "id": "task-6d3483df-def2-40f4-a0c4-b75d9c8c7d88",
+      "project_id": "project-4cbf0807-b2d4-4563-9425-f456b3d6dd0e",
+      "name": "Standardize Naming Conventions",
+      "description": "Implement consistent naming across the project",
+      "status": "planned",
+      "phase_id": "phase-78b0d4b6-fb5d-414a-9f19-c6d6d1dacfd0",
+      "parent_id": null,
+      "priority": "medium",
+      "progress": 0.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "estimated_hours": 8,
+        "subtasks": [
+          "Define naming conventions for files, classes, and functions",
+          "Update file names to follow conventions",
+          "Update class and function names to follow conventions",
+          "Update variable names to follow conventions"
+        ]
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T19:22:44.513049",
+      "updated_at": "2025-03-25T19:22:44.513049"
+    },
+    {
+      "id": "task-59c55d6a-e93d-4f02-958d-da3fe4b8300d",
+      "project_id": "project-4cbf0807-b2d4-4563-9425-f456b3d6dd0e",
+      "name": "Enhance Workflow Templates",
+      "description": "Create additional workflow templates for common use cases",
+      "status": "planned",
+      "phase_id": "phase-6d49ee16-d0c6-48c5-a4a3-7ba69459765d",
+      "parent_id": null,
+      "priority": "high",
+      "progress": 0.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "estimated_hours": 16,
+        "subtasks": [
+          "Create CI/CD workflow template",
+          "Create data analysis workflow template",
+          "Create AI agent workflow template"
+        ]
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T19:22:44.513053",
+      "updated_at": "2025-03-25T19:22:44.513053"
+    },
+    {
+      "id": "task-03eddb79-7343-4b98-ac84-26c805e95e61",
+      "project_id": "project-4cbf0807-b2d4-4563-9425-f456b3d6dd0e",
+      "name": "Improve Parameter Substitution",
+      "description": "Enhance parameter handling in workflow templates",
+      "status": "planned",
+      "phase_id": "phase-6d49ee16-d0c6-48c5-a4a3-7ba69459765d",
+      "parent_id": null,
+      "priority": "medium",
+      "progress": 0.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "estimated_hours": 8,
+        "subtasks": [
+          "Add support for complex parameter types",
+          "Implement parameter validation",
+          "Add default value handling",
+          "Support environment variable substitution"
+        ]
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T19:22:44.513056",
+      "updated_at": "2025-03-25T19:22:44.513056"
+    },
+    {
+      "id": "task-af3331cd-325f-4630-9714-fb82a6624a79",
+      "project_id": "project-4cbf0807-b2d4-4563-9425-f456b3d6dd0e",
+      "name": "Add Workflow Validation",
+      "description": "Implement validation for workflow definitions",
+      "status": "planned",
+      "phase_id": "phase-6d49ee16-d0c6-48c5-a4a3-7ba69459765d",
+      "parent_id": null,
+      "priority": "medium",
+      "progress": 0.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "estimated_hours": 8,
+        "subtasks": [
+          "Create schema for workflow validation",
+          "Implement validation logic",
+          "Add error reporting for invalid workflows",
+          "Add validation to workflow creation process"
+        ]
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T19:22:44.513058",
+      "updated_at": "2025-03-25T19:22:44.513059"
+    },
+    {
+      "id": "task-ef308dff-ce00-42bf-aea0-b88b73a290ea",
+      "project_id": "project-4cbf0807-b2d4-4563-9425-f456b3d6dd0e",
+      "name": "Extend Dagger Integration",
+      "description": "Add support for more workflow types",
+      "status": "planned",
+      "phase_id": "phase-6d49ee16-d0c6-48c5-a4a3-7ba69459765d",
+      "parent_id": null,
+      "priority": "high",
+      "progress": 0.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "estimated_hours": 24,
+        "subtasks": [
+          "Add support for parallel execution",
+          "Implement conditional steps",
+          "Add support for workflow composition",
+          "Implement workflow versioning"
+        ]
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T19:22:44.513061",
+      "updated_at": "2025-03-25T19:22:44.513061"
+    },
+    {
+      "id": "task-ce3e7628-0bd2-4215-a967-cb9e6459540e",
+      "project_id": "project-4cbf0807-b2d4-4563-9425-f456b3d6dd0e",
+      "name": "Improve Error Handling",
+      "description": "Enhance error handling and recovery mechanisms",
+      "status": "planned",
+      "phase_id": "phase-6d49ee16-d0c6-48c5-a4a3-7ba69459765d",
+      "parent_id": null,
+      "priority": "high",
+      "progress": 0.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "estimated_hours": 16,
+        "subtasks": [
+          "Implement detailed error reporting",
+          "Add retry mechanisms for failed steps",
+          "Create error recovery strategies",
+          "Implement workflow resumption after failure"
+        ]
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T19:22:44.513064",
+      "updated_at": "2025-03-25T19:22:44.513064"
+    },
+    {
+      "id": "task-f51ff87d-bfbe-42da-b518-c87841ca9310",
+      "project_id": "project-4cbf0807-b2d4-4563-9425-f456b3d6dd0e",
+      "name": "Create Unit Tests",
+      "description": "Write unit tests for all components",
+      "status": "planned",
+      "phase_id": "phase-71fb793c-7b74-437f-ad52-29c166245bfa",
+      "parent_id": null,
+      "priority": "high",
+      "progress": 0.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "estimated_hours": 24,
+        "subtasks": [
+          "Task manager unit tests",
+          "Dagger integration unit tests",
+          "Workflow template unit tests"
+        ]
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T19:22:44.513066",
+      "updated_at": "2025-03-25T19:22:44.513067"
+    },
+    {
+      "id": "task-a3a02de2-2249-4b38-800c-7c0b6af0f26d",
+      "project_id": "project-4cbf0807-b2d4-4563-9425-f456b3d6dd0e",
+      "name": "Implement Integration Tests",
+      "description": "Create tests for cross-component functionality",
+      "status": "planned",
+      "phase_id": "phase-71fb793c-7b74-437f-ad52-29c166245bfa",
+      "parent_id": null,
+      "priority": "medium",
+      "progress": 0.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "estimated_hours": 16,
+        "subtasks": [
+          "Task-to-workflow integration tests",
+          "API-to-task-manager integration tests",
+          "Dashboard-to-backend integration tests",
+          "End-to-end workflow execution tests"
+        ]
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T19:22:44.513069",
+      "updated_at": "2025-03-25T19:22:44.513069"
+    },
+    {
+      "id": "task-409eb2b4-ef74-4f73-9be8-312a73aa0c1a",
+      "project_id": "project-4cbf0807-b2d4-4563-9425-f456b3d6dd0e",
+      "name": "Develop End-to-End Tests",
+      "description": "Implement tests for complete user workflows",
+      "status": "planned",
+      "phase_id": "phase-71fb793c-7b74-437f-ad52-29c166245bfa",
+      "parent_id": null,
+      "priority": "medium",
+      "progress": 0.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "estimated_hours": 16,
+        "subtasks": [
+          "Task creation and execution workflow",
+          "Dashboard monitoring workflow",
+          "Error handling and recovery workflow",
+          "User authentication and authorization workflow"
+        ]
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T19:22:44.513072",
+      "updated_at": "2025-03-25T19:22:44.513072"
+    },
+    {
+      "id": "task-0227ec6a-8981-47f6-be8d-bb6f984540ca",
+      "project_id": "project-4cbf0807-b2d4-4563-9425-f456b3d6dd0e",
+      "name": "Add Performance Tests",
+      "description": "Create tests for critical performance paths",
+      "status": "planned",
+      "phase_id": "phase-71fb793c-7b74-437f-ad52-29c166245bfa",
+      "parent_id": null,
+      "priority": "low",
+      "progress": 0.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "estimated_hours": 8,
+        "subtasks": [
+          "Task creation performance tests",
+          "Workflow execution performance tests",
+          "Dashboard rendering performance tests",
+          "API response time tests"
+        ]
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T19:22:44.513074",
+      "updated_at": "2025-03-25T19:22:44.513075"
+    },
+    {
+      "id": "task-79601949-af5e-4ad0-83f6-b83eebc300eb",
+      "project_id": "project-4cbf0807-b2d4-4563-9425-f456b3d6dd0e",
+      "name": "Design Dashboard UI",
+      "description": "Create the UI design for the comprehensive dashboard",
+      "status": "planned",
+      "phase_id": "phase-9e9e168a-bf64-46fa-98bf-cc364340d92d",
+      "parent_id": null,
+      "priority": "high",
+      "progress": 0.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "estimated_hours": 16,
+        "subtasks": [
+          "Create wireframes for dashboard layout",
+          "Design component styles and themes",
+          "Create responsive design for different screen sizes",
+          "Design navigation and user flow"
+        ]
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T19:22:44.513077",
+      "updated_at": "2025-03-25T19:22:44.513077"
+    },
+    {
+      "id": "task-e9c92a8e-4f59-4dfe-9c1d-8c98d2902114",
+      "project_id": "project-4cbf0807-b2d4-4563-9425-f456b3d6dd0e",
+      "name": "Implement Task Status Visualization",
+      "description": "Create real-time visualization of task status",
+      "status": "planned",
+      "phase_id": "phase-9e9e168a-bf64-46fa-98bf-cc364340d92d",
+      "parent_id": null,
+      "priority": "high",
+      "progress": 0.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "estimated_hours": 16,
+        "subtasks": [
+          "Create task list view",
+          "Implement task status indicators",
+          "Add task filtering and sorting",
+          "Implement real-time updates"
+        ]
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T19:22:44.513080",
+      "updated_at": "2025-03-25T19:22:44.513080"
+    },
+    {
+      "id": "task-2f1fc2fb-c5ac-4666-aec2-35c8af27ef59",
+      "project_id": "project-4cbf0807-b2d4-4563-9425-f456b3d6dd0e",
+      "name": "Add Agent Performance Monitoring",
+      "description": "Implement monitoring for AI agent performance",
+      "status": "planned",
+      "phase_id": "phase-9e9e168a-bf64-46fa-98bf-cc364340d92d",
+      "parent_id": null,
+      "priority": "medium",
+      "progress": 0.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "estimated_hours": 16,
+        "subtasks": [
+          "Create agent performance metrics",
+          "Implement agent status visualization",
+          "Add agent resource usage monitoring",
+          "Create agent error reporting"
+        ]
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T19:22:44.513082",
+      "updated_at": "2025-03-25T19:22:44.513082"
+    },
+    {
+      "id": "task-e36dc1b6-c760-48d1-ad34-cfe56f4acc26",
+      "project_id": "project-4cbf0807-b2d4-4563-9425-f456b3d6dd0e",
+      "name": "Create Metrics and Analytics",
+      "description": "Add visualization components for metrics and analytics",
+      "status": "planned",
+      "phase_id": "phase-9e9e168a-bf64-46fa-98bf-cc364340d92d",
+      "parent_id": null,
+      "priority": "medium",
+      "progress": 0.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "estimated_hours": 16,
+        "subtasks": [
+          "Implement charts and graphs for key metrics",
+          "Create analytics dashboard",
+          "Add data export functionality",
+          "Implement custom report generation"
+        ]
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T19:22:44.513085",
+      "updated_at": "2025-03-25T19:22:44.513085"
+    },
+    {
+      "id": "task-b256a5f6-1af0-4d7c-861d-2d706efe8b48",
+      "project_id": "project-4cbf0807-b2d4-4563-9425-f456b3d6dd0e",
+      "name": "Integrate with Task Management",
+      "description": "Connect dashboard with the task management system",
+      "status": "planned",
+      "phase_id": "phase-9e9e168a-bf64-46fa-98bf-cc364340d92d",
+      "parent_id": null,
+      "priority": "high",
+      "progress": 0.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "estimated_hours": 16,
+        "subtasks": [
+          "Implement API integration",
+          "Create real-time data synchronization",
+          "Add task creation and update functionality",
+          "Implement workflow execution from dashboard"
+        ]
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T19:22:44.513087",
+      "updated_at": "2025-03-25T19:22:44.513088"
+    },
+    {
+      "id": "task-edff8490-f592-4bd8-a531-2d6e0bfb35f8",
+      "project_id": "project-4cbf0807-b2d4-4563-9425-f456b3d6dd0e",
+      "name": "Create Developer Documentation",
+      "description": "Comprehensive documentation for developers",
+      "status": "planned",
+      "phase_id": "phase-1d1aedb1-5cd7-4e28-a860-657b903c010b",
+      "parent_id": null,
+      "priority": "high",
+      "progress": 0.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "estimated_hours": 24,
+        "subtasks": [
+          "Document code architecture",
+          "Create API documentation",
+          "Write development setup guide",
+          "Document contribution guidelines"
+        ]
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T19:22:44.513090",
+      "updated_at": "2025-03-25T19:22:44.513090"
+    },
+    {
+      "id": "task-b2f8d670-6624-45cc-ac42-6f5b6f82324c",
+      "project_id": "project-4cbf0807-b2d4-4563-9425-f456b3d6dd0e",
+      "name": "Develop User Guides",
+      "description": "User guides for the platform",
+      "status": "planned",
+      "phase_id": "phase-1d1aedb1-5cd7-4e28-a860-657b903c010b",
+      "parent_id": null,
+      "priority": "medium",
+      "progress": 0.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "estimated_hours": 16,
+        "subtasks": [
+          "Create getting started guide",
+          "Write task management guide",
+          "Document dashboard usage",
+          "Create workflow creation guide"
+        ]
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T19:22:44.513093",
+      "updated_at": "2025-03-25T19:22:44.513093"
+    },
+    {
+      "id": "task-218479d0-eab5-45eb-9ba3-1f97c82ae9ee",
+      "project_id": "project-4cbf0807-b2d4-4563-9425-f456b3d6dd0e",
+      "name": "Document API Endpoints",
+      "description": "Documentation for all API endpoints",
+      "status": "planned",
+      "phase_id": "phase-1d1aedb1-5cd7-4e28-a860-657b903c010b",
+      "parent_id": null,
+      "priority": "medium",
+      "progress": 0.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "estimated_hours": 16,
+        "subtasks": [
+          "Document task management API",
+          "Document workflow API",
+          "Document dashboard API",
+          "Create API usage examples"
+        ]
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T19:22:44.513095",
+      "updated_at": "2025-03-25T19:22:44.513095"
+    },
+    {
+      "id": "task-19bc129c-dd26-4476-aa14-5c4239b128bf",
+      "project_id": "project-4cbf0807-b2d4-4563-9425-f456b3d6dd0e",
+      "name": "Update README Files",
+      "description": "Clear README files in each directory",
+      "status": "planned",
+      "phase_id": "phase-1d1aedb1-5cd7-4e28-a860-657b903c010b",
+      "parent_id": null,
+      "priority": "medium",
+      "progress": 0.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "estimated_hours": 8,
+        "subtasks": [
+          "Update main README",
+          "Create README files for each component",
+          "Add usage examples to READMEs",
+          "Include setup instructions in READMEs"
+        ]
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T19:22:44.513098",
+      "updated_at": "2025-03-25T19:22:44.513098"
+    },
+    {
+      "id": "task-6b4ab40a-ce10-4952-adc2-976c80c493f5",
+      "project_id": "project-4cbf0807-b2d4-4563-9425-f456b3d6dd0e",
+      "name": "Test Task",
+      "description": "A test task for testing the task manager service",
+      "status": "completed",
+      "phase_id": "phase-1d1aedb1-5cd7-4e28-a860-657b903c010b",
+      "parent_id": null,
+      "priority": "high",
+      "progress": 100.0,
+      "assignee_id": null,
+      "assignee_type": null,
+      "metadata": {
+        "estimated_hours": 1,
+        "subtasks": [
+          "Test subtask 1",
+          "Test subtask 2",
+          "Test subtask 3"
+        ],
+        "completed_at": "2025-03-25T19:32:05.836853"
+      },
+      "result": null,
+      "error": null,
+      "created_at": "2025-03-25T19:31:55.888103",
+      "updated_at": "2025-03-25T19:32:05.836862"
+    }
+  ]
+}

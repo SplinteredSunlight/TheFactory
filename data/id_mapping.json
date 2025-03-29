@@ -1,0 +1,21 @@
+{
+  "projects": {
+    "project-1": "project-309d4f26-8498-47db-82e4-f2cb0e8044fc",
+    "project-2": "project-e76cccf8-ded6-4902-bf97-0179cae0e27a"
+  },
+  "phases": {
+    "phase-1": "phase-306589cb-6d87-489f-ab44-f2e602826b0e",
+    "phase-2": "phase-43c0e348-a669-4d41-ad09-281cb599f644",
+    "phase-3": "phase-311a4ad7-77d7-4f5d-af0e-f13ba52edc5f",
+    "phase-4": "phase-e74b779e-a788-43f8-99d4-d5019bcdc096",
+    "phase-5": "phase-f6ca8cda-eb40-40f3-ae56-40c32d96c8c6"
+  },
+  "tasks": {
+    "task-1": "task-898d559e-934c-4486-a19d-b73b557bf132",
+    "task-2": "task-9121ba5c-3b3e-48c1-9b44-a048ae999bea",
+    "task-3": "task-8a648e3a-b519-403b-acdb-e2fefc0a8542",
+    "task-4": "task-0e516407-f5ae-4922-9c49-83d9a636f4d5",
+    "task-5": "task-15fbeaa5-a4d2-45fe-bb17-11e6aae98fe7",
+    "task-6": "task-51083b73-e106-4120-b052-2e98e41103b7"
+  }
+}

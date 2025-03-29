@@ -1,0 +1,197 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dagger-orchestrator
+  labels:
+    app: dagger-orchestrator
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: dagger-orchestrator
+  template:
+    metadata:
+      labels:
+        app: dagger-orchestrator
+    spec:
+      containers:
+      - name: dagger-orchestrator
+        image: ai-orchestration-platform/dagger:latest
+        ports:
+        - containerPort: 8000
+        env:
+        - name: CONTAINER_REGISTRY
+          valueFrom:
+            configMapKeyRef:
+              name: dagger-config
+              key: container_registry
+        - name: CONTAINER_REGISTRY_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: dagger-credentials
+              key: registry_username
+        - name: CONTAINER_REGISTRY_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: dagger-credentials
+              key: registry_password
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: database-credentials
+              key: url
+        - name: SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: api-credentials
+              key: secret_key
+        - name: ENVIRONMENT
+          value: "production"
+        resources:
+          limits:
+            cpu: "1"
+            memory: "2Gi"
+          requests:
+            cpu: "500m"
+            memory: "1Gi"
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 60
+          periodSeconds: 15
+        volumeMounts:
+        - name: workflow-data
+          mountPath: /app/workflows
+        - name: config-volume
+          mountPath: /app/config
+      volumes:
+      - name: workflow-data
+        persistentVolumeClaim:
+          claimName: dagger-workflow-data
+      - name: config-volume
+        configMap:
+          name: dagger-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dagger-orchestrator
+spec:
+  selector:
+    app: dagger-orchestrator
+  ports:
+  - port: 80
+    targetPort: 8000
+  type: ClusterIP
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: dagger-workflow-data
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dagger-config
+data:
+  container_registry: "docker.io"
+  dagger.yaml: |
+    # Workflow execution settings
+    workflow:
+      directory: "/app/workflows"
+      max_concurrent_executions: 10
+      default_timeout: 600  # seconds
+    
+    # Container settings
+    container:
+      registry: "${CONTAINER_REGISTRY:-docker.io}"
+      default_images:
+        python: "python:3.9-slim"
+        node: "node:18-alpine"
+        go: "golang:1.20-alpine"
+        base: "ubuntu:22.04"
+    
+    # Pipeline settings
+    pipeline:
+      caching_enabled: true
+      default_timeout: 1800  # seconds
+      source_directory: "/app/src"
+    
+    # Integration settings
+    integration:
+      # Connection details for the orchestration platform
+      orchestrator:
+        api_endpoint: "http://orchestrator-service/api/v1"
+      
+      # Error handling configuration
+      error_handling:
+        max_retries: 3
+        retry_delay: 5  # seconds
+        failure_threshold: 5
+    
+    # Logging configuration
+    logging:
+      level: "info"
+      format: "json"
+      output: "file"  # "file" or "console"
+      file_path: "/app/logs/dagger.log"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: dagger-credentials
+type: Opaque
+stringData:
+  registry_username: ""  # Fill in with actual value
+  registry_password: ""  # Fill in with actual value
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: dagger-orchestrator-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+spec:
+  rules:
+  - host: dagger.example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: dagger-orchestrator
+            port:
+              number: 80
+  tls:
+  - hosts:
+    - dagger.example.com
+    secretName: dagger-tls
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: dagger-orchestrator
+  labels:
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      app: dagger-orchestrator
+  endpoints:
+  - port: metrics
+    interval: 15s

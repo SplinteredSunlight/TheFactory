@@ -1,0 +1,27 @@
+name: Example Workflow
+description: A simple example workflow for Dagger integration testing
+
+steps:
+  - id: fetch-data
+    name: Fetch Data
+    image: python:3.9-slim
+    command: ["python", "-c", "import json; print(json.dumps({'data': [1, 2, 3, 4, 5]}))" ]
+    environment:
+      ENV_VAR: value
+    volumes:
+      - source: /tmp
+        target: /data
+
+  - id: process-data
+    name: Process Data
+    image: python:3.9-slim
+    command: ["python", "-c", "import json, sys; data = json.loads(sys.stdin.read()); print(json.dumps({'result': sum(data['data'])}))"]
+    depends_on:
+      - fetch-data
+
+  - id: generate-report
+    name: Generate Report
+    image: python:3.9-slim
+    command: ["python", "-c", "import json, sys; data = json.loads(sys.stdin.read()); print(f'Report: The sum is {data[\"result\"]}')"]
+    depends_on:
+      - process-data

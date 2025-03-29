@@ -1,0 +1,46 @@
+name: simple_data_processing_workflow
+description: A simple data processing workflow to test Dagger integration
+
+stages:
+  # Data validation stage
+  - name: data_validation
+    image: python:3.9-slim
+    command: ["python", "/app/validate.py", "--input", "/data/input.csv", "--schema", "/app/schema.json", "--output", "/data/validated.json"]
+    volumes:
+      - source: ${INPUT_DIR}
+        target: /data
+      - source: ${SCRIPTS_DIR}/validation
+        target: /app
+    environment:
+      VALIDATION_LEVEL: strict
+    retry:
+      max_attempts: 3
+      backoff_factor: 0.5
+  
+  # Data transformation stage
+  - name: data_transformation
+    image: python:3.9-slim
+    command: ["python", "/app/transform.py", "--input", "/data/validated.json", "--output", "/data/transformed.json"]
+    volumes:
+      - source: ${INPUT_DIR}
+        target: /data
+      - source: ${SCRIPTS_DIR}/transformation
+        target: /app
+    environment:
+      TRANSFORMATION_TYPE: standard
+    depends_on:
+      - data_validation
+  
+  # Data analysis stage
+  - name: data_analysis
+    image: python:3.9-slim
+    command: ["python", "/app/analyze.py", "--input", "/data/transformed.json", "--output", "/data/results.json"]
+    volumes:
+      - source: ${INPUT_DIR}
+        target: /data
+      - source: ${SCRIPTS_DIR}/analysis
+        target: /app
+    environment:
+      ANALYSIS_DEPTH: full
+    depends_on:
+      - data_transformation

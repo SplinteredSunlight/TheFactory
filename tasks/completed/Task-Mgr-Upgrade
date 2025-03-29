@@ -1,0 +1,414 @@
+# AI-Orchestration-Platform Task Management System
+
+This guide explains how to set up and use the Task Management System we've created for the AI-Orchestration-Platform. The system includes a robust backend for tracking tasks and projects, plus a visual progress tracking component for the UI.
+
+## Features
+
+- **Hierarchical Task Management**: Create projects, phases, milestones, and tasks with parent-child relationships
+- **Real-time Progress Tracking**: Visual representation of project progress with interactive components
+- **Task Assignment**: Assign tasks to agents or users
+- **Status Tracking**: Monitor task status and progress
+- **API Integration**: Comprehensive API for integrating with other components
+- **WebSocket Updates**: Real-time updates via WebSocket connections
+
+## Installation
+
+### 1. Copy Files to Your Project
+
+Copy these files to your project:
+
+#### Backend:
+
+- `src/task_manager/manager.py` → Backend task management system
+- `src/api/routes/task_routes.py` → FastAPI endpoints for task management
+
+#### Frontend:
+
+- `src/frontend/src/components/progress/ProgressTracker.tsx` → Progress tracking component
+- `src/frontend/src/pages/Dashboard.tsx` → Updated dashboard with progress tracking
+
+### 2. Install Dependencies
+
+Ensure you have the necessary dependencies:
+
+```bash
+# Backend dependencies
+pip install fastapi websockets
+
+# Frontend dependencies (already in your package.json)
+npm install
+```
+
+### 3. Register the API Routes
+
+Add the task management routes to your FastAPI app:
+
+```python
+# In your main.py or app.py file
+from fastapi import FastAPI
+from api.routes import task_routes
+
+app = FastAPI()
+
+# Include task routes
+app.include_router(task_routes.router)
+```
+
+### 4. Update Your Frontend
+
+Update your `App.tsx` file to include the progress tracker component.
+
+## Creating Your First Project
+
+### 1. Initialize the Task Manager with Your Current Project
+
+You can use the existing Python script to initialize your first project based on your current task tracking:
+
+```python
+from src.task_manager.manager import get_task_manager
+
+# Get the task manager
+task_manager = get_task_manager()
+
+# Create a project for your AI-Orchestration-Platform
+project = task_manager.create_project(
+    name="AI-Orchestration-Platform",
+    description="Integration project between AI-Orchestrator and Fast-Agent frameworks.",
+    metadata={
+        "repository": "https://github.com/SplinteredSunlight/AI-Orchestration-Platform"
+    }
+)
+
+# Add phases from your project plan
+phases = [
+    {"name": "Integration Setup", "order": 1},
+    {"name": "Orchestrator Enhancements", "order": 2},
+    {"name": "Agent Integration", "order": 3},
+    {"name": "Frontend Integration", "order": 4}
+]
+
+for phase_data in phases:
+    phase_id = f"phase_{phase_data['order']}"
+    project.add_phase(
+        phase_id=phase_id,
+        name=phase_data["name"],
+        description=f"Phase {phase_data['order']} of the project",
+        order=phase_data["order"]
+    )
+
+# Add tasks from your existing task tracker
+# You'll need to import your current tasks
+```
+
+### 2. Create Tasks for Your Project
+
+You can create tasks through the API or directly using the task manager:
+
+```python
+# Create a task
+task = task_manager.create_task(
+    name="API Contract Definition",
+    description="Define the API contract between AI-Orchestrator and Fast-Agent",
+    project_id=project.id,
+    phase_id="phase_1",  # Integration Setup
+    status="completed",  # Already completed
+    progress=100.0
+)
+
+# Create a subtask
+subtask = task_manager.create_task(
+    name="OpenAPI Specification",
+    description="Create OpenAPI specification for the API contract",
+    project_id=project.id,
+    phase_id="phase_1",
+    parent_id=task.id,
+    status="completed",
+    progress=100.0
+)
+```
+
+## Using the Task Management System
+
+### Backend Usage
+
+```python
+from src.task_manager.manager import get_task_manager, TaskStatus
+
+# Get the task manager singleton
+task_manager = get_task_manager()
+
+# Create a task
+task = task_manager.create_task(
+    name="New Task",
+    description="This is a new task",
+    project_id="project_id",
+    phase_id="phase_id"
+)
+
+# Update task status
+task_manager.update_task_status(task.id, TaskStatus.IN_PROGRESS)
+
+# Update task progress
+task_manager.update_task_progress(task.id, 50.0)  # 50%
+
+# Get project progress
+progress = task_manager.calculate_project_progress("project_id")
+```
+
+### Frontend Usage
+
+#### Using the ProgressTracker Component
+
+```tsx
+import ProgressTracker from '../components/progress/ProgressTracker';
+
+// In your component:
+return (
+  <div>
+    {/* Other content */}
+    
+    {/* Embedded mode */}
+    <ProgressTracker
+      projectId="your_project_id"
+      mode="embedded"
+      showTitle={true}
+      height={400}
+    />
+    
+    {/* Or as a popup */}
+    <ProgressTracker
+      projectId="your_project_id"
+      mode="popup"
+    />
+  </div>
+);
+```
+
+## Converting Your Existing Task Tracker
+
+You can convert your existing task tracking system to use this new system with a migration script. Here's a sample script to migrate from your current `.task-manager` system:
+
+```python
+import os
+import json
+from datetime import datetime
+from src.task_manager.manager import get_task_manager, TaskStatus, TaskPriority
+
+# Get the task manager
+task_manager = get_task_manager()
+
+# Path to your existing task tracking file
+TASK_TRACKING_PATH = "/Users/dc/Projects/AI-Orchestration-Platform/docs/task-tracking.json"
+PROJECT_PLAN_PATH = "/Users/dc/Projects/AI-Orchestration-Platform/docs/project-plan.md"
+
+# Load the existing task tracking data
+with open(TASK_TRACKING_PATH, 'r') as f:
+    tracking_data = json.load(f)
+
+# Create a project
+project = task_manager.create_project(
+    name="AI-Orchestration-Platform",
+    description="Integration project between AI-Orchestrator and Fast-Agent frameworks."
+)
+
+# Extract phases from the project plan
+phases = []
+with open(PROJECT_PLAN_PATH, 'r') as f:
+    plan_text = f.read()
+    
+    # Simple parsing of phases
+    import re
+    phase_pattern = re.compile(r'###\s+\d+\.\s+(.*?)\s*$')
+    
+    for line in plan_text.split('\n'):
+        phase_match = phase_pattern.search(line)
+        if phase_match:
+            phases.append(phase_match.group(1))
+
+# Add phases to the project
+for i, phase_name in enumerate(phases):
+    phase_id = f"phase_{i+1}"
+    project.add_phase(
+        phase_id=phase_id,
+        name=phase_name,
+        order=i+1
+    )
+
+# Map of phase names to IDs
+phase_map = {phase_name: f"phase_{i+1}" for i, phase_name in enumerate(phases)}
+
+# Add tasks from the task tracking data
+for task_data in tracking_data.get("completed_tasks", []):
+    phase_name = task_data.get("phase")
+    task_name = task_data.get("task")
+    completed_at = task_data.get("completed_at")
+    
+    # Create the task
+    if phase_name in phase_map:
+        task = task_manager.create_task(
+            name=task_name,
+            description=f"Task from phase {phase_name}",
+            project_id=project.id,
+            phase_id=phase_map[phase_name],
+            status=TaskStatus.COMPLETED,
+            progress=100.0
+        )
+        
+        # Set the completion time
+        if completed_at:
+            task.completed_at = datetime.fromisoformat(completed_at)
+            task.status_history.append({
+                "status": "completed",
+                "timestamp": completed_at,
+                "previous_status": "in_progress",
+            })
+
+# Add current task
+current_phase = tracking_data.get("current_phase")
+current_task = tracking_data.get("current_task")
+
+if current_phase in phase_map and current_task:
+    task = task_manager.create_task(
+        name=current_task,
+        description=f"Current task in phase {current_phase}",
+        project_id=project.id,
+        phase_id=phase_map[current_phase],
+        status=TaskStatus.IN_PROGRESS,
+        progress=50.0  # Assuming 50% progress for current task
+    )
+    
+    # Set the start time
+    task.started_at = datetime.now()
+    task.status_history.append({
+        "status": "in_progress",
+        "timestamp": task.started_at.isoformat(),
+        "previous_status": "planned",
+    })
+
+print(f"Migration complete. Created project '{project.name}' with ID '{project.id}'")
+print(f"Added {len(phases)} phases and {len(tracking_data.get('completed_tasks', [])) + 1} tasks")
+```
+
+## Integrating with Your Agent System
+
+The task management system is designed to work with your agent system. Here's how to integrate them:
+
+### 1. Connect Agents to Tasks
+
+You can assign tasks to agents:
+
+```python
+from src.agent_manager.manager import get_agent_manager
+from src.task_manager.manager import get_task_manager
+
+# Get managers
+agent_manager = get_agent_manager()
+task_manager = get_task_manager()
+
+# Get an agent
+agent = agent_manager.get_agent(agent_id)
+
+# Assign a task to the agent
+task = task_manager.update_task(
+    task_id="your_task_id",
+    assignee_id=agent.id,
+    assignee_type="agent"
+)
+```
+
+### 2. Execute Tasks with Agents
+
+When an agent completes a task, update the task status:
+
+```python
+def execute_task_with_agent(task_id, agent_id):
+    # Get task and agent
+    task = task_manager.get_task(task_id)
+    agent = agent_manager.get_agent(agent_id)
+    
+    # Update task status to in progress
+    task_manager.update_task_status(task_id, TaskStatus.IN_PROGRESS)
+    
+    try:
+        # Execute the agent with task parameters
+        result = agent.execute(
+            task_id=task_id,
+            task_name=task.name,
+            **task.metadata  # Pass any additional parameters
+        )
+        
+        # Update task with result
+        task_manager.update_task(task_id, result=result)
+        task_manager.update_task_status(task_id, TaskStatus.COMPLETED)
+        task_manager.update_task_progress(task_id, 100.0)
+        
+        return result
+    except Exception as e:
+        # Handle failure
+        task_manager.update_task(task_id, error=str(e))
+        task_manager.update_task_status(task_id, TaskStatus.FAILED)
+        raise
+```
+
+## Using WebSockets for Real-time Updates
+
+The progress tracker component automatically connects to the WebSocket endpoint for real-time updates. The backend API also provides a WebSocket endpoint:
+
+```python
+@router.websocket("/ws")
+async def websocket_endpoint(websocket: WebSocket, manager = Depends(get_manager)):
+    # This is already implemented in task_routes.py
+```
+
+This allows the frontend to receive real-time updates when tasks are created, updated, or completed.
+
+## MCP Server Integration
+
+To integrate this task management system with an MCP server, you can create an MCP server that exposes the task management functionality:
+
+```python
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from api.routes import task_routes
+
+app = FastAPI(title="Task Management MCP Server")
+
+# Enable CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Include task management routes
+app.include_router(task_routes.router)
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
+```
+
+Then, in your main AI-Orchestration-Platform, you can use the MCP client to communicate with the task management MCP server.
+
+## Conclusion
+
+This task management system provides a comprehensive solution for tracking progress in your AI-Orchestration-Platform. By integrating it into your project, you'll have:
+
+1. A visual representation of project progress
+2. A structured way to organize and track tasks
+3. Real-time updates on task status
+4. Integration with your agent system
+
+Start using the progress tracker today to help manage the development of your AI-Orchestration-Platform!
+
+## Next Steps
+
+1. Initialize your project and phases
+2. Migrate your existing tasks
+3. Add the progress tracker component to your UI
+4. Integrate with your agent system
+5. Use the task management system to continue building your platform
+
+As you continue to build your platform, you'll be able to track your progress in real-time and have a clear visualization of what's completed and what's still in progress.

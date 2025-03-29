@@ -15,6 +15,7 @@ redis>=4.5.4
 
 # Authentication and security
 python-jose>=3.3.0
+pyjwt>=2.6.0
 passlib>=1.7.4
 bcrypt>=4.0.1
 python-multipart>=0.0.6
@@ -39,7 +40,15 @@ transformers>=4.28.1
 # ai-orchestrator-client>=1.0.0  # This would be the actual client library
 
 # Integration with Fast-Agent
-# fast-agent-client>=1.0.0  # This would be the actual client library
+fast-agent-mcp>=0.1.4
+mcp==1.2.1
+instructor>=1.7.2
+opentelemetry-distro>=0.50b0
+opentelemetry-exporter-otlp-proto-http>=1.29.0
+
+# Integration with Dagger
+dagger-io>=0.8.1
+# pydagger>=0.3.0  # Not publicly available, use mock modules for testing
 
 # Development tools
 black>=23.3.0

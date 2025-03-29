@@ -1,0 +1,16 @@
+id,name,value,timestamp,category,is_active
+1,Item A,45.6,2025-03-01,Electronics,true
+2,Item B,32.1,2025-03-02,Clothing,true
+3,Item C,78.9,2025-03-03,Electronics,false
+4,Item D,12.5,2025-03-03,Food,true
+5,Item E,67.3,2025-03-04,Clothing,true
+6,Item F,9.8,2025-03-05,Food,false
+7,Item G,123.4,2025-03-06,Electronics,true
+8,Item H,88.2,2025-03-07,Clothing,true
+9,Item I,54.7,2025-03-08,Electronics,false
+10,Item J,22.9,2025-03-09,Food,true
+11,Item K,135.8,2025-03-10,Electronics,true
+12,Item L,42.3,2025-03-11,Clothing,false
+13,Item M,19.6,2025-03-12,Food,true
+14,Item N,76.5,2025-03-13,Electronics,false
+15,Item O,89.4,2025-03-14,Clothing,true

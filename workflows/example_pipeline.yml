@@ -1,0 +1,26 @@
+name: Example Pipeline
+description: A simple example pipeline for Dagger integration testing
+
+source: src
+
+steps:
+  - name: lint
+    image: python:3.9-slim
+    command: ["pip", "install", "flake8", "&&", "flake8", "${source}"]
+
+  - name: test
+    image: python:3.9-slim
+    command: ["pip", "install", "pytest", "&&", "pytest", "${source}"]
+    depends_on:
+      - lint
+
+  - name: build
+    image: python:3.9-slim
+    command: ["pip", "install", "build", "&&", "python", "-m", "build"]
+    depends_on:
+      - test
+
+outputs:
+  - name: build-output
+    path: /dist
+    step: build

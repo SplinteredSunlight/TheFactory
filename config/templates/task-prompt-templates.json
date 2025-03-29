@@ -1,0 +1,26 @@
+{
+  "default": {
+    "title": "# Next Task: {task_name} in {phase_name}\n\n",
+    "description": "## Task Description\nThis task involves implementing the {task_name} feature for the {phase_name} component of the AI-Orchestration-Platform.\n\n",
+    "steps": "## Steps to Complete\n{steps}\n\n",
+    "testing": "## Testing Requirements\n- Ensure all tests pass\n- Add new tests for the implemented functionality\n- Verify integration with existing components\n\n",
+    "documentation": "## Documentation\n- Update relevant README files\n- Update architecture diagrams if necessary\n- Update API documentation if applicable\n\n",
+    "footer": "After completing this task, run the task command to mark it as completed and get the prompt for the next task.\n"
+  },
+  "concise": {
+    "title": "# Task: {task_name}\n\n",
+    "description": "Implement {task_name} for {phase_name}.\n\n",
+    "steps": "## Steps\n{steps}\n\n",
+    "testing": "## Testing\n- Write tests\n- Ensure integration\n\n",
+    "documentation": "## Docs\n- Update as needed\n\n",
+    "footer": "Run ./task complete when done.\n"
+  },
+  "detailed": {
+    "title": "# Detailed Task: {task_name} in {phase_name}\n\n",
+    "description": "## Task Description\nThis task involves implementing the {task_name} feature for the {phase_name} component of the AI-Orchestration-Platform.\n\n## Context\n{architecture_summary}\n\n## Recent Completed Tasks\n{recent_tasks}\n\n",
+    "steps": "## Implementation Steps\n{steps}\n\n",
+    "testing": "## Testing Requirements\n- Ensure all tests pass\n- Add new tests for the implemented functionality\n- Verify integration with existing components\n- Run regression tests\n\n",
+    "documentation": "## Documentation Requirements\n- Update relevant README files\n- Update architecture diagrams if necessary\n- Update API documentation if applicable\n- Update user guides\n\n",
+    "footer": "After completing this task, run the task command to mark it as completed and get the prompt for the next task.\n"
+  }
+}

@@ -1,0 +1,1861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Management Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+        /* Navigation Tabs */
+        .nav-tabs {
+            display: flex;
+            background-color: #34495e;
+            padding: 0 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .nav-tab {
+            padding: 15px 20px;
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .nav-tab:hover {
+            background-color: #2c3e50;
+        }
+        .nav-tab.active {
+            background-color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+        }
+        .tab-content {
+            display: none;
+        }
+        #overview-tab {
+            display: block;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            margin: 0;
+            padding: 0 20px;
+        }
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .progress-container {
+            margin: 15px 0;
+        }
+        .progress-bar {
+            height: 20px;
+            background-color: #ecf0f1;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background-color: #3498db;
+            border-radius: 10px;
+            transition: width 0.5s ease-in-out;
+        }
+        .task-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .task-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+        .task-item:last-child {
+            border-bottom: none;
+        }
+        .task-status {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        .task-id {
+            background-color: #eee;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-right: 10px;
+            font-size: 0.8em;
+            color: #666;
+        }
+        .task-name {
+            flex-grow: 1;
+        }
+        .task-progress {
+            font-weight: bold;
+            color: #7f8c8d;
+            margin-left: 10px;
+        }
+        .completed {
+            color: #2ecc71;
+        }
+        .in-progress {
+            color: #f39c12;
+        }
+        .planned {
+            color: #95a5a6;
+        }
+        .blocked {
+            color: #e74c3c;
+        }
+        .phase-container {
+            margin-bottom: 15px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .phase-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background-color: #f8f9fa;
+            cursor: pointer;
+            border-bottom: 1px solid #eee;
+        }
+        .phase-header:hover {
+            background-color: #e9ecef;
+        }
+        .phase-title {
+            display: flex;
+            align-items: center;
+        }
+        .phase-name {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .phase-progress {
+            color: #7f8c8d;
+        }
+        .phase-content {
+            padding: 0 15px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .phase-container.expanded .phase-content {
+            max-height: 1000px;
+            padding: 15px;
+            border-top: 1px solid #eee;
+        }
+        .phase-description {
+            margin-bottom: 15px;
+            color: #666;
+        }
+        .phase-bar {
+            height: 10px;
+            background-color: #ecf0f1;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 5px;
+        }
+        .phase-fill {
+            height: 100%;
+            background-color: #3498db;
+            border-radius: 5px;
+        }
+        .project-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .project-item {
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .project-info {
+            flex-grow: 1;
+        }
+        .project-name {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .project-stats {
+            color: #7f8c8d;
+        }
+        .project-actions {
+            display: flex;
+            gap: 10px;
+        }
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            background-color: #3498db;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.2s;
+        }
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        .btn-success {
+            background-color: #2ecc71;
+        }
+        .btn-success:hover {
+            background-color: #27ae60;
+        }
+        .btn-warning {
+            background-color: #f39c12;
+        }
+        .btn-warning:hover {
+            background-color: #d35400;
+        }
+        .btn-danger {
+            background-color: #e74c3c;
+        }
+        .btn-danger:hover {
+            background-color: #c0392b;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 50%;
+            max-width: 500px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .modal-header h3 {
+            margin: 0;
+        }
+        .close-btn {
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-control {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .form-actions {
+            text-align: right;
+            margin-top: 20px;
+        }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .section-header h2 {
+            margin: 0;
+        }
+        .back-btn {
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        #project-dashboard {
+            display: none;
+        }
+        .subtask-list {
+            padding-left: 30px;
+            list-style-type: none;
+        }
+        .subtask-container {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .task-item.expanded .subtask-container {
+            max-height: 500px;
+        }
+        .expand-icon {
+            margin-right: 10px;
+            cursor: pointer;
+            font-size: 1.2em;
+            width: 20px;
+            text-align: center;
+        }
+        .dependency-list {
+            margin-top: 5px;
+            padding-left: 30px;
+            font-size: 0.9em;
+            color: #666;
+        }
+        .dependency-item {
+            margin-bottom: 3px;
+        }
+        .dependency-label {
+            background-color: #e1f5fe;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-right: 5px;
+        }
+        .project-header {
+            margin-bottom: 20px;
+        }
+        .project-header h2 {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .project-description {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .workflow-container {
+            margin-top: 20px;
+        }
+        .workflow-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .workflow-title {
+            font-weight: bold;
+            margin: 0;
+        }
+        
+        /* Documentation Styles */
+        .documentation-categories {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .documentation-category {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            border: 1px solid #eee;
+        }
+        
+        .category-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .doc-count {
+            background-color: #3498db;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.8em;
+        }
+        
+        .doc-list, .journal-list, .adr-list, .guide-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .doc-item, .journal-item, .adr-item, .guide-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            background-color: white;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        
+        .doc-info, .journal-info, .adr-info, .guide-info {
+            flex-grow: 1;
+        }
+        
+        .doc-icon, .guide-icon {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        
+        .doc-name, .journal-title, .adr-title, .guide-name {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .doc-meta, .journal-meta, .adr-meta, .guide-meta {
+            font-size: 0.8em;
+            color: #7f8c8d;
+        }
+        
+        .doc-updated, .doc-author, .guide-updated, .guide-author {
+            margin-right: 10px;
+        }
+        
+        .journal-header, .adr-header {
+            margin-bottom: 5px;
+        }
+        
+        .journal-date, .adr-date, .adr-id {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            margin-right: 10px;
+        }
+        
+        .journal-summary {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .adr-status {
+            background-color: #2ecc71;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.8em;
+        }
+        
+        .adr-status.proposed {
+            background-color: #f39c12;
+        }
+        
+        .documentation-search {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+        
+        .search-container {
+            display: flex;
+            margin-bottom: 10px;
+        }
+        
+        .search-container input {
+            flex-grow: 1;
+            margin-right: 10px;
+        }
+        
+        .search-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+        
+        .search-tag {
+            background-color: #e1f5fe;
+            color: #0288d1;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            cursor: pointer;
+        }
+        
+        .search-tag:hover {
+            background-color: #b3e5fc;
+        }
+        
+        .task-documentation {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            border-left: 3px solid #3498db;
+        }
+        
+        .task-documentation h5 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #3498db;
+        }
+        
+        .doc-link-list {
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        .doc-link-list li {
+            margin-bottom: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .documentation-categories {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 id="header-title">Project Management Dashboard</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Main Content -->
+        <div id="projects-list">
+            <div class="section-header">
+                <h2>Projects</h2>
+                <button class="btn btn-success" id="add-project-btn">Add Project</button>
+            </div>
+            
+            <ul class="project-list">
+                <li class="project-item">
+                    <div class="project-info">
+                        <div class="project-name">AI Orchestration Platform</div>
+                        <div class="project-stats">
+                            <div class="progress-container">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 28.6%;"></div>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-top: 5px;">
+                                <span>Progress: 28.6%</span>
+                                <span>2/7 tasks completed</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-actions">
+                        <button class="btn view-dashboard-btn" data-project="ai-orchestration">Dashboard</button>
+                        <button class="btn btn-danger delete-project-btn" data-project="ai-orchestration">Delete</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Project Dashboard View -->
+        <div id="project-dashboard" style="display: none;">
+            <button class="btn back-btn" id="back-to-projects">← Back to Projects</button>
+            
+            <div class="nav-tabs">
+                <button class="nav-tab active" data-tab="overview">Overview</button>
+                <button class="nav-tab" data-tab="tasks">Tasks</button>
+                <button class="nav-tab" data-tab="workflows">Workflows</button>
+                <button class="nav-tab" data-tab="documentation">Documentation</button>
+                <button class="nav-tab" data-tab="roadmap">Roadmap</button>
+            </div>
+            
+            <!-- Overview Tab Content -->
+            <div id="overview-tab" class="tab-content">
+                <div class="card">
+                    <div class="project-header">
+                        <h2 id="project-dashboard-title">AI Orchestration Platform</h2>
+                        <div class="project-description">
+                            A comprehensive platform for orchestrating AI agents, managing tasks, and integrating with Dagger workflows. This platform enables seamless communication between different AI components and provides a unified interface for monitoring and controlling AI operations.
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 28.6%;"></div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-top: 5px;">
+                                <span>Overall Progress: 28.6%</span>
+                                <span>2/7 tasks completed</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="section-header">
+                        <h3>Project Phases</h3>
+                        <button class="btn" id="add-task-btn">Add Task</button>
+                    </div>
+
+                    <!-- Planning Phase -->
+                    <div class="phase-container expanded">
+                    <div class="phase-header">
+                        <div class="phase-title">
+                            <span class="expand-icon">▼</span>
+                            <span class="phase-name">Planning</span>
+                            <span class="phase-progress">100% (2/2 tasks)</span>
+                        </div>
+                        <div class="phase-bar" style="width: 100px;">
+                            <div class="phase-fill" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                    <div class="phase-content">
+                        <div class="phase-description">
+                            Initial planning phase for the AI Orchestration Platform, including requirements gathering and architecture design.
+                        </div>
+                        <ul class="task-list">
+                            <li class="task-item">
+                                <span class="expand-icon">+</span>
+                                <span class="task-status completed">✓</span>
+                                <span class="task-id">TASK-001</span>
+                                <span class="task-name">Define requirements</span>
+                                <span class="task-progress">100%</span>
+                            </li>
+                            <li class="task-item">
+                                <span class="expand-icon">+</span>
+                                <span class="task-status completed">✓</span>
+                                <span class="task-id">TASK-002</span>
+                                <span class="task-name">Create architecture diagram</span>
+                                <span class="task-progress">100%</span>
+                            </li>
+                        </ul>
+                    </div>
+                    </div>
+
+                    <!-- Implementation Phase -->
+                    <div class="phase-container">
+                    <div class="phase-header">
+                        <div class="phase-title">
+                            <span class="expand-icon">▶</span>
+                            <span class="phase-name">Implementation</span>
+                            <span class="phase-progress">41.7% (0/3 tasks)</span>
+                        </div>
+                        <div class="phase-bar" style="width: 100px;">
+                            <div class="phase-fill" style="width: 41.7%;"></div>
+                        </div>
+                    </div>
+                    <div class="phase-content">
+                        <div class="phase-description">
+                            Development of core components and features of the AI Orchestration Platform.
+                        </div>
+                        <ul class="task-list">
+                            <li class="task-item">
+                                <span class="expand-icon">+</span>
+                                <span class="task-status in-progress">🔄</span>
+                                <span class="task-id">TASK-003</span>
+                                <span class="task-name">Implement core components</span>
+                                <span class="task-progress">75%</span>
+                            </li>
+                            <li class="task-item expanded">
+                                <span class="expand-icon">-</span>
+                                <span class="task-status in-progress">🔄</span>
+                                <span class="task-id">TASK-004</span>
+                                <span class="task-name">Implement Dagger integration</span>
+                                <span class="task-progress">90%</span>
+                                <div class="subtask-container">
+                                    <ul class="subtask-list">
+                                        <li class="task-item">
+                                            <span class="task-status completed">✓</span>
+                                            <span class="task-id">TASK-004.1</span>
+                                            <span class="task-name">Create Task Management MCP Server</span>
+                                            <span class="task-progress">100%</span>
+                                        </li>
+                                        <li class="task-item">
+                                            <span class="task-status completed">✓</span>
+                                            <span class="task-id">TASK-004.2</span>
+                                            <span class="task-name">Implement Dagger adapter</span>
+                                            <span class="task-progress">100%</span>
+                                        </li>
+                                        <li class="task-item">
+                                            <span class="task-status in-progress">🔄</span>
+                                            <span class="task-id">TASK-004.3</span>
+                                            <span class="task-name">Integrate with workflow engine</span>
+                                            <span class="task-progress">70%</span>
+                                        </li>
+                                    </ul>
+                                    <div class="dependency-list">
+                                        <div class="dependency-item">
+                                            <span class="dependency-label">Depends on</span>
+                                            <span>TASK-003: Implement core components</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="task-item">
+                                <span class="expand-icon">+</span>
+                                <span class="task-status planned">⏳</span>
+                                <span class="task-id">TASK-005</span>
+                                <span class="task-name">Implement dashboard</span>
+                                <span class="task-progress">0%</span>
+                            </li>
+                        </ul>
+                    </div>
+                    </div>
+
+                    <!-- Integration Phase -->
+                    <div class="phase-container">
+                    <div class="phase-header">
+                        <div class="phase-title">
+                            <span class="expand-icon">▶</span>
+                            <span class="phase-name">Integration</span>
+                            <span class="phase-progress">0% (0/0 tasks)</span>
+                        </div>
+                        <div class="phase-bar" style="width: 100px;">
+                            <div class="phase-fill" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                    <div class="phase-content">
+                        <div class="phase-description">
+                            Integration of all components and systems into a cohesive platform.
+                        </div>
+                        <ul class="task-list">
+                            <li class="task-item">
+                                <span class="expand-icon">+</span>
+                                <span class="task-status planned">⏳</span>
+                                <span class="task-id">TASK-006</span>
+                                <span class="task-name">Integrate with Agent Communication Framework</span>
+                                <span class="task-progress">0%</span>
+                            </li>
+                            <li class="task-item">
+                                <span class="expand-icon">+</span>
+                                <span class="task-status planned">⏳</span>
+                                <span class="task-id">TASK-007</span>
+                                <span class="task-name">Integrate with Data Processing Pipeline</span>
+                                <span class="task-progress">0%</span>
+                            </li>
+                        </ul>
+                    </div>
+                    </div>
+
+                    <!-- Testing Phase -->
+                    <div class="phase-container">
+                    <div class="phase-header">
+                        <div class="phase-title">
+                            <span class="expand-icon">▶</span>
+                            <span class="phase-name">Testing</span>
+                            <span class="phase-progress">0% (0/2 tasks)</span>
+                        </div>
+                        <div class="phase-bar" style="width: 100px;">
+                            <div class="phase-fill" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                    <div class="phase-content">
+                        <div class="phase-description">
+                            Comprehensive testing of the AI Orchestration Platform to ensure reliability and performance.
+                        </div>
+                        <ul class="task-list">
+                            <li class="task-item">
+                                <span class="expand-icon">+</span>
+                                <span class="task-status planned">⏳</span>
+                                <span class="task-id">TASK-008</span>
+                                <span class="task-name">Write tests</span>
+                                <span class="task-progress">0%</span>
+                            </li>
+                            <li class="task-item">
+                                <span class="expand-icon">+</span>
+                                <span class="task-status planned">⏳</span>
+                                <span class="task-id">TASK-009</span>
+                                <span class="task-name">Run integration tests</span>
+                                <span class="task-progress">0%</span>
+                            </li>
+                        </ul>
+                    </div>
+                    </div>
+
+                    <!-- Dagger Workflow Section -->
+                    <div class="workflow-container">
+                    <div class="workflow-header">
+                        <h3 class="workflow-title">Dagger Workflow Integration</h3>
+                        <button class="btn btn-success">Run Workflow</button>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 90%;"></div>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-top: 5px;">
+                            <span>Progress: 90%</span>
+                            <span>In Progress</span>
+                        </div>
+                    </div>
+
+                    <h4>Recent Workflow Executions</h4>
+                    <ul class="task-list">
+                        <li class="task-item">
+                            <span class="task-status completed">✓</span>
+                            <span class="task-id">FLOW-001</span>
+                            <span class="task-name">Task CLI Integration</span>
+                            <span class="task-progress">100%</span>
+                        </li>
+                        <li class="task-item">
+                            <span class="task-status completed">✓</span>
+                            <span class="task-id">FLOW-002</span>
+                            <span class="task-name">Dashboard Integration</span>
+                            <span class="task-progress">100%</span>
+                        </li>
+                        <li class="task-item">
+                            <span class="task-status in-progress">🔄</span>
+                            <span class="task-id">FLOW-003</span>
+                            <span class="task-name">Dagger Workflow Integration</span>
+                            <span class="task-progress">90%</span>
+                        </li>
+                    </ul>
+
+                    <div style="margin-top: 20px;">
+                        <h4>Available Workflows</h4>
+                        <ul class="task-list">
+                            <li class="task-item">
+                                <span class="task-id">FLOW-004</span>
+                                <span class="task-name">Build and Test Workflow</span>
+                                <button class="btn btn-success">Run</button>
+                            </li>
+                            <li class="task-item">
+                                <span class="task-id">FLOW-005</span>
+                                <span class="task-name">Deployment Workflow</span>
+                                <button class="btn btn-success">Run</button>
+                            </li>
+                            <li class="task-item">
+                                <span class="task-id">FLOW-006</span>
+                                <span class="task-name">CI/CD Pipeline</span>
+                                <button class="btn btn-success">Run</button>
+                            </li>
+                        </ul>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tasks Tab Content -->
+            <div id="tasks-tab" class="tab-content">
+            <div class="card">
+                <div class="section-header">
+                    <h3>Project Tasks</h3>
+                    <button class="btn btn-success" id="add-task-btn-tab">Add Task</button>
+                </div>
+                
+                <ul class="task-list">
+                    <li class="task-item">
+                        <span class="expand-icon">+</span>
+                        <span class="task-status completed">✓</span>
+                        <span class="task-id">TASK-001</span>
+                        <span class="task-name">Define requirements</span>
+                        <span class="task-progress">100%</span>
+                    </li>
+                    <li class="task-item">
+                        <span class="expand-icon">+</span>
+                        <span class="task-status completed">✓</span>
+                        <span class="task-id">TASK-002</span>
+                        <span class="task-name">Create architecture diagram</span>
+                        <span class="task-progress">100%</span>
+                    </li>
+                    <li class="task-item">
+                        <span class="expand-icon">+</span>
+                        <span class="task-status in-progress">🔄</span>
+                        <span class="task-id">TASK-003</span>
+                        <span class="task-name">Implement core components</span>
+                        <span class="task-progress">75%</span>
+                    </li>
+                    <li class="task-item">
+                        <span class="expand-icon">+</span>
+                        <span class="task-status in-progress">🔄</span>
+                        <span class="task-id">TASK-004</span>
+                        <span class="task-name">Implement Dagger integration</span>
+                        <span class="task-progress">90%</span>
+                    </li>
+                    <li class="task-item">
+                        <span class="expand-icon">+</span>
+                        <span class="task-status planned">⏳</span>
+                        <span class="task-id">TASK-005</span>
+                        <span class="task-name">Implement dashboard</span>
+                        <span class="task-progress">0%</span>
+                    </li>
+                    <li class="task-item">
+                        <span class="expand-icon">+</span>
+                        <span class="task-status planned">⏳</span>
+                        <span class="task-id">TASK-006</span>
+                        <span class="task-name">Integrate with Agent Communication Framework</span>
+                        <span class="task-progress">0%</span>
+                    </li>
+                    <li class="task-item">
+                        <span class="expand-icon">+</span>
+                        <span class="task-status planned">⏳</span>
+                        <span class="task-id">TASK-007</span>
+                        <span class="task-name">Integrate with Data Processing Pipeline</span>
+                        <span class="task-progress">0%</span>
+                    </li>
+                    <li class="task-item">
+                        <span class="expand-icon">+</span>
+                        <span class="task-status planned">⏳</span>
+                        <span class="task-id">TASK-008</span>
+                        <span class="task-name">Write tests</span>
+                        <span class="task-progress">0%</span>
+                    </li>
+                    <li class="task-item">
+                        <span class="expand-icon">+</span>
+                        <span class="task-status planned">⏳</span>
+                        <span class="task-id">TASK-009</span>
+                        <span class="task-name">Run integration tests</span>
+                        <span class="task-progress">0%</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Workflows Tab Content -->
+        <div id="workflows-tab" class="tab-content">
+            <div class="card">
+                <div class="section-header">
+                    <h3>Dagger Workflows</h3>
+                    <button class="btn btn-success">Add Workflow</button>
+                </div>
+                
+                <div class="workflow-container">
+                    <div class="workflow-header">
+                        <h3 class="workflow-title">Dagger Workflow Integration</h3>
+                        <button class="btn btn-success">Run Workflow</button>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 90%;"></div>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-top: 5px;">
+                            <span>Progress: 90%</span>
+                            <span>In Progress</span>
+                        </div>
+                    </div>
+
+                    <h4>Recent Workflow Executions</h4>
+                    <ul class="task-list">
+                        <li class="task-item">
+                            <span class="task-status completed">✓</span>
+                            <span class="task-id">FLOW-001</span>
+                            <span class="task-name">Task CLI Integration</span>
+                            <span class="task-progress">100%</span>
+                        </li>
+                        <li class="task-item">
+                            <span class="task-status completed">✓</span>
+                            <span class="task-id">FLOW-002</span>
+                            <span class="task-name">Dashboard Integration</span>
+                            <span class="task-progress">100%</span>
+                        </li>
+                        <li class="task-item">
+                            <span class="task-status in-progress">🔄</span>
+                            <span class="task-id">FLOW-003</span>
+                            <span class="task-name">Dagger Workflow Integration</span>
+                            <span class="task-progress">90%</span>
+                        </li>
+                    </ul>
+
+                    <div style="margin-top: 20px;">
+                        <h4>Available Workflows</h4>
+                        <ul class="task-list">
+                            <li class="task-item">
+                                <span class="task-id">FLOW-004</span>
+                                <span class="task-name">Build and Test Workflow</span>
+                                <button class="btn btn-success">Run</button>
+                            </li>
+                            <li class="task-item">
+                                <span class="task-id">FLOW-005</span>
+                                <span class="task-name">Deployment Workflow</span>
+                                <button class="btn btn-success">Run</button>
+                            </li>
+                            <li class="task-item">
+                                <span class="task-id">FLOW-006</span>
+                                <span class="task-name">CI/CD Pipeline</span>
+                                <button class="btn btn-success">Run</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Documentation Tab Content -->
+        <div id="documentation-tab" class="tab-content">
+            <!-- Documentation Section -->
+            <div class="card">
+                <div class="section-header">
+                    <h3>Project Documentation</h3>
+                    <button class="btn btn-success" id="add-document-btn">Add Document</button>
+                </div>
+                
+                <!-- Documentation Categories -->
+                <div class="documentation-categories">
+                    <!-- Component Documentation -->
+                    <div class="documentation-category">
+                        <div class="category-header">
+                            <h4>Component Documentation</h4>
+                            <span class="doc-count">3 documents</span>
+                        </div>
+                        <ul class="doc-list">
+                            <li class="doc-item" data-document-id="architecture-overview">
+                                <div class="doc-info">
+                                    <span class="doc-icon">📄</span>
+                                    <span class="doc-name">Architecture Overview</span>
+                                    <div class="doc-meta">
+                                        <span class="doc-updated">Updated: Mar 11, 2025</span>
+                                        <span class="doc-author">by DC</span>
+                                    </div>
+                                </div>
+                                <div class="doc-actions">
+                                    <button class="btn">View</button>
+                                    <button class="btn">Edit</button>
+                                </div>
+                            </li>
+                            <li class="doc-item" data-document-id="dagger-adapter-implementation">
+                                <div class="doc-info">
+                                    <span class="doc-icon">📄</span>
+                                    <span class="doc-name">Dagger Adapter Implementation</span>
+                                    <div class="doc-meta">
+                                        <span class="doc-updated">Updated: Mar 10, 2025</span>
+                                        <span class="doc-author">by DC</span>
+                                    </div>
+                                </div>
+                                <div class="doc-actions">
+                                    <button class="btn">View</button>
+                                    <button class="btn">Edit</button>
+                                </div>
+                            </li>
+                            <li class="doc-item" data-document-id="component-interaction-map">
+                                <div class="doc-info">
+                                    <span class="doc-icon">📄</span>
+                                    <span class="doc-name">Component Interaction Map</span>
+                                    <div class="doc-meta">
+                                        <span class="doc-updated">Updated: Mar 9, 2025</span>
+                                        <span class="doc-author">by DC</span>
+                                    </div>
+                                </div>
+                                <div class="doc-actions">
+                                    <button class="btn">View</button>
+                                    <button class="btn">Edit</button>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Development Journal -->
+                    <div class="documentation-category">
+                        <div class="category-header">
+                            <h4>Development Journal</h4>
+                            <span class="doc-count">4 entries</span>
+                        </div>
+                        <ul class="journal-list">
+                            <li class="journal-item" data-document-id="journal-self-healing">
+                                <div class="journal-info">
+                                    <div class="journal-header">
+                                        <span class="journal-date">Mar 11, 2025</span>
+                                        <span class="journal-title">Implementing Self-Healing for Dagger Workflows</span>
+                                    </div>
+                                    <div class="journal-summary">
+                                        Successfully implemented retry mechanism with exponential backoff for transient failures in Dagger adapter.
+                                    </div>
+                                </div>
+                                <div class="journal-actions">
+                                    <button class="btn">View</button>
+                                </div>
+                            </li>
+                            <li class="journal-item" data-document-id="journal-caching-issues">
+                                <div class="journal-info">
+                                    <div class="journal-header">
+                                        <span class="journal-date">Mar 10, 2025</span>
+                                        <span class="journal-title">Resolving Caching Issues in Dagger Integration</span>
+                                    </div>
+                                    <div class="journal-summary">
+                                        Fixed a critical issue with the caching implementation that was causing stale results.
+                                    </div>
+                                </div>
+                                <div class="journal-actions">
+                                    <button class="btn">View</button>
+                                </div>
+                            </li>
+                            <li class="journal-item" data-document-id="journal-container-registry">
+                                <div class="journal-info">
+                                    <div class="journal-header">
+                                        <span class="journal-date">Mar 9, 2025</span>
+                                        <span class="journal-title">Setting Up Container Registry Authentication</span>
+                                    </div>
+                                    <div class="journal-summary">
+                                        Implemented secure authentication for the container registry in the Dagger adapter.
+                                    </div>
+                                </div>
+                                <div class="journal-actions">
+                                    <button class="btn">View</button>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Architectural Decisions -->
+                    <div class="documentation-category">
+                        <div class="category-header">
+                            <h4>Architectural Decisions</h4>
+                            <span class="doc-count">3 records</span>
+                        </div>
+                        <ul class="adr-list">
+                            <li class="adr-item" data-document-id="adr-001">
+                                <div class="adr-info">
+                                    <div class="adr-header">
+                                        <span class="adr-id">ADR-001</span>
+                                        <span class="adr-title">Adoption of Dagger for Containerized Workflows</span>
+                                    </div>
+                                    <div class="adr-meta">
+                                        <span class="adr-date">Mar 5, 2025</span>
+                                        <span class="adr-status">Accepted</span>
+                                    </div>
+                                </div>
+                                <div class="adr-actions">
+                                    <button class="btn">View</button>
+                                </div>
+                            </li>
+                            <li class="adr-item" data-document-id="adr-002">
+                                <div class="adr-info">
+                                    <div class="adr-header">
+                                        <span class="adr-id">ADR-002</span>
+                                        <span class="adr-title">Error Handling Strategy</span>
+                                    </div>
+                                    <div class="adr-meta">
+                                        <span class="adr-date">Mar 8, 2025</span>
+                                        <span class="adr-status">Accepted</span>
+                                    </div>
+                                </div>
+                                <div class="adr-actions">
+                                    <button class="btn">View</button>
+                                </div>
+                            </li>
+                            <li class="adr-item" data-document-id="adr-003">
+                                <div class="adr-info">
+                                    <div class="adr-header">
+                                        <span class="adr-id">ADR-003</span>
+                                        <span class="adr-title">Caching Implementation for Dagger Workflows</span>
+                                    </div>
+                                    <div class="adr-meta">
+                                        <span class="adr-date">Mar 9, 2025</span>
+                                        <span class="adr-status">Proposed</span>
+                                    </div>
+                                </div>
+                                <div class="adr-actions">
+                                    <button class="btn">View</button>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Usage Guides -->
+                    <div class="documentation-category">
+                        <div class="category-header">
+                            <h4>Usage Guides</h4>
+                            <span class="doc-count">2 guides</span>
+                        </div>
+                        <ul class="guide-list">
+                            <li class="guide-item" data-document-id="guide-creating-workflows">
+                                <div class="guide-info">
+                                    <span class="guide-icon">📚</span>
+                                    <span class="guide-name">Creating Dagger Workflows</span>
+                                    <div class="guide-meta">
+                                        <span class="guide-updated">Updated: Mar 10, 2025</span>
+                                        <span class="guide-author">by DC</span>
+                                    </div>
+                                </div>
+                                <div class="guide-actions">
+                                    <button class="btn">View</button>
+                                    <button class="btn">Edit</button>
+                                </div>
+                            </li>
+                            <li class="guide-item" data-document-id="guide-self-healing">
+                                <div class="guide-info">
+                                    <span class="guide-icon">📚</span>
+                                    <span class="guide-name">Configuring Self-Healing Workflows</span>
+                                    <div class="guide-meta">
+                                        <span class="guide-updated">Updated: Mar 11, 2025</span>
+                                        <span class="guide-author">by DC</span>
+                                    </div>
+                                </div>
+                                <div class="guide-actions">
+                                    <button class="btn">View</button>
+                                    <button class="btn">Edit</button>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Documentation Search -->
+                <div class="documentation-search">
+                    <h4>Search Documentation</h4>
+                    <div class="search-container">
+                        <input type="text" class="form-control" placeholder="Search for documents, guides, or topics...">
+                        <button class="btn btn-primary">Search</button>
+                    </div>
+                    <div class="search-tags">
+                        <span class="search-tag">Dagger</span>
+                        <span class="search-tag">Workflows</span>
+                        <span class="search-tag">Self-healing</span>
+                        <span class="search-tag">Containerization</span>
+                        <span class="search-tag">Error handling</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Roadmap Tab Content -->
+        <div id="roadmap-tab" class="tab-content">
+            <div class="card">
+                <div class="section-header">
+                    <h3>Project Roadmap</h3>
+                </div>
+                
+                <div class="info-box" style="background-color: #e1f5fe; padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #03a9f4;">
+                    <p><strong>Note:</strong> The roadmap represents a forward-looking plan with a different task structure than the current tasks. While current tasks (TASK-001, TASK-002, etc.) represent immediate work items, the roadmap outlines future phases and milestones with a hierarchical task structure (Task 1.1.1, Task 1.2.3, etc.). In a production environment, these would be synchronized through a backend system.</p>
+                </div>
+                
+                <div class="roadmap-content">
+                    <h2>Updated AI-Orchestration-Platform Roadmap</h2>
+                    
+                    <h3>1. Current Status Summary</h3>
+                    <p>The AI-Orchestration-Platform has made significant progress with its integration of Dagger, a powerful containerized workflow system. Key components including the Dagger adapter, error handling, and basic workflow execution have been implemented. The platform is currently in the "Task Management MCP Server" phase with "Dagger Workflow Integration" as the current active task.</p>
+                    
+                    <h3>2. Revised Roadmap: Dagger Integration Focus</h3>
+                    
+                    <h4>Phase 1: Focused MVP Testing (Weeks 1-3)</h4>
+                    <div class="roadmap-milestone">
+                        <h5>Milestone 1.1: Simple Test Workflow Implementation</h5>
+                        <ul>
+                            <li>Task 1.1.1: Design a minimal workflow that exercises Dagger's containerization capabilities</li>
+                            <li>Task 1.1.2: Create a data processing pipeline example as a test case</li>
+                            <li>Task 1.1.3: Configure the workflow to run using the existing verification framework</li>
+                            <li>Task 1.1.4: Document the test workflow setup and execution process</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="roadmap-milestone">
+                        <h5>Milestone 1.2: Self-Healing Mechanism Validation</h5>
+                        <ul>
+                            <li>Task 1.2.1: Test the existing retry mechanism with controlled failures</li>
+                            <li>Task 1.2.2: Verify circuit breaker functionality for preventing cascading failures</li>
+                            <li>Task 1.2.3: Create test scenarios that trigger different types of errors</li>
+                            <li>Task 1.2.4: Document error recovery patterns and behaviors</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="roadmap-milestone">
+                        <h5>Milestone 1.3: Basic Visualization Implementation</h5>
+                        <ul>
+                            <li>Task 1.3.1: Enhance the dashboard to display workflow execution data</li>
+                            <li>Task 1.3.2: Add real-time status monitoring for containerized processes</li>
+                            <li>Task 1.3.3: Implement key performance metrics visualization (execution time, success rate)</li>
+                            <li>Task 1.3.4: Create a workflow execution history view</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Phase 2: Documentation Enhancement (Weeks 4-5)</h4>
+                    <div class="roadmap-milestone">
+                        <h5>Milestone 2.1: Component Documentation</h5>
+                        <ul>
+                            <li>Task 2.1.1: Create a comprehensive component map with relationships</li>
+                            <li>Task 2.1.2: Document data flow through the system</li>
+                            <li>Task 2.1.3: Identify and document all integration points</li>
+                            <li>Task 2.1.4: Develop a visual architecture diagram with component descriptions</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="roadmap-milestone">
+                        <h5>Milestone 2.2: Usage Documentation</h5>
+                        <ul>
+                            <li>Task 2.2.1: Create step-by-step workflow creation guides</li>
+                            <li>Task 2.2.2: Document configuration options with examples</li>
+                            <li>Task 2.2.3: Develop troubleshooting guides for common issues</li>
+                            <li>Task 2.2.4: Create a library of workflow patterns and best practices</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="roadmap-milestone">
+                        <h5>Milestone 2.3: Architectural Decision Records</h5>
+                        <ul>
+                            <li>Task 2.3.1: Document key design decisions made during development</li>
+                            <li>Task 2.3.2: Explain trade-offs and alternatives considered</li>
+                            <li>Task 2.3.3: Create a timeline of architectural evolution</li>
+                            <li>Task 2.3.4: Document future architectural considerations</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Phase 3: Project Knowledge Management (Weeks 6-7)</h4>
+                    <div class="roadmap-milestone">
+                        <h5>Milestone 3.1: Project Wiki Implementation</h5>
+                        <ul>
+                            <li>Task 3.1.1: Set up a centralized project wiki repository</li>
+                            <li>Task 3.1.2: Migrate existing documentation to the wiki</li>
+                            <li>Task 3.1.3: Create a searchable index of project components</li>
+                            <li>Task 3.1.4: Implement version control for documentation</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="roadmap-milestone">
+                        <h5>Milestone 3.2: Development Journal System</h5>
+                        <ul>
+                            <li>Task 3.2.1: Create a structured development journal template</li>
+                            <li>Task 3.2.2: Document development activities and challenges</li>
+                            <li>Task 3.2.3: Implement a system for tracking lessons learned</li>
+                            <li>Task 3.2.4: Create a knowledge sharing mechanism for the team</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="roadmap-milestone">
+                        <h5>Milestone 3.3: Dashboard Integration for Documentation</h5>
+                        <ul>
+                            <li>Task 3.3.1: Add a Documentation section to the Project Dashboard</li>
+                            <li>Task 3.3.2: Create direct links to relevant documentation from tasks</li>
+                            <li>Task 3.3.3: Implement a documentation health indicator</li>
+                            <li>Task 3.3.4: Add documentation search capability to the dashboard</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Phase 4: Extended Testing and Refinement (Weeks 8-10)</h4>
+                    <div class="roadmap-milestone">
+                        <h5>Milestone 4.1: Incremental Integration Testing</h5>
+                        <ul>
+                            <li>Task 4.1.1: Test core Dagger adapter functionality in isolation</li>
+                            <li>Task 4.1.2: Test orchestration layer with Dagger integration</li>
+                            <li>Task 4.1.3: Perform full-stack testing including the UI</li>
+                            <li>Task 4.1.4: Document test results and refine as needed</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="roadmap-milestone">
+                        <h5>Milestone 4.2: Monitoring and Observability Enhancement</h5>
+                        <ul>
+                            <li>Task 4.2.1: Implement comprehensive metric collection</li>
+                            <li>Task 4.2.2: Enhance logging for better troubleshooting</li>
+                            <li>Task 4.2.3: Create alerting rules for critical failures</li>
+                            <li>Task 4.2.4: Implement visualization of system health</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="roadmap-milestone">
+                        <h5>Milestone 4.3: Performance Optimization</h5>
+                        <ul>
+                            <li>Task 4.3.1: Identify performance bottlenecks</li>
+                            <li>Task 4.3.2: Implement optimizations for containerized workflows</li>
+                            <li>Task 4.3.3: Enhance caching strategies</li>
+                            <li>Task 4.3.4: Document performance improvements</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>3. Implementation Schedule</h3>
+                    <div class="implementation-schedule">
+                        <div class="schedule-item">
+                            <h4>Week 1-2: Complete Current Dagger Integration</h4>
+                            <ul>
+                                <li>Finish the current Dagger workflow integration task</li>
+                                <li>Implement a simple test workflow using the verification script</li>
+                                <li>Begin testing the self-healing mechanisms</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="schedule-item">
+                            <h4>Week 3-4: Visualization and Initial Documentation</h4>
+                            <ul>
+                                <li>Enhance the dashboard with workflow visualization</li>
+                                <li>Start component documentation</li>
+                                <li>Create initial usage guides</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="schedule-item">
+                            <h4>Week 5-6: Knowledge Management and Documentation</h4>
+                            <ul>
+                                <li>Set up the project wiki</li>
+                                <li>Create architectural decision records</li>
+                                <li>Implement development journal system</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="schedule-item">
+                            <h4>Week 7-8: Dashboard Enhancements and Testing</h4>
+                            <ul>
+                                <li>Integrate documentation into the dashboard</li>
+                                <li>Begin incremental integration testing</li>
+                                <li>Implement monitoring improvements</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="schedule-item">
+                            <h4>Week 9-10: Refinement and Optimization</h4>
+                            <ul>
+                                <li>Address performance issues</li>
+                                <li>Refine documentation based on testing</li>
+                                <li>Finalize the dashboard integration</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Project Modal -->
+    <div class="modal" id="add-project-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add New Project</h3>
+                <span class="close-btn">&times;</span>
+            </div>
+            <form id="add-project-form">
+                <div class="form-group">
+                    <label for="project-name">Project Name</label>
+                    <input type="text" id="project-name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="project-description">Description</label>
+                    <textarea id="project-description" class="form-control" rows="3"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn" id="cancel-add-project">Cancel</button>
+                    <button type="submit" class="btn btn-success">Create Project</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Task Modal -->
+    <div class="modal" id="add-task-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add New Task</h3>
+                <span class="close-btn">&times;</span>
+            </div>
+            <form id="add-task-form">
+                <div class="form-group">
+                    <label for="task-name">Task Name</label>
+                    <input type="text" id="task-name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="task-description">Description</label>
+                    <textarea id="task-description" class="form-control" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="task-phase">Phase</label>
+                    <select id="task-phase" class="form-control">
+                        <option value="planning">Planning</option>
+                        <option value="implementation">Implementation</option>
+                        <option value="integration">Integration</option>
+                        <option value="testing">Testing</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="task-status">Status</label>
+                    <select id="task-status" class="form-control">
+                        <option value="planned">Planned</option>
+                        <option value="in-progress">In Progress</option>
+                        <option value="completed">Completed</option>
+                        <option value="blocked">Blocked</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="task-dependencies">Dependencies (Task IDs, comma separated)</label>
+                    <input type="text" id="task-dependencies" class="form-control" placeholder="e.g., TASK-001, TASK-002">
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn" id="cancel-add-task">Cancel</button>
+                    <button type="submit" class="btn btn-success">Create Task</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Document Modal -->
+    <div class="modal" id="add-document-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add New Document</h3>
+                <span class="close-btn">&times;</span>
+            </div>
+            <form id="add-document-form">
+                <div class="form-group">
+                    <label for="document-title">Document Title</label>
+                    <input type="text" id="document-title" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="document-category">Category</label>
+                    <select id="document-category" class="form-control">
+                        <option value="component">Component Documentation</option>
+                        <option value="journal">Development Journal</option>
+                        <option value="adr">Architectural Decision</option>
+                        <option value="guide">Usage Guide</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="document-content">Content</label>
+                    <textarea id="document-content" class="form-control" rows="10"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn" id="cancel-add-document">Cancel</button>
+                    <button type="submit" class="btn btn-success">Create Document</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Document Viewer Modal -->
+    <div class="modal" id="document-viewer-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="document-viewer-title">Document Title</h3>
+                <span class="close-btn">&times;</span>
+            </div>
+            <div id="document-viewer-content">
+                <!-- Document content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to handle all dashboard interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab switching
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    document.querySelectorAll('.nav-tab').forEach(t => {
+                        t.classList.remove('active');
+                    });
+                    
+                    // Hide all tab content
+                    tabContents.forEach(content => {
+                        content.style.display = 'none';
+                    });
+                    
+                    // Activate the clicked tab
+                    this.classList.add('active');
+                    
+                    // Show the corresponding tab content
+                    const tabName = this.dataset.tab;
+                    const tabContent = document.getElementById(`${tabName}-tab`);
+                    if (tabContent) {
+                        tabContent.style.display = 'block';
+                    } else {
+                        console.error(`Tab content not found for tab: ${tabName}`);
+                    }
+                    
+                    // For debugging
+                    console.log(`Switching to tab: ${tabName}`);
+                    console.log(`Tab content element:`, tabContent);
+                });
+            });
+            
+            // Initialize overview tab as active
+            const overviewTab = document.getElementById('overview-tab');
+            if (overviewTab) {
+                overviewTab.style.display = 'block';
+            }
+            
+            // View switching within overview tab
+            const projectsList = document.getElementById('projects-list');
+            const projectDashboard = document.getElementById('project-dashboard');
+            const backToProjectsBtn = document.getElementById('back-to-projects');
+            const headerTitle = document.getElementById('header-title');
+            
+            // Show project dashboard
+            document.querySelectorAll('.view-dashboard-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const projectName = this.closest('.project-item').querySelector('.project-name').textContent;
+                    headerTitle.textContent = projectName;
+                    projectsList.style.display = 'none';
+                    projectDashboard.style.display = 'block';
+                    
+                    // Show the overview tab content by default
+                    tabContents.forEach(content => {
+                        if (content) {
+                            content.style.display = 'none';
+                        }
+                    });
+                    const overviewTabContent = document.getElementById('overview-tab');
+                    if (overviewTabContent) {
+                        overviewTabContent.style.display = 'block';
+                    }
+                    
+                    // Set the overview tab as active
+                    document.querySelectorAll('.nav-tab').forEach(t => {
+                        t.classList.remove('active');
+                    });
+                    document.querySelector('.nav-tab[data-tab="overview"]').classList.add('active');
+                });
+            });
+            
+            // Back to projects list
+            backToProjectsBtn.addEventListener('click', function() {
+                headerTitle.textContent = 'Project Management Dashboard';
+                projectDashboard.style.display = 'none';
+                projectsList.style.display = 'block';
+            });
+            
+            // Phase expansion
+            document.querySelectorAll('.phase-header').forEach(header => {
+                header.addEventListener('click', function() {
+                    const container = this.parentElement;
+                    container.classList.toggle('expanded');
+                    const icon = this.querySelector('.expand-icon');
+                    icon.textContent = container.classList.contains('expanded') ? '▼' : '▶';
+                });
+            });
+            
+            // Task expansion
+            document.querySelectorAll('.task-item .expand-icon').forEach(icon => {
+                icon.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const item = this.parentElement;
+                    item.classList.toggle('expanded');
+                    this.textContent = item.classList.contains('expanded') ? '-' : '+';
+                });
+            });
+            
+            // Documentation functionality
+            // Show add document modal
+            const addDocumentBtn = document.getElementById('add-document-btn');
+            const addDocumentModal = document.getElementById('add-document-modal');
+            
+            if (addDocumentBtn) {
+                addDocumentBtn.addEventListener('click', function() {
+                    addDocumentModal.style.display = 'block';
+                });
+            }
+            
+            // Close modals when clicking the close button
+            document.querySelectorAll('.close-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    this.closest('.modal').style.display = 'none';
+                });
+            });
+            
+            // Cancel add document
+            const cancelAddDocumentBtn = document.getElementById('cancel-add-document');
+            if (cancelAddDocumentBtn) {
+                cancelAddDocumentBtn.addEventListener('click', function() {
+                    addDocumentModal.style.display = 'none';
+                });
+            }
+            
+            // Handle document form submission
+            const addDocumentForm = document.getElementById('add-document-form');
+            if (addDocumentForm) {
+                addDocumentForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // In a real implementation, this would save the document
+                    // For now, just close the modal
+                    addDocumentModal.style.display = 'none';
+                    
+                    // Show success message
+                    alert('Document created successfully!');
+                });
+            }
+            
+            // Document viewer functionality
+            const documentViewerModal = document.getElementById('document-viewer-modal');
+            
+            // Add click event to all document view buttons
+            document.querySelectorAll('.doc-item .btn, .journal-item .btn, .adr-item .btn, .guide-item .btn').forEach(btn => {
+                if (btn.textContent === 'View') {
+                    btn.addEventListener('click', function() {
+                        const documentItem = this.closest('[data-document-id]');
+                        const documentId = documentItem.dataset.documentId;
+                        viewDocument(documentId);
+                    });
+                }
+            });
+            
+            // Function to view a document
+            function viewDocument(documentId) {
+                // Get the document (in a real implementation, this would fetch from a server)
+                const doc = getDocumentById(documentId);
+                
+                // Set the document title
+                document.getElementById('document-viewer-title').textContent = doc.title;
+                
+                // Set the document content
+                document.getElementById('document-viewer-content').innerHTML = doc.content;
+                
+                // Show the modal
+                document.getElementById('document-viewer-modal').style.display = 'block';
+            }
+            
+            // Helper function to get document by ID
+            function getDocumentById(documentId) {
+                // In a real implementation, this would fetch from a server
+                // For now, just return a sample document based on the ID
+                const documents = {
+                    'architecture-overview': {
+                        title: 'Architecture Overview',
+                        content: '<div class="document-content"><h2>AI Orchestration Platform Architecture</h2><p>The AI Orchestration Platform is designed with a modular architecture that enables seamless integration between different AI components and workflows.</p><h3>Core Components</h3><ul><li><strong>Agent Manager:</strong> Handles the lifecycle of AI agents</li><li><strong>Task Distribution System:</strong> Allocates tasks to appropriate agents</li><li><strong>Dagger Integration:</strong> Provides containerized workflow capabilities</li><li><strong>Communication Framework:</strong> Enables inter-agent communication</li></ul><p>The platform uses a microservices architecture with well-defined APIs between components.</p></div>'
+                    },
+                    'dagger-adapter-implementation': {
+                        title: 'Dagger Adapter Implementation',
+                        content: '<div class="document-content"><h2>Dagger Adapter Implementation</h2><p>The Dagger adapter provides a bridge between the AI Orchestration Platform and Dagger\'s containerized workflow engine.</p><h3>Key Features</h3><ul><li>Workflow definition translation</li><li>Container registry integration</li><li>Caching mechanism</li><li>Self-healing capabilities</li></ul><p>The adapter is implemented as a standalone service that communicates with both the orchestration platform and the Dagger engine.</p></div>'
+                    },
+                    'component-interaction-map': {
+                        title: 'Component Interaction Map',
+                        content: '<div class="document-content"><h2>Component Interaction Map</h2><p>This document outlines how different components of the AI Orchestration Platform interact with each other.</p><pre>┌─────────────────┐     ┌─────────────────┐\n│  Agent Manager  │◄────►│ Task Distribution│\n└────────┬────────┘     └────────┬────────┘\n         │                       │\n         ▼                       ▼\n┌─────────────────┐     ┌─────────────────┐\n│  Communication  │◄────►│ Dagger Adapter  │\n│    Framework    │     │                 │\n└─────────────────┘     └─────────────────┘</pre><p>The diagram shows the primary communication paths between core components.</p></div>'
+                    },
+                    'journal-self-healing': {
+                        title: 'Implementing Self-Healing for Dagger Workflows',
+                        content: '<div class="document-content"><h2>Implementing Self-Healing for Dagger Workflows</h2><p><strong>Date:</strong> March 11, 2025</p><p>Today I successfully implemented a retry mechanism with exponential backoff for handling transient failures in the Dagger adapter. This significantly improves the reliability of our containerized workflows.</p><h3>Implementation Details</h3><p>The retry mechanism uses the following approach:</p><ol><li>Detect failure types (transient vs. permanent)</li><li>For transient failures, implement exponential backoff</li><li>Add circuit breaker pattern to prevent cascading failures</li><li>Log all retry attempts for monitoring</li></ol><p>Initial testing shows a 95% recovery rate for common transient failures like network timeouts and resource contention issues.</p></div>'
+                    },
+                    'journal-caching-issues': {
+                        title: 'Resolving Caching Issues in Dagger Integration',
+                        content: '<div class="document-content"><h2>Resolving Caching Issues in Dagger Integration</h2><p><strong>Date:</strong> March 10, 2025</p><p>Fixed a critical issue with the caching implementation that was causing stale results in some workflows. The problem was related to how we were handling cache invalidation when input parameters changed slightly.</p><h3>Root Cause</h3><p>The cache key generation algorithm wasn\'t properly accounting for nested object structures in the workflow inputs, leading to false cache hits.</p><h3>Solution</h3><p>Implemented a more robust hashing algorithm that properly traverses nested structures and generates unique cache keys based on the complete input state.</p></div>'
+                    },
+                    'journal-container-registry': {
+                        title: 'Setting Up Container Registry Authentication',
+                        content: '<div class="document-content"><h2>Setting Up Container Registry Authentication</h2><p><strong>Date:</strong> March 9, 2025</p><p>Implemented secure authentication for the container registry in the Dagger adapter. This allows our workflows to pull private container images securely.</p><h3>Implementation Details</h3><ul><li>Added support for multiple authentication methods (API key, OAuth, service accounts)</li><li>Implemented credential rotation</li><li>Set up secure storage for credentials</li><li>Added audit logging for all registry access</li></ul><p>The implementation follows security best practices and ensures that credentials are never exposed in logs or error messages.</p></div>'
+                    },
+                    'adr-001': {
+                        title: 'ADR-001: Adoption of Dagger for Containerized Workflows',
+                        content: '<div class="document-content"><h2>ADR-001: Adoption of Dagger for Containerized Workflows</h2><p><strong>Status:</strong> Accepted<br><strong>Date:</strong> March 5, 2025</p><h3>Context</h3><p>We need a solution for running containerized workflows that is both powerful and flexible. The solution should support complex dependency graphs, caching, and integration with various container registries.</p><h3>Decision</h3><p>We will adopt Dagger as our containerized workflow engine. Dagger provides a programmable CI/CD engine that runs workflows in containers and offers the features we need.</p><h3>Consequences</h3><p><strong>Positive:</strong></p><ul><li>Improved isolation of workflow steps</li><li>Better caching capabilities</li><li>Simplified dependency management</li><li>Consistent execution environment</li></ul><p><strong>Negative:</strong></p><ul><li>Learning curve for team members unfamiliar with Dagger</li><li>Need to build adapter layer for integration</li></ul></div>'
+                    },
+                    'adr-002': {
+                        title: 'ADR-002: Error Handling Strategy',
+                        content: '<div class="document-content"><h2>ADR-002: Error Handling Strategy</h2><p><strong>Status:</strong> Accepted<br><strong>Date:</strong> March 8, 2025</p><h3>Context</h3><p>As our system grows more complex, we need a consistent approach to error handling across all components. This includes how errors are detected, reported, and recovered from.</p><h3>Decision</h3><p>We will implement a multi-layered error handling strategy:</p><ol><li>Use structured error types with error codes</li><li>Implement circuit breakers for external dependencies</li><li>Add retry mechanisms with exponential backoff for transient failures</li><li>Centralize error logging and monitoring</li></ol><h3>Consequences</h3><p><strong>Positive:</strong></p><ul><li>More resilient system</li><li>Better visibility into failure modes</li><li>Consistent recovery mechanisms</li></ul><p><strong>Negative:</strong></p><ul><li>Additional complexity in code</li><li>Need to refactor existing components</li></ul></div>'
+                    },
+                    'adr-003': {
+                        title: 'ADR-003: Caching Implementation for Dagger Workflows',
+                        content: '<div class="document-content"><h2>ADR-003: Caching Implementation for Dagger Workflows</h2><p><strong>Status:</strong> Proposed<br><strong>Date:</strong> March 9, 2025</p><h3>Context</h3><p>Efficient caching is critical for optimizing the performance of our containerized workflows. We need to decide on a caching strategy that balances performance with correctness.</p><h3>Decision</h3><p>We propose implementing a two-level caching strategy:</p><ol><li>Use Dagger\'s built-in content-addressed cache for individual steps</li><li>Implement an application-level cache for entire workflows with intelligent invalidation</li></ol><p>The cache keys will be generated based on a hash of all inputs, including code, configuration, and data dependencies.</p><h3>Consequences</h3><p><strong>Positive:</strong></p><ul><li>Significant performance improvements for repeated workflows</li><li>Reduced resource usage</li><li>Faster feedback cycles for developers</li></ul><p><strong>Negative:</strong></p><ul><li>Risk of stale results if cache invalidation is not handled correctly</li><li>Additional complexity in workflow definition</li><li>Storage requirements for cache data</li></ul></div>'
+                    },
+                    'guide-creating-workflows': {
+                        title: 'Creating Dagger Workflows',
+                        content: '<div class="document-content"><h2>Creating Dagger Workflows</h2><p>This guide explains how to create and run containerized workflows using Dagger in the AI Orchestration Platform.</p><h3>Basic Workflow Structure</h3><pre>from dagger import Container, dag\n\n@dag.container\ndef build(src_dir: str) -> Container:\n    return dag.container().from_("python:3.9").with_directory("/src", src_dir).with_exec(["pip", "install", "-r", "/src/requirements.txt"])\n\n@dag.container\ndef test(build: Container) -> Container:\n    return build.with_exec(["pytest", "/src/tests"])</pre><h3>Running a Workflow</h3><p>To run a workflow, use the Dagger client:</p><pre>from dagger import Client\n\nasync with Client() as client:\n    result = await test(build(client, "./src"))\n    print(await result.stdout())</pre><h3>Best Practices</h3><ul><li>Keep containers focused on a single responsibility</li><li>Use explicit dependencies between steps</li><li>Leverage caching for expensive operations</li><li>Use environment variables for configuration</li></ul></div>'
+                    },
+                    'guide-self-healing': {
+                        title: 'Configuring Self-Healing Workflows',
+                        content: '<div class="document-content"><h2>Configuring Self-Healing Workflows</h2><p>This guide explains how to configure self-healing capabilities for Dagger workflows in the AI Orchestration Platform.</p><h3>Retry Configuration</h3><p>To add retry capabilities to a workflow, use the retry decorator:</p><pre>from orchestration.retry import retry\n\n@retry(max_attempts=3, backoff_factor=2)\n@dag.container\ndef fetch_data(url: str) -> Container:\n    return dag.container().from_("python:3.9").with_exec(["python", "-c", f"import requests; requests.get(\'{url}\')")</pre><h3>Circuit Breaker Configuration</h3><p>To add circuit breaker protection:</p><pre>from orchestration.circuit_breaker import circuit_breaker\n\n@circuit_breaker(failure_threshold=5, reset_timeout=30)\n@dag.container\ndef external_api_call(endpoint: str) -> Container:\n    # Implementation here</pre><h3>Monitoring</h3><p>Configure monitoring to track retry attempts and circuit breaker state:</p><pre>from orchestration.monitoring import configure_monitoring\n\nconfigure_monitoring(\n    enable_prometheus=True,\n    log_level="INFO",\n    alert_on_circuit_break=True\n)</pre></div>'
+                    }
+                };
+                
+                return documents[documentId] || {
+                    title: 'Document Not Found',
+                    content: '<p>The requested document could not be found.</p>'
+                };
+            }
+            
+            // Search tag functionality
+            document.querySelectorAll('.search-tag').forEach(tag => {
+                tag.addEventListener('click', function() {
+                    const searchInput = document.querySelector('.documentation-search input');
+                    if (searchInput) {
+                        searchInput.value = tag.textContent;
+                        // In a real implementation, this would trigger the search
+                    }
+                });
+            });
+            
+            // Task documentation integration
+            function renderTaskDocumentationLinks(taskId, taskName) {
+                // Find all documentation related to this task
+                const relatedDocs = findRelatedDocumentation(taskId, taskName);
+                
+                // Get the task item
+                const taskItem = document.querySelector(`[data-task-id="${taskId}"]`);
+                if (!taskItem) return;
+                
+                // Check if documentation section already exists
+                let docContainer = taskItem.querySelector('.task-documentation');
+                if (!docContainer) {
+                    // Create documentation section
+                    docContainer = document.createElement('div');
+                    docContainer.className = 'task-documentation';
+                    docContainer.innerHTML = '<h5>Related Documentation</h5><ul class="doc-link-list"></ul>';
+                    taskItem.appendChild(docContainer);
+                }
+                
+                // Clear existing links
+                const linkList = docContainer.querySelector('.doc-link-list');
+                linkList.innerHTML = '';
+                
+                // Add links for each related document
+                relatedDocs.forEach(doc => {
+                    const li = document.createElement('li');
+                    const a = document.createElement('a');
+                    a.href = `#${doc.id}`;
+                    a.textContent = doc.title;
+                    a.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        viewDocument(doc.id);
+                    });
+                    li.appendChild(a);
+                    linkList.appendChild(li);
+                });
+            }
+            
+            // Helper function to find related documentation
+            function findRelatedDocumentation(taskId, taskName) {
+                // This would query the documentation system in a real implementation
+                // For now, just return some sample related docs based on task ID
+                const taskDocMap = {
+                    'TASK-004': [
+                        { id: 'dagger-adapter-implementation', title: 'Dagger Adapter Implementation' },
+                        { id: 'adr-001', title: 'ADR-001: Adoption of Dagger' },
+                        { id: 'guide-creating-workflows', title: 'Creating Dagger Workflows' }
+                    ],
+                    'TASK-003': [
+                        { id: 'architecture-overview', title: 'Architecture Overview' },
+                        { id: 'component-interaction-map', title: 'Component Interaction Map' }
+                    ]
+                };
+                
+                return taskDocMap[taskId] || [];
+            }
+            
+            // Add documentation links to tasks
+            document.querySelectorAll('.task-item').forEach(taskItem => {
+                const taskId = taskItem.querySelector('.task-id')?.textContent;
+                const taskName = taskItem.querySelector('.task-name')?.textContent;
+                if (taskId && taskName) {
+                    // Only add documentation to top-level tasks, not subtasks
+                    if (!taskItem.closest('.subtask-list')) {
+                        renderTaskDocumentationLinks(taskId, taskName);
+                    }
+                }
+            });
+            
+            // Add confirmation dialog for delete project button
+            document.querySelectorAll('.delete-project-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const projectName = this.closest('.project-item').querySelector('.project-name').textContent;
+                    const confirmDelete = confirm(`Are you sure you want to delete the project "${projectName}"? This action cannot be undone.`);
+                    
+                    if (confirmDelete) {
+                        // In a real implementation, this would delete the project
+                        // For now, just remove the project item from the DOM
+                        this.closest('.project-item').remove();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

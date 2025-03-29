@@ -1,0 +1,100 @@
+{
+  "timestamp": "2025-03-25T19:09:42.134113",
+  "legacy_data_path": "data/legacy",
+  "new_data_path": "data/new",
+  "id_mapping_path": "data/id_mapping.json",
+  "verification_results": {
+    "projects": {
+      "verified": 2,
+      "missing": 0,
+      "details": [
+        {
+          "legacy_id": "project-1",
+          "new_id": "project-309d4f26-8498-47db-82e4-f2cb0e8044fc",
+          "status": "verified"
+        },
+        {
+          "legacy_id": "project-2",
+          "new_id": "project-e76cccf8-ded6-4902-bf97-0179cae0e27a",
+          "status": "verified"
+        }
+      ]
+    },
+    "phases": {
+      "verified": 5,
+      "missing": 0,
+      "details": [
+        {
+          "legacy_id": "phase-1",
+          "new_id": "phase-306589cb-6d87-489f-ab44-f2e602826b0e",
+          "status": "verified"
+        },
+        {
+          "legacy_id": "phase-2",
+          "new_id": "phase-43c0e348-a669-4d41-ad09-281cb599f644",
+          "status": "verified"
+        },
+        {
+          "legacy_id": "phase-3",
+          "new_id": "phase-311a4ad7-77d7-4f5d-af0e-f13ba52edc5f",
+          "status": "verified"
+        },
+        {
+          "legacy_id": "phase-4",
+          "new_id": "phase-e74b779e-a788-43f8-99d4-d5019bcdc096",
+          "status": "verified"
+        },
+        {
+          "legacy_id": "phase-5",
+          "new_id": "phase-f6ca8cda-eb40-40f3-ae56-40c32d96c8c6",
+          "status": "verified"
+        }
+      ]
+    },
+    "tasks": {
+      "verified": 6,
+      "missing": 0,
+      "details": [
+        {
+          "legacy_id": "task-1",
+          "new_id": "task-898d559e-934c-4486-a19d-b73b557bf132",
+          "status": "verified"
+        },
+        {
+          "legacy_id": "task-2",
+          "new_id": "task-9121ba5c-3b3e-48c1-9b44-a048ae999bea",
+          "status": "verified"
+        },
+        {
+          "legacy_id": "task-3",
+          "new_id": "task-8a648e3a-b519-403b-acdb-e2fefc0a8542",
+          "status": "verified"
+        },
+        {
+          "legacy_id": "task-4",
+          "new_id": "task-0e516407-f5ae-4922-9c49-83d9a636f4d5",
+          "status": "verified"
+        },
+        {
+          "legacy_id": "task-5",
+          "new_id": "task-15fbeaa5-a4d2-45fe-bb17-11e6aae98fe7",
+          "status": "verified"
+        },
+        {
+          "legacy_id": "task-6",
+          "new_id": "task-51083b73-e106-4120-b052-2e98e41103b7",
+          "status": "verified"
+        }
+      ]
+    }
+  },
+  "summary": {
+    "projects_verified": 2,
+    "projects_missing": 0,
+    "phases_verified": 5,
+    "phases_missing": 0,
+    "tasks_verified": 6,
+    "tasks_missing": 0,
+    "verification_successful": true
+  }
+}

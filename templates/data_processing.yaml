@@ -1,0 +1,192 @@
+# Data Processing Workflow Template
+
+# Workflow metadata
+metadata:
+  name: data_processing
+  description: A data processing workflow template
+  version: 1.0.0
+  category: data
+  tags:
+    - data
+    - processing
+
+# Workflow parameters
+parameters:
+  input_data:
+    type: string
+    description: The input data to process
+    required: true
+  output_path:
+    type: string
+    description: The path to save the processed data
+    required: true
+  processing_type:
+    type: string
+    description: The type of processing to perform
+    required: true
+    enum:
+      - filter
+      - transform
+      - aggregate
+      - analyze
+  filter_criteria:
+    type: object
+    description: Criteria for filtering data
+    default: {}
+  transform_function:
+    type: string
+    description: Function to transform data
+    default: ""
+  aggregate_function:
+    type: string
+    description: Function to aggregate data
+    default: ""
+  analysis_type:
+    type: string
+    description: Type of analysis to perform
+    default: ""
+  timeout:
+    type: integer
+    description: The timeout for the processing in seconds
+    default: 3600
+  image:
+    type: string
+    description: The container image to use
+    default: python:3.9-slim
+
+# Workflow steps
+steps:
+  - name: prepare_data
+    description: Prepare the data for processing
+    container:
+      image: ${image}
+      command: |
+        python -c "
+        import json
+        import sys
+        
+        # Load input data
+        input_data = json.loads('''${input_data}''')
+        
+        # Save input data to file
+        with open('/tmp/input_data.json', 'w') as f:
+            json.dump(input_data, f)
+        
+        print('Data prepared successfully')
+        "
+      workdir: /app
+      mounts:
+        - source: /tmp
+          target: /tmp
+          read_only: false
+      timeout: ${timeout}
+  
+  - name: process_data
+    description: Process the data
+    depends_on:
+      - prepare_data
+    container:
+      image: ${image}
+      command: |
+        python -c "
+        import json
+        import sys
+        
+        # Load input data
+        with open('/tmp/input_data.json', 'r') as f:
+            input_data = json.load(f)
+        
+        # Process data based on processing type
+        if '${processing_type}' == 'filter':
+            # Filter data
+            filter_criteria = json.loads('''${filter_criteria}''')
+            result = [item for item in input_data if all(item.get(k) == v for k, v in filter_criteria.items())]
+        elif '${processing_type}' == 'transform':
+            # Transform data
+            transform_function = '''${transform_function}'''
+            if transform_function:
+                transform_func = eval(f'lambda item: {transform_function}')
+                result = [transform_func(item) for item in input_data]
+            else:
+                result = input_data
+        elif '${processing_type}' == 'aggregate':
+            # Aggregate data
+            aggregate_function = '''${aggregate_function}'''
+            if aggregate_function:
+                aggregate_func = eval(f'lambda data: {aggregate_function}')
+                result = aggregate_func(input_data)
+            else:
+                result = input_data
+        elif '${processing_type}' == 'analyze':
+            # Analyze data
+            analysis_type = '''${analysis_type}'''
+            if analysis_type == 'count':
+                result = {'count': len(input_data)}
+            elif analysis_type == 'sum':
+                result = {'sum': sum(input_data)}
+            elif analysis_type == 'average':
+                result = {'average': sum(input_data) / len(input_data)}
+            else:
+                result = input_data
+        else:
+            result = input_data
+        
+        # Save result to file
+        with open('/tmp/output_data.json', 'w') as f:
+            json.dump(result, f)
+        
+        print('Data processed successfully')
+        "
+      workdir: /app
+      mounts:
+        - source: /tmp
+          target: /tmp
+          read_only: false
+      timeout: ${timeout}
+  
+  - name: save_result
+    description: Save the processed data
+    depends_on:
+      - process_data
+    container:
+      image: ${image}
+      command: |
+        python -c "
+        import json
+        import os
+        import sys
+        
+        # Load processed data
+        with open('/tmp/output_data.json', 'r') as f:
+            output_data = json.load(f)
+        
+        # Create output directory if it doesn't exist
+        os.makedirs(os.path.dirname('${output_path}'), exist_ok=True)
+        
+        # Save output data to file
+        with open('${output_path}', 'w') as f:
+            json.dump(output_data, f)
+        
+        print(f'Result saved to ${output_path}')
+        "
+      workdir: /app
+      mounts:
+        - source: /tmp
+          target: /tmp
+          read_only: true
+        - source: ${output_path}
+          target: ${output_path}
+          read_only: false
+      timeout: ${timeout}
+
+# Workflow outputs
+outputs:
+  result:
+    description: The result of the data processing
+    value: ${steps.process_data.output}
+  logs:
+    description: The logs of the data processing
+    value: ${steps.process_data.logs}
+  output_path:
+    description: The path where the processed data is saved
+    value: ${output_path}

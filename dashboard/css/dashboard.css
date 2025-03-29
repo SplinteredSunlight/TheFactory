@@ -1,0 +1,58 @@
+/* Dashboard Styles */
+:root {
+  --primary-color: #4caf50;
+  --secondary-color: #2196f3;
+  --warning-color: #ff9800;
+  --danger-color: #f44336;
+  --success-color: #4caf50;
+  --info-color: #2196f3;
+  --light-bg: #f5f5f5;
+  --dark-bg: #333;
+  --light-text: #333;
+  --dark-text: #f5f5f5;
+  --border-color: #ddd;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Theme: Light */
+body.theme-light {
+  --bg-color: var(--light-bg);
+  --text-color: var(--light-text);
+  --card-bg: white;
+}
+
+/* Theme: Dark */
+body.theme-dark {
+  --bg-color: var(--dark-bg);
+  --text-color: var(--dark-text);
+  --card-bg: #444;
+  --border-color: #555;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: var(--card-bg);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px var(--shadow-color);
+}
+
+.error-message {
+  background-color: var(--danger-color);
+  color: white;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  display: none;
+}
+
+/* Add more styles as needed */

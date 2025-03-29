@@ -1,0 +1,1008 @@
+openapi: 3.0.3
+info:
+  title: AI-Orchestration-Platform Dagger API
+  description: API documentation for Dagger integration in the AI-Orchestration-Platform
+  version: 1.0.0
+  contact:
+    name: AI-Orchestration-Platform Team
+    url: https://example.com/contact
+
+servers:
+  - url: https://api.example.com/v1
+    description: Production server
+  - url: https://staging-api.example.com/v1
+    description: Staging server
+  - url: http://localhost:8000/v1
+    description: Local development server
+
+tags:
+  - name: workflows
+    description: Operations related to Dagger workflows
+  - name: agents
+    description: Operations related to Dagger agents
+  - name: pipelines
+    description: Operations related to Dagger pipelines
+  - name: containers
+    description: Operations related to Dagger containers
+
+paths:
+  /dagger/workflows:
+    get:
+      summary: List all Dagger workflows
+      description: Returns a list of all Dagger workflows
+      tags:
+        - workflows
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: status
+          in: query
+          description: Filter workflows by status
+          schema:
+            type: string
+            enum: [pending, running, completed, failed]
+        - name: limit
+          in: query
+          description: Maximum number of workflows to return
+          schema:
+            type: integer
+            default: 20
+        - name: offset
+          in: query
+          description: Number of workflows to skip
+          schema:
+            type: integer
+            default: 0
+      responses:
+        '200':
+          description: A list of workflows
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  workflows:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/WorkflowSummary'
+                  total:
+                    type: integer
+                  limit:
+                    type: integer
+                  offset:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+    post:
+      summary: Create a new Dagger workflow
+      description: Creates a new Dagger workflow
+      tags:
+        - workflows
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkflowCreate'
+      responses:
+        '201':
+          description: Workflow created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Workflow'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+  /dagger/workflows/{workflowId}:
+    get:
+      summary: Get a specific Dagger workflow
+      description: Returns details for a specific Dagger workflow
+      tags:
+        - workflows
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: workflowId
+          in: path
+          required: true
+          description: ID of the workflow to retrieve
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Workflow details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Workflow'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      summary: Update a Dagger workflow
+      description: Updates an existing Dagger workflow
+      tags:
+        - workflows
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: workflowId
+          in: path
+          required: true
+          description: ID of the workflow to update
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkflowUpdate'
+      responses:
+        '200':
+          description: Workflow updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Workflow'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      summary: Delete a Dagger workflow
+      description: Deletes a Dagger workflow
+      tags:
+        - workflows
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: workflowId
+          in: path
+          required: true
+          description: ID of the workflow to delete
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: Workflow deleted successfully
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /dagger/workflows/{workflowId}/execute:
+    post:
+      summary: Execute a Dagger workflow
+      description: Executes a Dagger workflow
+      tags:
+        - workflows
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: workflowId
+          in: path
+          required: true
+          description: ID of the workflow to execute
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                inputs:
+                  type: object
+                  additionalProperties: true
+                  description: Input parameters for the workflow
+                container_registry:
+                  type: string
+                  description: Container registry to use
+                container_credentials:
+                  type: object
+                  properties:
+                    username:
+                      type: string
+                    password:
+                      type: string
+                  description: Credentials for the container registry
+                workflow_defaults:
+                  type: object
+                  additionalProperties: true
+                  description: Default parameters for the workflow
+      responses:
+        '202':
+          description: Workflow execution started
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  execution_id:
+                    type: string
+                    format: uuid
+                  status:
+                    type: string
+                    enum: [pending, running]
+                  workflow_id:
+                    type: string
+                    format: uuid
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /dagger/workflows/{workflowId}/executions:
+    get:
+      summary: List executions for a workflow
+      description: Returns a list of executions for a specific workflow
+      tags:
+        - workflows
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: workflowId
+          in: path
+          required: true
+          description: ID of the workflow
+          schema:
+            type: string
+            format: uuid
+        - name: status
+          in: query
+          description: Filter executions by status
+          schema:
+            type: string
+            enum: [pending, running, completed, failed]
+        - name: limit
+          in: query
+          description: Maximum number of executions to return
+          schema:
+            type: integer
+            default: 20
+        - name: offset
+          in: query
+          description: Number of executions to skip
+          schema:
+            type: integer
+            default: 0
+      responses:
+        '200':
+          description: A list of workflow executions
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  executions:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/WorkflowExecution'
+                  total:
+                    type: integer
+                  limit:
+                    type: integer
+                  offset:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /dagger/executions/{executionId}:
+    get:
+      summary: Get a specific workflow execution
+      description: Returns details for a specific workflow execution
+      tags:
+        - workflows
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: executionId
+          in: path
+          required: true
+          description: ID of the execution to retrieve
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Execution details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowExecution'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      summary: Cancel a workflow execution
+      description: Cancels a running workflow execution
+      tags:
+        - workflows
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: executionId
+          in: path
+          required: true
+          description: ID of the execution to cancel
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: Execution cancelled successfully
+        '400':
+          description: Execution cannot be cancelled
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /dagger/agents:
+    get:
+      summary: List all Dagger agents
+      description: Returns a list of all Dagger agents
+      tags:
+        - agents
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: status
+          in: query
+          description: Filter agents by status
+          schema:
+            type: string
+            enum: [idle, busy, offline, error]
+        - name: capability
+          in: query
+          description: Filter agents by capability
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: Maximum number of agents to return
+          schema:
+            type: integer
+            default: 20
+        - name: offset
+          in: query
+          description: Number of agents to skip
+          schema:
+            type: integer
+            default: 0
+      responses:
+        '200':
+          description: A list of agents
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  agents:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Agent'
+                  total:
+                    type: integer
+                  limit:
+                    type: integer
+                  offset:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+    post:
+      summary: Create a new Dagger agent
+      description: Creates a new Dagger agent
+      tags:
+        - agents
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AgentCreate'
+      responses:
+        '201':
+          description: Agent created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Agent'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+  /dagger/pipelines:
+    get:
+      summary: List all Dagger pipelines
+      description: Returns a list of all Dagger pipelines
+      tags:
+        - pipelines
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: limit
+          in: query
+          description: Maximum number of pipelines to return
+          schema:
+            type: integer
+            default: 20
+        - name: offset
+          in: query
+          description: Number of pipelines to skip
+          schema:
+            type: integer
+            default: 0
+      responses:
+        '200':
+          description: A list of pipelines
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  pipelines:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Pipeline'
+                  total:
+                    type: integer
+                  limit:
+                    type: integer
+                  offset:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+    post:
+      summary: Create a new Dagger pipeline
+      description: Creates a new Dagger pipeline
+      tags:
+        - pipelines
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PipelineCreate'
+      responses:
+        '201':
+          description: Pipeline created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pipeline'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+  /dagger/pipelines/{pipelineId}/execute:
+    post:
+      summary: Execute a Dagger pipeline
+      description: Executes a Dagger pipeline
+      tags:
+        - pipelines
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: pipelineId
+          in: path
+          required: true
+          description: ID of the pipeline to execute
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                inputs:
+                  type: object
+                  additionalProperties: true
+                  description: Input parameters for the pipeline
+                source_directory:
+                  type: string
+                  description: Source directory for the pipeline
+      responses:
+        '202':
+          description: Pipeline execution started
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  execution_id:
+                    type: string
+                    format: uuid
+                  status:
+                    type: string
+                    enum: [pending, running]
+                  pipeline_id:
+                    type: string
+                    format: uuid
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+  schemas:
+    Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        code:
+          type: string
+        message:
+          type: string
+        details:
+          type: object
+          additionalProperties: true
+      required:
+        - status
+        - code
+        - message
+
+    WorkflowSummary:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        description:
+          type: string
+        status:
+          type: string
+          enum: [pending, running, completed, failed]
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+      required:
+        - id
+        - name
+        - status
+        - created_at
+
+    WorkflowCreate:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the workflow
+        description:
+          type: string
+          description: Description of the workflow
+        steps:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkflowStep'
+          description: Steps in the workflow
+        container_config:
+          $ref: '#/components/schemas/ContainerConfig'
+          description: Default container configuration for the workflow
+      required:
+        - name
+        - steps
+
+    WorkflowUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the workflow
+        description:
+          type: string
+          description: Description of the workflow
+        steps:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkflowStep'
+          description: Steps in the workflow
+        container_config:
+          $ref: '#/components/schemas/ContainerConfig'
+          description: Default container configuration for the workflow
+
+    Workflow:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        description:
+          type: string
+        steps:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkflowStep'
+        container_config:
+          $ref: '#/components/schemas/ContainerConfig'
+        status:
+          type: string
+          enum: [pending, running, completed, failed]
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+      required:
+        - id
+        - name
+        - steps
+        - status
+        - created_at
+
+    WorkflowStep:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the step
+        name:
+          type: string
+          description: Name of the step
+        container:
+          $ref: '#/components/schemas/ContainerConfig'
+          description: Container configuration for the step
+        depends_on:
+          type: array
+          items:
+            type: string
+          description: Steps this step depends on
+        inputs:
+          type: object
+          additionalProperties: true
+          description: Inputs for the step
+        outputs:
+          type: array
+          items:
+            type: string
+          description: Outputs from the step
+        timeout_seconds:
+          type: integer
+          description: Timeout for the step in seconds
+      required:
+        - id
+        - name
+        - container
+
+    WorkflowExecution:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        workflow_id:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum: [pending, running, completed, failed]
+        steps:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/StepExecution'
+        inputs:
+          type: object
+          additionalProperties: true
+        outputs:
+          type: object
+          additionalProperties: true
+        started_at:
+          type: string
+          format: date-time
+        completed_at:
+          type: string
+          format: date-time
+        error:
+          type: string
+        logs:
+          type: string
+      required:
+        - id
+        - workflow_id
+        - status
+        - steps
+
+    StepExecution:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        status:
+          type: string
+          enum: [pending, running, completed, failed]
+        started_at:
+          type: string
+          format: date-time
+        completed_at:
+          type: string
+          format: date-time
+        inputs:
+          type: object
+          additionalProperties: true
+        outputs:
+          type: object
+          additionalProperties: true
+        error:
+          type: string
+      required:
+        - id
+        - name
+        - status
+
+    ContainerConfig:
+      type: object
+      properties:
+        image:
+          type: string
+          description: Container image to use
+        environment:
+          type: object
+          additionalProperties:
+            type: string
+          description: Environment variables for the container
+        volumes:
+          type: array
+          items:
+            type: object
+            properties:
+              source:
+                type: string
+                description: Source path on the host
+              target:
+                type: string
+                description: Target path in the container
+          description: Volumes to mount in the container
+        command:
+          type: array
+          items:
+            type: string
+          description: Command to run in the container
+        working_dir:
+          type: string
+          description: Working directory for the container
+        registry_credentials:
+          type: object
+          properties:
+            username:
+              type: string
+            password:
+              type: string
+          description: Credentials for the container registry
+      required:
+        - image
+
+    AgentCreate:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the agent
+        description:
+          type: string
+          description: Description of the agent
+        capabilities:
+          type: array
+          items:
+            type: string
+          description: Capabilities of the agent
+        container_registry:
+          type: string
+          description: Container registry to use
+        workflow_directory:
+          type: string
+          description: Directory containing workflow definitions
+        max_concurrent_executions:
+          type: integer
+          description: Maximum number of concurrent workflow executions
+        timeout_seconds:
+          type: integer
+          description: Default timeout for workflow executions in seconds
+      required:
+        - name
+
+    Agent:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        description:
+          type: string
+        capabilities:
+          type: array
+          items:
+            type: string
+        status:
+          type: string
+          enum: [idle, busy, offline, error]
+        current_load:
+          type: integer
+        max_load:
+          type: integer
+        container_registry:
+          type: string
+        workflow_directory:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+      required:
+        - id
+        - name
+        - capabilities
+        - status
+        - created_at
+
+    PipelineCreate:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the pipeline
+        description:
+          type: string
+          description: Description of the pipeline
+        source_directory:
+          type: string
+          description: Source directory for the pipeline
+        pipeline_definition:
+          oneOf:
+            - type: string
+              description: Path to the pipeline definition file
+            - type: object
+              additionalProperties: true
+              description: Inline pipeline definition
+        caching_enabled:
+          type: boolean
+          description: Whether to enable caching for the pipeline
+        timeout_seconds:
+          type: integer
+          description: Timeout for the pipeline in seconds
+      required:
+        - name
+        - source_directory
+        - pipeline_definition
+
+    Pipeline:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        description:
+          type: string
+        source_directory:
+          type: string
+        pipeline_definition:
+          oneOf:
+            - type: string
+            - type: object
+              additionalProperties: true
+        caching_enabled:
+          type: boolean
+        timeout_seconds:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+      required:
+        - id
+        - name
+        - source_directory
+        - pipeline_definition
+        - created_at

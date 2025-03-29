@@ -1,0 +1,171 @@
+{
+  "dagger_migration": {
+    "description": "Feature flags for controlling the Dagger migration process",
+    "flags": {
+      "component_flags": {
+        "USE_DAGGER_WORKFLOW_ENGINE": {
+          "description": "Controls whether to use the Dagger workflow engine or legacy implementation",
+          "enabled": false,
+          "default": false,
+          "environments": {
+            "development": true,
+            "staging": false,
+            "production": false
+          },
+          "conditions": {
+            "phase": ">=2"
+          },
+          "cleanup_criteria": "After Phase 4 completion"
+        },
+        "USE_DAGGER_TASK_MANAGER": {
+          "description": "Controls whether to use the Dagger task manager or legacy implementation",
+          "enabled": false,
+          "default": false,
+          "environments": {
+            "development": true,
+            "staging": false,
+            "production": false
+          },
+          "conditions": {
+            "phase": ">=1"
+          },
+          "cleanup_criteria": "After Phase 4 completion"
+        },
+        "USE_DAGGER_MCP_SERVER": {
+          "description": "Controls whether to use the Dagger MCP server or legacy implementation",
+          "enabled": false,
+          "default": false,
+          "environments": {
+            "development": true,
+            "staging": false,
+            "production": false
+          },
+          "conditions": {
+            "phase": ">=1"
+          },
+          "cleanup_criteria": "After Phase 4 completion"
+        }
+      },
+      "feature_flags": {
+        "ENABLE_DAGGER_CACHING": {
+          "description": "Controls whether to enable Dagger caching features",
+          "enabled": false,
+          "default": false,
+          "environments": {
+            "development": true,
+            "staging": true,
+            "production": false
+          },
+          "conditions": {
+            "phase": ">=2",
+            "USE_DAGGER_WORKFLOW_ENGINE": true
+          },
+          "cleanup_criteria": "After Phase 4 completion and performance validation"
+        },
+        "ENABLE_CIRCUIT_BREAKER": {
+          "description": "Controls whether to enable the circuit breaker pattern for Dagger operations",
+          "enabled": true,
+          "default": true,
+          "environments": {
+            "development": true,
+            "staging": true,
+            "production": true
+          },
+          "conditions": {
+            "phase": ">=1"
+          },
+          "cleanup_criteria": "Never (permanent feature)"
+        },
+        "ENABLE_ADVANCED_MONITORING": {
+          "description": "Controls whether to enable advanced monitoring for Dagger operations",
+          "enabled": false,
+          "default": false,
+          "environments": {
+            "development": true,
+            "staging": true,
+            "production": false
+          },
+          "conditions": {
+            "phase": ">=2"
+          },
+          "cleanup_criteria": "After Phase 4 completion and monitoring validation"
+        }
+      },
+      "user_flags": {
+        "SHOW_DAGGER_UI_TO_ADMINS": {
+          "description": "Controls whether to show Dagger UI features to administrators",
+          "enabled": false,
+          "default": false,
+          "environments": {
+            "development": true,
+            "staging": true,
+            "production": false
+          },
+          "conditions": {
+            "phase": ">=3",
+            "role": "admin"
+          },
+          "cleanup_criteria": "After Phase 4 completion"
+        },
+        "SHOW_DAGGER_UI_TO_ALL_USERS": {
+          "description": "Controls whether to show Dagger UI features to all users",
+          "enabled": false,
+          "default": false,
+          "environments": {
+            "development": true,
+            "staging": false,
+            "production": false
+          },
+          "conditions": {
+            "phase": ">=4"
+          },
+          "cleanup_criteria": "After Phase 4 completion and user acceptance"
+        }
+      }
+    },
+    "phase_definitions": {
+      "1": {
+        "name": "Foundation and Critical Components",
+        "start_date": "2025-04-01",
+        "end_date": "2025-04-28"
+      },
+      "2": {
+        "name": "Core Functionality Migration",
+        "start_date": "2025-04-29",
+        "end_date": "2025-05-26"
+      },
+      "3": {
+        "name": "User-Facing Components Migration",
+        "start_date": "2025-05-27",
+        "end_date": "2025-06-23"
+      },
+      "4": {
+        "name": "Complete Migration and Legacy Retirement",
+        "start_date": "2025-06-24",
+        "end_date": "2025-07-21"
+      }
+    },
+    "environment_overrides": {
+      "development": {
+        "description": "Development environment settings",
+        "phase_advancement": "allowed",
+        "flag_override": "allowed"
+      },
+      "staging": {
+        "description": "Staging environment settings",
+        "phase_advancement": "with_approval",
+        "flag_override": "with_approval"
+      },
+      "production": {
+        "description": "Production environment settings",
+        "phase_advancement": "scheduled",
+        "flag_override": "emergency_only"
+      }
+    },
+    "audit_settings": {
+      "log_flag_changes": true,
+      "notify_on_flag_changes": true,
+      "retention_period_days": 90
+    }
+  }
+}

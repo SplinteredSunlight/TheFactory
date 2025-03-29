@@ -1,0 +1,17 @@
+{
+  "start_time": "2025-03-25T19:09:42.023182",
+  "end_time": "2025-03-25T19:09:42.030131",
+  "duration_seconds": 0.006949,
+  "phases_completed": [
+    "prepare",
+    "migrate",
+    "verify",
+    "finalize"
+  ],
+  "phases_failed": [],
+  "projects_migrated": 2,
+  "tasks_migrated": 6,
+  "workflows_created": 0,
+  "tests_passed": 17,
+  "tests_failed": 0
+}

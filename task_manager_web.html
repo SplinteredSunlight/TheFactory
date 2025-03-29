@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager Web Interface</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .task-list {
+            margin-top: 20px;
+        }
+        .task {
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+        }
+        .task-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .task-name {
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .task-status {
+            padding: 5px 10px;
+            border-radius: 12px;
+            font-size: 14px;
+            color: white;
+        }
+        .status-planned {
+            background-color: #2196f3;
+        }
+        .status-in_progress {
+            background-color: #ff9800;
+        }
+        .status-completed {
+            background-color: #4caf50;
+        }
+        .task-description {
+            margin-bottom: 10px;
+        }
+        .task-metadata {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+        .subtasks {
+            margin-top: 10px;
+        }
+        .subtask {
+            margin-bottom: 5px;
+        }
+        .subtask input[type="checkbox"] {
+            margin-right: 5px;
+        }
+        .progress-bar {
+            height: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+        .progress-bar-fill {
+            height: 100%;
+            background-color: #4caf50;
+            border-radius: 5px;
+            transition: width 0.3s ease;
+        }
+        .task-actions {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+        }
+        button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            background-color: #2196f3;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        button:hover {
+            background-color: #0b7dda;
+        }
+        .complete-btn {
+            background-color: #4caf50;
+        }
+        .complete-btn:hover {
+            background-color: #45a049;
+        }
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+        }
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border-left-color: #09f;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .error {
+            background-color: #f44336;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .success {
+            background-color: #4caf50;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Task Manager Web Interface</h1>
+            <button id="refresh-btn">Refresh</button>
+        </div>
+        
+        <div id="message-container"></div>
+        
+        <div id="next-task-container">
+            <h2>Next Task</h2>
+            <div id="next-task-content">
+                <div class="loading">
+                    <div class="spinner"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="task-list">
+            <h2>All Tasks</h2>
+            <div id="task-list-content">
+                <div class="loading">
+                    <div class="spinner"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Helper function to show a message
+        function showMessage(message, type) {
+            const messageContainer = document.getElementById('message-container');
+            messageContainer.innerHTML = `<div class="${type}">${message}</div>`;
+            
+            // Hide the message after 5 seconds
+            setTimeout(() => {
+                messageContainer.innerHTML = '';
+            }, 5000);
+        }
+        
+        // Helper function to format a task as HTML
+        function formatTask(task) {
+            const subtasksHtml = task.subtasks ? 
+                `<div class="subtasks">
+                    <h4>Subtasks:</h4>
+                    ${task.subtasks.map(subtask => 
+                        `<div class="subtask">
+                            <input type="checkbox" id="subtask-${subtask.replace(/\s+/g, '-')}" ${subtask.completed ? 'checked' : ''}>
+                            <label for="subtask-${subtask.replace(/\s+/g, '-')}">${subtask}</label>
+                        </div>`
+                    ).join('')}
+                </div>` : '';
+            
+            return `
+                <div class="task" data-task-id="${task.id}">
+                    <div class="task-header">
+                        <span class="task-name">${task.name}</span>
+                        <span class="task-status status-${task.status}">${task.status.replace('_', ' ')}</span>
+                    </div>
+                    <div class="task-description">${task.description}</div>
+                    <div class="progress-bar">
+                        <div class="progress-bar-fill" style="width: ${task.progress}%"></div>
+                    </div>
+                    <div class="task-metadata">
+                        <div>Project: ${task.project}</div>
+                        <div>Phase: ${task.phase}</div>
+                        <div>Priority: ${task.priority}</div>
+                        <div>Progress: ${task.progress}%</div>
+                    </div>
+                    ${subtasksHtml}
+                    <div class="task-actions">
+                        <button class="complete-btn" data-task-id="${task.id}">Mark as Complete</button>
+                        <button class="details-btn" data-task-id="${task.id}">View Details</button>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Function to load the next task
+        async function loadNextTask() {
+            const nextTaskContainer = document.getElementById('next-task-content');
+            nextTaskContainer.innerHTML = '<div class="loading"><div class="spinner"></div></div>';
+            
+            try {
+                const response = await fetch('http://localhost:3000/api/next-task');
+                if (!response.ok) {
+                    throw new Error('Failed to load next task');
+                }
+                
+                const task = await response.json();
+                nextTaskContainer.innerHTML = formatTask(task);
+                
+                // Add event listeners to buttons
+                document.querySelectorAll('.complete-btn').forEach(button => {
+                    button.addEventListener('click', completeTask);
+                });
+                
+                document.querySelectorAll('.details-btn').forEach(button => {
+                    button.addEventListener('click', viewTaskDetails);
+                });
+            } catch (error) {
+                console.error('Error loading next task:', error);
+                nextTaskContainer.innerHTML = `<div class="error">Failed to load next task. Please try again later.</div>`;
+            }
+        }
+        
+        // Function to load all tasks
+        async function loadAllTasks() {
+            const taskListContainer = document.getElementById('task-list-content');
+            taskListContainer.innerHTML = '<div class="loading"><div class="spinner"></div></div>';
+            
+            try {
+                const response = await fetch('http://localhost:3000/api/tasks');
+                if (!response.ok) {
+                    throw new Error('Failed to load tasks');
+                }
+                
+                const tasks = await response.json();
+                
+                if (tasks.length === 0) {
+                    taskListContainer.innerHTML = '<p>No tasks found.</p>';
+                    return;
+                }
+                
+                taskListContainer.innerHTML = tasks.map(task => formatTask(task)).join('');
+                
+                // Add event listeners to buttons
+                document.querySelectorAll('.complete-btn').forEach(button => {
+                    button.addEventListener('click', completeTask);
+                });
+                
+                document.querySelectorAll('.details-btn').forEach(button => {
+                    button.addEventListener('click', viewTaskDetails);
+                });
+            } catch (error) {
+                console.error('Error loading tasks:', error);
+                taskListContainer.innerHTML = `<div class="error">Failed to load tasks. Please try again later.</div>`;
+            }
+        }
+        
+        // Function to complete a task
+        async function completeTask(event) {
+            const taskId = event.target.dataset.taskId;
+            
+            try {
+                const response = await fetch(`http://localhost:3000/api/complete-task/${taskId}`, {
+                    method: 'POST'
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Failed to complete task');
+                }
+                
+                showMessage('Task marked as complete!', 'success');
+                
+                // Reload tasks
+                loadNextTask();
+                loadAllTasks();
+            } catch (error) {
+                console.error('Error completing task:', error);
+                showMessage('Failed to complete task. Please try again later.', 'error');
+            }
+        }
+        
+        // Function to view task details
+        function viewTaskDetails(event) {
+            const taskId = event.target.dataset.taskId;
+            alert(`View details for task ${taskId} (Not implemented yet)`);
+        }
+        
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load tasks
+            loadNextTask();
+            loadAllTasks();
+            
+            // Set up refresh button
+            document.getElementById('refresh-btn').addEventListener('click', () => {
+                loadNextTask();
+                loadAllTasks();
+            });
+        });
+    </script>
+</body>
+</html>

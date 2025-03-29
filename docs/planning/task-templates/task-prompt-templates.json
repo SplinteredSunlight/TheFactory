@@ -1,0 +1,66 @@
+{
+  "default": {
+    "title": "# Next Task: {task_name} in {phase_name}\n\n",
+    "description": "## Task Description\nThis task involves implementing the {task_name} feature for the {phase_name} component of the AI-Orchestration-Platform.\n\n",
+    "steps": "## Steps to Complete\n{steps}\n\n",
+    "testing": "## Testing Requirements\n- Ensure all tests pass\n- Add new tests for the implemented functionality\n- Verify integration with existing components\n\n",
+    "documentation": "## Documentation\n- Update relevant README files\n- Update architecture diagrams if necessary\n- Update API documentation if applicable\n\n",
+    "footer": "After completing this task run the task command to mark it as completed and get the prompt for the next task.\n"
+  },
+  "concise": {
+    "title": "# Task: {task_name}\n\n",
+    "description": "Implement {task_name} for {phase_name}.\n\n",
+    "steps": "## Steps\n{steps}\n\n",
+    "testing": "## Testing\n- Write tests\n- Ensure integration\n\n",
+    "documentation": "## Docs\n- Update as needed\n\n",
+    "footer": "Run ./task complete when done.\n"
+  },
+  "detailed": {
+    "title": "# Detailed Task: {task_name} in {phase_name}\n\n",
+    "description": "## Task Description\nThis task involves implementing the {task_name} feature for the {phase_name} component of the AI-Orchestration-Platform.\n\n## Context\n{architecture_summary}\n\n## Recent Completed Tasks\n{recent_tasks}\n\n",
+    "steps": "## Implementation Steps\n{steps}\n\n",
+    "testing": "## Testing Requirements\n- Ensure all tests pass\n- Add new tests for the implemented functionality\n- Verify integration with existing components\n- Run regression tests\n\n",
+    "documentation": "## Documentation Requirements\n- Update relevant README files\n- Update architecture diagrams if necessary\n- Update API documentation if applicable\n- Update user guides\n\n",
+    "footer": "After completing this task run the task command to mark it as completed and get the prompt for the next task.\n"
+  },
+  "integration-task": {
+    "title": "# Integration Task: {task_name} between AI-Orchestrator and Fast-Agent\n\n",
+    "description": "## Task Description\nThis task involves implementing the {task_name} feature that integrates AI-Orchestrator and Fast-Agent components.\n\n## Integration Context\nThis feature requires coordination between the AI-Orchestrator and Fast-Agent systems to ensure seamless operation.\n\n## Components Involved\n- AI-Orchestrator: Manages the overall workflow and task distribution\n- Fast-Agent: Executes specialized AI tasks and returns results\n\n",
+    "steps": "## Implementation Steps\n{steps}\n\n## Integration Points\n- API contracts between systems\n- Data flow between components\n- Authentication and authorization\n- Error handling and recovery\n- Performance considerations\n\n",
+    "testing": "## Testing Requirements\n- Write unit tests for individual components\n- Write integration tests for cross-system interactions\n- Test end-to-end workflows\n- Verify error handling across system boundaries\n- Test performance and scalability\n\n",
+    "documentation": "## Documentation Requirements\n- Update README files for all affected components\n- Update API contracts in docs/api-contracts.md\n- Update data flow documentation in docs/data-flow.md\n- Update architecture diagrams to reflect new integrations\n\n",
+    "footer": "After completing this task run ./task complete to mark it as completed and get the prompt for the next task.\n"
+  },
+  "orchestrator-enhancement": {
+    "title": "# Orchestrator Enhancement: {task_name} in {phase_name}\n\n",
+    "description": "## Task Description\nThis task involves enhancing the {task_name} feature in the AI-Orchestrator component.\n\n## Orchestrator Context\nThe AI-Orchestrator is responsible for managing the workflow, distributing tasks, and coordinating between different agents and services.\n\n## Technical Details\n- Main module: src/orchestrator/\n- Configuration: config/default.yaml\n- Related components: agent_manager, frontend\n\n",
+    "steps": "## Implementation Steps\n{steps}\n\n## Architecture Considerations\n- Scalability of the orchestration layer\n- Fault tolerance and recovery\n- Monitoring and observability\n- Performance optimization\n\n",
+    "testing": "## Testing Requirements\n- Write unit tests for new functionality\n- Test orchestration workflows\n- Test error handling and recovery\n- Verify integration with agent systems\n- Benchmark performance\n\n",
+    "documentation": "## Documentation Requirements\n- Update orchestrator documentation\n- Update architecture diagrams\n- Document new configuration options\n- Update API documentation if applicable\n\n",
+    "footer": "After completing this task run ./task complete to mark it as completed and get the prompt for the next task.\n"
+  },
+  "agent-integration": {
+    "title": "# Agent Integration: {task_name} with Fast-Agent\n\n",
+    "description": "## Task Description\nThis task involves integrating the {task_name} functionality with the Fast-Agent system.\n\n## Fast-Agent Context\nFast-Agent is a specialized system for executing AI tasks efficiently and returning results to the orchestrator.\n\n## Integration Requirements\n- Communication protocol between orchestrator and agent\n- Data format for requests and responses\n- Error handling and reporting\n- Performance considerations\n\n",
+    "steps": "## Implementation Steps\n{steps}\n\n## Integration Points\n- API endpoints for agent communication\n- Authentication and authorization\n- Data transformation and validation\n- Monitoring and logging\n\n",
+    "testing": "## Testing Requirements\n- Test agent API integration\n- Verify correct data handling\n- Test error scenarios and recovery\n- Benchmark performance\n- End-to-end testing with orchestrator\n\n",
+    "documentation": "## Documentation Requirements\n- Document integration protocol\n- Update API documentation\n- Document error handling procedures\n- Update architecture diagrams\n\n",
+    "footer": "After completing this task run ./task complete to mark it as completed and get the prompt for the next task.\n"
+  },
+  "frontend-integration": {
+    "title": "# Frontend Integration: {task_name} for {phase_name}\n\n",
+    "description": "## Task Description\nThis task involves implementing the {task_name} feature in the frontend to interact with the AI-Orchestrator and Fast-Agent systems.\n\n## Frontend Context\nThe frontend provides the user interface for configuring, monitoring, and interacting with the AI orchestration platform.\n\n## Technical Details\n- Frontend directory: src/frontend/\n- Main technologies: React, TypeScript\n- API integration: src/frontend/services/\n\n",
+    "steps": "## Implementation Steps\n{steps}\n\n## UI/UX Considerations\n- User workflow for the feature\n- Visualization of orchestration and agent activities\n- Error handling and user feedback\n- Responsive design\n\n",
+    "testing": "## Testing Requirements\n- Unit tests for React components\n- Integration tests for API interactions\n- UI testing for user workflows\n- Cross-browser compatibility testing\n\n",
+    "documentation": "## Documentation Requirements\n- Update frontend documentation\n- Document component architecture\n- Update user guide with new features\n- Document API interactions\n\n",
+    "footer": "After completing this task run ./task complete to mark it as completed and get the prompt for the next task.\n"
+  },
+  "mcp-server": {
+    "title": "# Task Management MCP Server: {task_name}\n\n",
+    "description": "## Task Description\nThis task involves implementing the {task_name} component for the Task Management MCP Server of the AI-Orchestration-Platform.\n\n## MCP Server Context\nThe Task Management MCP Server provides task management functionality through the Model Context Protocol, making it accessible to AI agents and other components of the system.\n\n## Technical Details\n- MCP Server directory: src/task_manager/mcp_servers/\n- Main technologies: Python, MCP SDK, FastAPI\n- Related components: task_manager, project_master_dashboard\n\n",
+    "steps": "## Implementation Steps\n{steps}\n\n## MCP Considerations\n- Tool and resource definitions\n- Authentication and security\n- Error handling and validation\n- Performance and scalability\n- Integration with existing components\n\n",
+    "testing": "## Testing Requirements\n- Unit tests for MCP server functionality\n- Integration tests with task manager\n- End-to-end tests with client applications\n- Test error handling and edge cases\n- Verify compatibility with MCP protocol\n\n",
+    "documentation": "## Documentation Requirements\n- Document MCP tools and resources\n- Update README files\n- Document API endpoints\n- Update architecture diagrams\n- Create usage examples\n\n",
+    "footer": "After completing this task run ./task complete to mark it as completed and get the prompt for the next task.\n"
+  }
+}

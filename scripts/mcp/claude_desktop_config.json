@@ -1,0 +1,49 @@
+{
+  "mcpServers": {
+    "mcp-installer": {
+      "command": "npx",
+      "args": [
+        "@anaisbetts/mcp-installer"
+      ],
+      "disabled": false,
+      "autoApprove": []
+    },
+    "quickbooks": {
+      "command": "node",
+      "args": [
+        "/Users/dc/Projects/accounting-software/dist/mcp/servers/quickbooks/index.js"
+      ],
+      "env": {
+        "QUICKBOOKS_CLIENT_ID": "ABxKR708VbKg1rZsrHlZnPD7A8N8YtLCnUEI7oDxb71vUwxsAn",
+        "QUICKBOOKS_CLIENT_SECRET": "L8nfMjca4HO85TCkyV7cfv28P8AA1IENd4PP78o4",
+        "QUICKBOOKS_REDIRECT_URI": "https://localhost:3000/api/v1/quickbooks/callback",
+        "QUICKBOOKS_ENVIRONMENT": "sandbox",
+        "QUICKBOOKS_SANDBOX_COMPANY_ID": "9341454113533595"
+      },
+      "disabled": false,
+      "autoApprove": []
+    },
+    "server-filesystem": {
+      "command": "mcp-volume-manager",
+      "args": [],
+      "disabled": false,
+      "autoApprove": []
+    },
+    "task-manager": {
+      "command": "python3",
+      "args": [
+        "/Users/dc/Projects/AI-Orchestration-Platform/src/task_manager/mcp_servers/run_task_manager_server.py",
+        "--enable-dagger",
+        "--dagger-config",
+        "/Users/dc/Projects/AI-Orchestration-Platform/config/dagger.yaml"
+      ],
+      "env": {
+        "PYTHONPATH": "/Users/dc/Projects/AI-Orchestration-Platform:/Users/dc/Projects/AI-Orchestration-Platform/mock_modules",
+        "TASK_MANAGER_DAGGER_ENABLED": "1",
+        "TASK_MANAGER_DAGGER_CONFIG": "/Users/dc/Projects/AI-Orchestration-Platform/config/dagger.yaml"
+      },
+      "disabled": false,
+      "autoApprove": []
+    }
+  }
+}

@@ -1,0 +1,74 @@
+groups:
+  - name: dagger_alerts
+    rules:
+      - alert: HighErrorRate
+        expr: sum(rate(dagger_errors_total[5m])) > 0.1
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High error rate in Dagger workflows"
+          description: "Error rate is {{ $value }} errors per second for the last 5 minutes"
+
+      - alert: WorkflowExecutionSlow
+        expr: histogram_quantile(0.95, sum(rate(dagger_workflow_execution_duration_seconds_bucket[10m])) by (le, workflow_id)) > 300
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Slow workflow execution detected"
+          description: "Workflow {{ $labels.workflow_id }} p95 execution time is {{ $value }} seconds"
+
+      - alert: HighConcurrentWorkflows
+        expr: dagger_concurrent_workflows > 20
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High number of concurrent workflows"
+          description: "There are {{ $value }} concurrent workflows running"
+
+      - alert: HighMemoryUsage
+        expr: dagger_memory_usage_bytes > 1073741824  # 1GB
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High memory usage in Dagger"
+          description: "Memory usage is {{ $value | humanize1024 }}B"
+
+      - alert: HighCpuUsage
+        expr: dagger_cpu_usage_percent > 80
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High CPU usage in Dagger"
+          description: "CPU usage is {{ $value }}%"
+
+      - alert: CircuitBreakerOpen
+        expr: dagger_circuit_breaker_state{state="open"} > 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Circuit breaker is open"
+          description: "Circuit breaker {{ $labels.name }} is in open state"
+
+      - alert: WorkflowFailureRate
+        expr: sum(rate(dagger_workflow_executions_total{status="failed"}[5m])) / sum(rate(dagger_workflow_executions_total[5m])) > 0.1
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High workflow failure rate"
+          description: "Workflow failure rate is {{ $value | humanizePercentage }}"
+
+      - alert: StepFailureRate
+        expr: sum(rate(dagger_step_executions_total{status="failed"}[5m])) / sum(rate(dagger_step_executions_total[5m])) > 0.1
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High step failure rate"
+          description: "Step failure rate is {{ $value | humanizePercentage }}"

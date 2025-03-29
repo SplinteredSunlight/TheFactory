@@ -1,0 +1,43 @@
+template_id: custom_example
+name: Custom Example Workflow
+description: A custom example workflow for demonstration
+category: example
+version: 1.0.0
+parameters:
+  input_file: data.csv
+  output_dir: /tmp/output
+  threshold: 0.5
+stages:
+- id: prepare
+  name: Prepare Data
+  description: Prepare the input data
+  agent: data_preparer
+  inputs:
+    input_file: ${parameters.input_file}
+    output_dir: ${parameters.output_dir}
+- id: process
+  name: Process Data
+  description: Process the prepared data
+  agent: data_processor
+  depends_on:
+  - prepare
+  inputs:
+    input_dir: ${parameters.output_dir}
+    threshold: ${parameters.threshold}
+    prepared_file: ${stages.prepare.outputs.result}
+- id: analyze
+  name: Analyze Results
+  description: Analyze the processing results
+  agent: data_analyzer
+  depends_on:
+  - process
+  inputs:
+    input_file: ${stages.process.outputs.result}
+    output_dir: ${parameters.output_dir}
+metadata:
+  tags:
+  - example
+  - demo
+  complexity: low
+  estimated_duration: 5m
+created_at: '2025-03-18T20:09:10.382782'

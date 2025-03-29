@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Wrapper script for the Task Management CLI Tool
+# This script forwards all arguments to the task_cli.py script
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PYTHON_SCRIPT="$SCRIPT_DIR/src/task_manager/mcp_servers/task_cli.py"
+
+# Check if the Python script exists
+if [ ! -f "$PYTHON_SCRIPT" ]; then
+    echo "Error: Task CLI script not found at $PYTHON_SCRIPT"
+    exit 1
+fi
+
+# Forward all arguments to the Python script
+"$PYTHON_SCRIPT" "$@"

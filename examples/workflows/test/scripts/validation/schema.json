@@ -1,0 +1,31 @@
+{
+  "name": "sample_data_schema",
+  "description": "Schema for sample data validation",
+  "required_fields": ["id", "name", "value", "timestamp"],
+  "fields": {
+    "id": {
+      "type": "integer",
+      "description": "Unique identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name or label"
+    },
+    "value": {
+      "type": "number",
+      "description": "Numeric value"
+    },
+    "timestamp": {
+      "type": "date",
+      "description": "Date in YYYY-MM-DD format"
+    },
+    "category": {
+      "type": "string",
+      "description": "Optional category"
+    },
+    "is_active": {
+      "type": "boolean",
+      "description": "Whether the item is active"
+    }
+  }
+}

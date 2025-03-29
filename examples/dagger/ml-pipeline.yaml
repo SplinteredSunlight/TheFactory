@@ -1,0 +1,66 @@
+name: ML Pipeline
+description: Machine learning pipeline example for Dagger integration
+
+steps:
+  - id: fetch-data
+    name: Fetch Data
+    image: python:3.9-slim
+    command: [
+      "python", "-c",
+      "import pandas as pd; import numpy as np; from sklearn.datasets import load_iris; data = load_iris(); df = pd.DataFrame(data.data, columns=data.feature_names); df['target'] = data.target; df.to_csv('/data/iris.csv', index=False); print('Data loaded and saved to /data/iris.csv')"
+    ]
+    volumes:
+      - source: /tmp
+        target: /data
+
+  - id: preprocess-data
+    name: Preprocess Data
+    image: python:3.9-slim
+    command: [
+      "bash", "-c",
+      "pip install pandas scikit-learn && python -c 'import pandas as pd; from sklearn.preprocessing import StandardScaler; df = pd.read_csv(\"/data/iris.csv\"); X = df.drop(\"target\", axis=1); y = df[\"target\"]; scaler = StandardScaler(); X_scaled = scaler.fit_transform(X); pd.DataFrame(X_scaled, columns=X.columns).join(pd.Series(y, name=\"target\")).to_csv(\"/data/preprocessed.csv\", index=False); print(\"Data preprocessed and saved to /data/preprocessed.csv\")'"
+    ]
+    volumes:
+      - source: /tmp
+        target: /data
+    depends_on:
+      - fetch-data
+
+  - id: train-model
+    name: Train Model
+    image: python:3.9-slim
+    command: [
+      "bash", "-c",
+      "pip install pandas scikit-learn joblib && python -c 'import pandas as pd; from sklearn.model_selection import train_test_split; from sklearn.ensemble import RandomForestClassifier; import joblib; df = pd.read_csv(\"/data/preprocessed.csv\"); X = df.drop(\"target\", axis=1); y = df[\"target\"]; X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42); model = RandomForestClassifier(n_estimators=100, random_state=42); model.fit(X_train, y_train); joblib.dump(model, \"/data/model.joblib\"); print(\"Model trained and saved to /data/model.joblib\")'"
+    ]
+    volumes:
+      - source: /tmp
+        target: /data
+    depends_on:
+      - preprocess-data
+
+  - id: evaluate-model
+    name: Evaluate Model
+    image: python:3.9-slim
+    command: [
+      "bash", "-c",
+      "pip install pandas scikit-learn joblib && python -c 'import pandas as pd; from sklearn.metrics import accuracy_score, classification_report; import joblib; df = pd.read_csv(\"/data/preprocessed.csv\"); X = df.drop(\"target\", axis=1); y = df[\"target\"]; from sklearn.model_selection import train_test_split; X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42); model = joblib.load(\"/data/model.joblib\"); y_pred = model.predict(X_test); accuracy = accuracy_score(y_test, y_pred); report = classification_report(y_test, y_pred); with open(\"/data/evaluation.txt\", \"w\") as f: f.write(f\"Accuracy: {accuracy}\\n\\nClassification Report:\\n{report}\"); print(\"Model evaluated and report saved to /data/evaluation.txt\")'"
+    ]
+    volumes:
+      - source: /tmp
+        target: /data
+    depends_on:
+      - train-model
+
+  - id: generate-report
+    name: Generate Report
+    image: python:3.9-slim
+    command: [
+      "bash", "-c",
+      "pip install pandas matplotlib && python -c 'import pandas as pd; import matplotlib.pyplot as plt; df = pd.read_csv(\"/data/preprocessed.csv\"); with open(\"/data/evaluation.txt\", \"r\") as f: eval_report = f.read(); fig, ax = plt.subplots(figsize=(10, 6)); df.groupby(\"target\").size().plot(kind=\"bar\", ax=ax); plt.title(\"Class Distribution\"); plt.savefig(\"/data/class_distribution.png\"); with open(\"/data/final_report.md\", \"w\") as f: f.write(\"# ML Pipeline Report\\n\\n## Dataset Summary\\n\\n\"); f.write(f\"Total samples: {len(df)}\\n\\n\"); f.write(f\"Features: {list(df.columns[:-1])}\\n\\n\"); f.write(\"## Model Evaluation\\n\\n\"); f.write(f\"```\\n{eval_report}\\n```\\n\\n\"); f.write(\"## Class Distribution\\n\\n\"); f.write(\"![Class Distribution](/data/class_distribution.png)\\n\"); print(\"Final report generated at /data/final_report.md\")'"
+    ]
+    volumes:
+      - source: /tmp
+        target: /data
+    depends_on:
+      - evaluate-model

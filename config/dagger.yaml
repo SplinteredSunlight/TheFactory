@@ -1,0 +1,86 @@
+# Dagger Configuration
+
+# General configuration
+general:
+  # Enable or disable Dagger integration
+  enabled: true
+  # Log level (debug, info, warn, error)
+  log_level: info
+  # Maximum concurrent workflows
+  max_concurrent_workflows: 10
+  # Timeout for workflow execution (in seconds)
+  workflow_timeout: 3600
+  # Enable or disable workflow caching
+  cache_enabled: true
+  # Cache TTL (in seconds)
+  cache_ttl: 3600
+  # Cache directory
+  cache_dir: ./data/cache
+
+# Dagger engine configuration
+engine:
+  # Dagger engine endpoint
+  endpoint: unix:///var/run/dagger.sock
+  # Dagger engine version
+  version: v0.3.0
+  # Dagger engine timeout (in seconds)
+  timeout: 30
+  # Dagger engine retry count
+  retry_count: 3
+  # Dagger engine retry delay (in seconds)
+  retry_delay: 5
+
+# Workflow configuration
+workflow:
+  # Default workflow type
+  default_type: containerized_workflow
+  # Default workflow parameters
+  default_params:
+    # Default container image
+    image: alpine:latest
+    # Default container entrypoint
+    entrypoint: /bin/sh
+    # Default container command
+    command: -c
+    # Default container working directory
+    workdir: /app
+    # Default container environment variables
+    env:
+      DAGGER_LOG_LEVEL: info
+    # Default container mounts
+    mounts:
+      - source: ./data
+        target: /data
+        read_only: true
+  # Workflow templates directory
+  templates_dir: ./templates
+  # Workflow output directory
+  output_dir: ./data/output
+
+# Security configuration
+security:
+  # Enable or disable authentication
+  auth_enabled: true
+  # Authentication token
+  auth_token: ${DAGGER_AUTH_TOKEN}
+  # Enable or disable TLS
+  tls_enabled: false
+  # TLS certificate file
+  tls_cert_file: ./certs/cert.pem
+  # TLS key file
+  tls_key_file: ./certs/key.pem
+
+# Monitoring configuration
+monitoring:
+  # Enable or disable monitoring
+  enabled: true
+  # Prometheus metrics endpoint
+  metrics_endpoint: /metrics
+  # Metrics collection interval (in seconds)
+  metrics_interval: 15
+  # Enable or disable tracing
+  tracing_enabled: true
+  # Tracing endpoint
+  tracing_endpoint: http://localhost:14268/api/traces
+  # Tracing service name
+  tracing_service_name: dagger-service

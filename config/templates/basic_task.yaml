@@ -1,0 +1,70 @@
+# Basic Task Workflow Template
+
+# Workflow metadata
+metadata:
+  name: basic_task
+  description: A basic task workflow template
+  version: 1.0.0
+  category: general
+  tags:
+    - basic
+    - task
+
+# Workflow parameters
+parameters:
+  task_name:
+    type: string
+    description: The name of the task
+    required: true
+  task_description:
+    type: string
+    description: The description of the task
+    required: true
+  task_command:
+    type: string
+    description: The command to execute
+    required: true
+  task_timeout:
+    type: integer
+    description: The timeout for the task in seconds
+    default: 3600
+  task_image:
+    type: string
+    description: The container image to use
+    default: alpine:latest
+  task_environment:
+    type: object
+    description: Environment variables for the task
+    default: {}
+  task_working_dir:
+    type: string
+    description: The working directory for the task
+    default: /app
+  task_mounts:
+    type: array
+    description: Mounts for the task
+    default: []
+
+# Workflow steps
+steps:
+  - name: execute_task
+    description: Execute the task
+    container:
+      image: ${task_image}
+      command: ${task_command}
+      workdir: ${task_working_dir}
+      environment: ${task_environment}
+      mounts: ${task_mounts}
+      timeout: ${task_timeout}
+
+# Workflow outputs
+outputs:
+  result:
+    description: The result of the task
+    value: ${steps.execute_task.output}
+  logs:
+    description: The logs of the task
+    value: ${steps.execute_task.logs}
+  exit_code:
+    description: The exit code of the task
+    value: ${steps.execute_task.exit_code}

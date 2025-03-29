@@ -1,0 +1,9 @@
+#!/bin/bash
+# Open the dashboard in a browser
+
+# Get the directory where the script is located
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+
+# Open the HTML dashboard in a browser
+echo "Opening HTML dashboard..."
+open "$SCRIPT_DIR/dashboard.html"
