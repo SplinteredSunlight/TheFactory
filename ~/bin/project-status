@@ -1,0 +1,8 @@
+#!/bin/bash
+# Shortcut to show project status
+
+# Get the directory where the task-status script is located
+SCRIPT_DIR="$(cd "$(dirname "$(readlink -f "$(which task-status)")")" && pwd)"
+
+# Run the Task Assistant with auto-start enabled and execute the project status command
+"$SCRIPT_DIR/task-assistant.py" --auto-start --no-browser <<< "project status"
